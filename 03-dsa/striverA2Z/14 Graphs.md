@@ -38,3 +38,57 @@ graph TD
 - `E`: `[A]`
 
 
+## Graph Traversals : 
+
+### 1. Depth First Search (DFS) : 
+
+- Visit the current node and mark it as visited.
+- Recursively visit all the unvisited neighbors of the current node.
+- Backtrack to the previous node and continue the process until all nodes are visited.
+
+
+```cpp
+dfs(node, visited, adjList){
+    visited[node] = true;
+    // Do anything (Ex Print etc)
+
+    for(node in adjList[node]){
+        if(!visited[node]) dfs(node, visited, adjList);
+    }
+
+    // If you want to store the traversal in stack do here  stack.push(node)
+    return;
+}
+```
+
+### 2. Breadth First Search (BFS) : 
+
+- Visit the current node and mark it as visited.
+- Recursively visit `all the unvisited neighbors of the current node.`
+- Backtrack to the previous node and continue the process until all nodes are visited.
+
+```cpp
+bfs(start_node, visited, adjList){
+    queue<int> q;
+    q.push(start_node);
+    visited[start_node] = true;
+
+    while(!q.empty()){
+        int node = q.front(); q.pop();
+        // Do anything (Ex Print etc)
+
+        for(node in adjList[node]){
+            if(!visited[node]){
+                q.push(node);
+                visited[node] = true;
+            }
+        }
+    }
+    return;
+}
+```
+
+
+
+
+
