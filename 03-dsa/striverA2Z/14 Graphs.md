@@ -3,8 +3,8 @@
 ## Basic Info : 
 
 ### Key Points to Remember : 
-1. If there are n nodes then the maximum number of edges in an undirected graph is nC2 = n(n-1)/2.
-2. If there are n nodes then the maximum number of edges in a directed graph is n(n-1) (Because for each node we can have an edge to all other nodes).
+1. If there are n nodes then the maximum number of edges in an undirected graph is $${}_n C_2 = \frac{n(n-1)}{2}$$
+2. If there are n nodes then the maximum number of edges in a directed graph is $n(n-1)$ (Because for each node we can have an edge to all other nodes).
 
 
 

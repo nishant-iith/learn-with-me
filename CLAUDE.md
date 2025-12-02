@@ -1,0 +1,1 @@
+- remember not to perform any git write operation I will do it myself just let me know when we have to do it but you don't do it okay?
