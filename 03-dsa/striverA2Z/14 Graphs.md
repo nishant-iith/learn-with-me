@@ -10,11 +10,14 @@
 
 ## Representation of Graphs : 
 Example Graph :
+```mermaid
 graph TD
     A["A"] --- B["B"];
     A["A"] --- C["C"];
     A["A"] --- D["D"];
     A["A"] --- E["E"];
+```
+
 ### 1. Adjacency Matrix : 
 
 |   | A | B | C | D | E |
