@@ -75,12 +75,12 @@ Functions of OS:
 
 ```mermaid
 stateDiagram-v2
-    New --["Long Term Scheduler (LTS)"]--> Ready Queue
-    Ready Queue --["Short Term Scheduler (STS)"]--> Running
-    Running --["I/O Request / Hardware Event"]--> Wait/Block
-    Running --["Time Quantum Expires / Higher Priority"]--> Ready Queue
-    Wait/Block --["I/O Complete / Event Occurred"]--> Ready Queue
-    Running --> Terminated
-    Wait/Block --["Medium Term Scheduler (Swapping Out)"]--> Suspended
-    Suspended --["Medium Term Scheduler (Swapping In)"]--> Ready Queue
+    "New" --["Long Term Scheduler (LTS)"]--> "Ready Queue"
+    "Ready Queue" --["Short Term Scheduler (STS)"]--> "Running"
+    "Running" --["I/O Request / Hardware Event"]--> "Wait/Block"
+    "Running" --["Time Quantum Expires / Higher Priority"]--> "Ready Queue"
+    "Wait/Block" --["I/O Complete / Event Occurred"]--> "Ready Queue"
+    "Running" --> "Terminated"
+    "Wait/Block" --["Medium Term Scheduler (Swapping Out)"]--> Suspended
+    Suspended --["Medium Term Scheduler (Swapping In)"]--> "Ready Queue"
 ```
