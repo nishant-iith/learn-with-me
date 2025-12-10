@@ -75,12 +75,12 @@ Functions of OS:
 
 ```mermaid
 flowchart TD
-    "New" --["Long Term Scheduler (LTS)"]--> "Ready Queue"
-    "Ready Queue" --["Short Term Scheduler (STS)"]--> "Running"
-    "Running" --["I/O Request / Hardware Event"]--> "Wait/Block"
-    "Running" --["Time Quantum Expires / Higher Priority"]--> "Ready Queue"
-    "Wait/Block" --["I/O Complete / Event Occurred"]--> "Ready Queue"
-    "Running" --> "Terminated"
-    "Wait/Block" --["Medium Term Scheduler (Swapping Out)"]--> "Suspended"
-    "Suspended" --["Medium Term Scheduler (Swapping In)"]--> "Ready Queue"
+    New --["Long Term Scheduler (LTS)"]--> Ready_Queue
+    Ready_Queue --["Short Term Scheduler (STS)"]--> Running
+    Running --["I/O Request / Hardware Event"]--> Wait_Block
+    Running --["Time Quantum Expires / Higher Priority"]--> Ready_Queue
+    Wait_Block --["I/O Complete / Event Occurred"]--> Ready_Queue
+    Running --> Terminated
+    Wait_Block --["Medium Term Scheduler (Swapping Out)"]--> Suspended
+    Suspended --["Medium Term Scheduler (Swapping In)"]--> Ready_Queue
 ```
