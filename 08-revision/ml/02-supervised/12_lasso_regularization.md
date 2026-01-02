@@ -48,6 +48,8 @@ Description:
 Style: Educational.
 -->
 
+![Lasso vs Ridge Coefficients](assets/lasso_vs_ridge_coef_behavior.png)
+
 ---
 
 ### Python Implementation

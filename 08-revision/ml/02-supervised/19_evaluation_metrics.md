@@ -30,6 +30,8 @@ Description:
 Style: Educational standard.
 -->
 
+![Confusion Matrix Grid](assets/confusion_matrix_visual.png)
+
 ---
 
 ### 2. Accuracy (and why it fails)
@@ -71,6 +73,8 @@ Description:
 Style: Case Study Illustration.
 -->
 
+![Precision: Spam Filter Example](assets/precision_spam_visual.png)
+
 ---
 
 ### 4. Recall (Focus: "Don't Miss It")
@@ -98,6 +102,8 @@ Description:
 - Bottom text: "Recall matters when False Negatives are costly."
 Style: Case Study Illustration.
 -->
+
+![Recall: Cancer Detection Example](assets/recall_cancer_visual.png)
 
 ---
 

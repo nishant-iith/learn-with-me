@@ -27,6 +27,8 @@ Description:
 Style: Educational, similar to the user's notes.
 -->
 
+![Linear Decision Boundary](assets/log_reg_linear_boundary.png)
+
 ---
 
 ### 3. The Perceptron Trick
@@ -67,6 +69,8 @@ Description:
 - Label the vectors as "Old Weight", "Update Vector ($\eta X_i$)", and "New Weight".
 Style: Conceptual Mechanics.
 -->
+
+![Perceptron Updates: Push and Pull](assets/perceptron_push_pull_vectors.png)
 
 ---
 

@@ -20,6 +20,8 @@ Description:
 Style: Educational transformation flow.
 -->
 
+![Log Odds to Probability](assets/log_odds_transformation.png)
+
 ---
 
 ### 2. Label Conventions: $\{0, 1\}$ vs $\{-1, 1\}$
@@ -41,6 +43,8 @@ Description:
 - Proven equivalence of the two loss functions.
 Style: Handwritten note style.
 -->
+
+![Log Loss vs Log-Likelihood Proof](assets/log_loss_equation_comparison.png)
 
 ---
 

@@ -44,6 +44,8 @@ Description:
 Style: Mathematical Graph.
 -->
 
+![Sigmoid Function](assets/sigmoid_curve_annotated.png)
+
 ### 3. The "Conviction" Problem
 Even with Sigmoid, if we stick to the **Random Point selection** (Perceptron Algorithm), we have an issue:
 *   We pick random points and nudge the line.
@@ -62,6 +64,8 @@ Description:
 - Label: "Lack of Conviction" for the first two.
 Style: Data Viz.
 -->
+
+![Decision Boundary Conviction/Margin](assets/sigmoid_conviction_comparison.png)
 
 ### 4. Conclusion: We need a Loss Function
 To get the **Best** solution with conviction, we stop "guessing" based on random points.

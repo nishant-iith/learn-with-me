@@ -58,6 +58,8 @@ Description:
 Style: Neural Network Backprop style.
 -->
 
+![Logistic Regression Gradient Flow](assets/logistic_gradient_flowchart.png)
+
 ---
 
 ### 4. Python Implementation (From Scratch)

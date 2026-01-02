@@ -61,4 +61,6 @@ Description:
 Style: Mathematical Calculation Graph.
 -->
 
+![Sigmoid Derivative (Vanishing Gradient)](assets/sigmoid_derivative_plot.png)
+
 > **Next**: Applying Gradient Descent to Logistic Regression.

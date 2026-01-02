@@ -52,6 +52,8 @@ Description:
 Style: Educational graph from notes.
 -->
 
+![Bias vs Variance Tradeoff](assets/ridge_lambda_error_curve.png)
+
 4.  **When to apply?**: Usually when Number of inputs (features) $\ge 2$. Also effective when features are correlated (Multicollinearity).
 
 ---
