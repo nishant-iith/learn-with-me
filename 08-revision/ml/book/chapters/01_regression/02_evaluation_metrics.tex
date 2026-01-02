@@ -1,0 +1,198 @@
+\chapter{Regression Evaluation Metrics}
+\label{chap:regression_metrics}
+
+% ========================================
+% SECTION 1: INTRODUCTION
+% ========================================
+\section{Introduction: Why Do We Need Metrics?}
+In Chapter 1, we built a Linear Regression model. But how do we know if it is any good? We need a way to \textbf{measure} the quality of our predictions.
+
+Consider two lines that could fit the same data:
+\begin{itemize}
+    \item \textbf{Line A}: Passes perfectly through half the points but misses others badly.
+    \item \textbf{Line B}: Does not pass through any point exactly, but is reasonably close to all of them.
+\end{itemize}
+Which line is ``better''? Metrics give us an objective answer.
+
+% ========================================
+% SECTION 2: DEFINITIONS
+% ========================================
+\section{The Five Key Metrics}
+
+\subsection{1. Mean Absolute Error (MAE)}
+\begin{definition}
+\textbf{MAE}: The average of the absolute differences between predicted and actual values.
+\begin{equation}
+    MAE = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|
+\end{equation}
+\end{definition}
+
+\textbf{Intuition}: Imagine you are measuring how far each student's actual package is from what you predicted. You take the average of all those distances.
+
+\textbf{Advantages}:
+\begin{itemize}
+    \item Same units as the target variable (e.g., if salary is in LPA, MAE is also in LPA).
+    \item \textbf{Robust to outliers}: A single extreme value does not dramatically inflate the error.
+\end{itemize}
+
+\textbf{Disadvantages}:
+\begin{itemize}
+    \item The absolute value function $|x|$ has a sharp ``V'' shape at zero. It is \textbf{non-differentiable} at that point, which can cause issues for optimization algorithms like Gradient Descent.
+\end{itemize}
+
+\subsection{2. Mean Squared Error (MSE)}
+\begin{definition}
+\textbf{MSE}: The average of the squared differences between predicted and actual values.
+\begin{equation}
+    MSE = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
+\end{equation}
+\end{definition}
+
+\textbf{Intuition}: Similar to MAE, but instead of just measuring the distance, you square it. This makes larger errors contribute disproportionately more to the total.
+
+\textbf{Advantages}:
+\begin{itemize}
+    \item \textbf{Differentiable} everywhere (smooth curve). This is why MSE is the default loss function for training regression models.
+\end{itemize}
+
+\textbf{Disadvantages}:
+\begin{itemize}
+    \item Units are squared (e.g., if salary is in LPA, MSE is in $LPA^2$).
+    \item \textbf{Sensitive to outliers}: A single large error gets squared, massively inflating the total.
+\end{itemize}
+
+\subsection{3. Root Mean Squared Error (RMSE)}
+\begin{definition}
+\textbf{RMSE}: The square root of MSE.
+\begin{equation}
+    RMSE = \sqrt{MSE} = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}
+\end{equation}
+\end{definition}
+
+\textbf{Intuition}: RMSE brings the units back to the original scale (like MAE), while still penalizing large errors (like MSE). It is a popular choice for reporting model performance.
+
+\subsection{4. R-Squared ($R^2$) Score}
+\begin{definition}
+\textbf{$R^2$ (Coefficient of Determination)}: Measures how much of the variance in the target variable is explained by the model.
+\begin{equation}
+    R^2 = 1 - \frac{SS_{res}}{SS_{tot}} = 1 - \frac{\sum(y_i - \hat{y}_i)^2}{\sum(y_i - \bar{y})^2}
+\end{equation}
+\end{definition}
+
+\textbf{Intuition}:
+\begin{itemize}
+    \item $SS_{tot}$ (Total Sum of Squares): How much the actual data varies from its mean. This is the ``baseline'' variance.
+    \item $SS_{res}$ (Residual Sum of Squares): How much the predictions vary from the actual values. This is the ``leftover'' error.
+    \item $R^2 = 1$: Perfect model (all variance is explained).
+    \item $R^2 = 0$: The model is no better than just predicting the mean.
+    \item $R^2 < 0$: The model is \textit{worse} than predicting the mean.
+\end{itemize}
+
+\textbf{Example}: An $R^2 = 0.85$ means ``CGPA explains 85\% of the variance in Package.''
+
+\subsection{5. Adjusted $R^2$}
+\begin{definition}
+\textbf{Adjusted $R^2$}: A modified version of $R^2$ that penalizes adding irrelevant features.
+\begin{equation}
+    R^2_{adj} = 1 - \frac{(1-R^2)(n-1)}{n-k-1}
+\end{equation}
+Where $n$ = number of samples, $k$ = number of features.
+\end{definition}
+
+\textbf{Problem with $R^2$}: If you add any new feature to the model (even a random one like ``lucky number''), $R^2$ will never decrease. It might stay the same or slightly increase. This is misleading.
+
+\textbf{Solution}: Adjusted $R^2$ adds a penalty that increases with $k$. If you add a useless feature, the penalty outweighs any spurious improvement, causing Adjusted $R^2$ to decrease.
+
+% ========================================
+% SECTION 3: WORKED EXAMPLE
+% ========================================
+\section{Worked Example}
+Consider 5 data points:
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+$x$ & Actual $y$ & Predicted $\hat{y}$ \\ \hline
+1 & 2 & 2.5 \\ \hline
+2 & 4 & 3.8 \\ \hline
+3 & 5 & 5.1 \\ \hline
+4 & 4 & 6.4 \\ \hline
+5 & 8 & 7.7 \\ \hline
+\end{tabular}
+\end{center}
+Mean of $y$: $\bar{y} = (2+4+5+4+8)/5 = 4.6$
+
+\textbf{Calculate MAE}:
+$|2-2.5| + |4-3.8| + |5-5.1| + |4-6.4| + |8-7.7| = 0.5 + 0.2 + 0.1 + 2.4 + 0.3 = 3.5$
+$MAE = 3.5 / 5 = \mathbf{0.7}$
+
+% ========================================
+% SECTION 4: CODE IMPLEMENTATION
+% ========================================
+\section{Implementation in Python}
+\begin{lstlisting}[language=Python, caption=Regression Metrics from Scratch]
+import numpy as np
+
+def calculate_metrics(y_true, y_pred, n_features):
+    n = len(y_true)
+    
+    # 1. MAE
+    mae = np.mean(np.abs(y_true - y_pred))
+    
+    # 2. MSE
+    mse = np.mean((y_true - y_pred)**2)
+    
+    # 3. RMSE
+    rmse = np.sqrt(mse)
+    
+    # 4. R-Squared
+    ss_res = np.sum((y_true - y_pred)**2)
+    ss_tot = np.sum((y_true - np.mean(y_true))**2)
+    r2 = 1 - (ss_res / ss_tot)
+    
+    # 5. Adjusted R-Squared
+    r2_adj = 1 - ((1 - r2) * (n - 1) / (n - n_features - 1))
+    
+    print(f"MAE:  {mae:.4f}")
+    print(f"MSE:  {mse:.4f}")
+    print(f"RMSE: {rmse:.4f}")
+    print(f"R2:   {r2:.4f}")
+    print(f"Adj R2: {r2_adj:.4f}")
+\end{lstlisting}
+
+% ========================================
+% SECTION 5: SUMMARY
+% ========================================
+\section{Summary: When to Use Which Metric}
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Metric} & \textbf{Use When...} & \textbf{Caveat} \\ \hline
+MAE & Outliers are present \& valid & Not differentiable at 0 \\ \hline
+MSE & You need a differentiable loss & Sensitive to outliers \\ \hline
+RMSE & Reporting in original units & Sensitive to outliers \\ \hline
+$R^2$ & Comparing models on same data & Can be misleading with many features \\ \hline
+Adj $R^2$ & Feature selection in Multiple LR & Slightly harder to interpret \\ \hline
+\end{tabular}
+\end{center}
+
+% ========================================
+% SECTION 6: HOTS QUESTIONS
+% ========================================
+\section{HOTS: Interview Questions}
+\textbf{Q1: Can $R^2$ be negative? What does it mean?}
+\begin{itemize}
+    \item Yes, $R^2$ can be negative.
+    \item It means the model is performing \textit{worse} than simply predicting the mean of the target variable. This usually indicates the model is severely overfitting or is fundamentally wrong for the data.
+\end{itemize}
+
+\textbf{Q2: MSE vs MAE: When would you choose MAE?}
+\begin{itemize}
+    \item Choose MAE when your data has many \textbf{outliers} that are valid data points (e.g., salary data with a few millionaires).
+    \item MAE treats all errors linearly, so outliers do not disproportionately inflate the total error.
+\end{itemize}
+
+\textbf{Q3: Why is Adjusted $R^2$ always less than or equal to $R^2$?}
+\begin{itemize}
+    \item Because the penalty term $(n-1)/(n-k-1)$ is always $\geq 1$ when $k \geq 0$.
+    \item Adding more features increases $k$, which increases the penalty.
+\end{itemize}

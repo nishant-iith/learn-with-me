@@ -1,0 +1,42 @@
+\chapter{Distance Metrics and Hyperparameters}
+\label{chap:knn_metrics}
+
+\section{Defining "Nearness"}
+To say two points are "close", we need a ruler. In math, this ruler is the \textbf{Distance Metric}.
+
+\subsection{1. Euclidean Distance (L2 Norm)}
+This is the straight-line distance, derived from the Pythagorean theorem. It is the default for most continuous data.
+\begin{definition}
+$$ d(p, q) = \sqrt{ \sum_{i=1}^{n} (p_i - q_i)^2 } $$
+\end{definition}
+
+\subsection{2. Manhattan Distance (L1 Norm)}
+Also known as "Taxicab Geometry". Imagine a grid-like city (Manhattan). You cannot walk through buildings (diagonal); you must walk along the streets.
+\begin{definition}
+$$ d(p, q) = \sum_{i=1}^{n} | p_i - q_i | $$
+\end{definition}
+This is often better for high-dimensional sparse data.
+
+\section{The Cardinal Sin: Forgetting to Scale}
+KNN is strictly based on distance magnitude. This makes it dangerously sensitive to the scale of input features.
+
+\textbf{Example Failure}:
+Imagine two features:
+\begin{itemize}
+    \item \textbf{Age}: 20 to 80 (Range = 60).
+    \item \textbf{Salary}: 20,000 to 100,000 (Range = 80,000).
+\end{itemize}
+If we compute Euclidean Distance:
+$$ \sqrt{(Age_1-Age_2)^2 + (Salary_1-Salary_2)^2} $$
+The term $(Salary)^2$ will result in billions. The term $(Age)^2$ will be tiny.
+The distance will be 99.99\% determined by Salary. The algorithm effectively \textbf{ignores Age}.
+
+\begin{quote}
+\textbf{Rule}: You must always apply \textbf{StandardScaler} (normalize to Mean=0, Variance=1) before running KNN.
+\end{quote}
+
+\section{The Hyperparameter K}
+\begin{itemize}
+    \item \textbf{Small K (e.g., K=1)}: The model looks at only the single nearest person. If that person is an outlier (noise), the prediction is wrong. \textbf{High Variance (Overfitting)}.
+    \item \textbf{Large K (e.g., K=100)}: The model averages over a huge crowd. It loses local detail and tends to predict the majority class for everyone. \textbf{High Bias (Underfitting)}.
+\end{itemize}

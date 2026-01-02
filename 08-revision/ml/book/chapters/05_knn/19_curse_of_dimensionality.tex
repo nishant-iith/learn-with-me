@@ -1,0 +1,32 @@
+\chapter{The Curse of Dimensionality}
+\label{chap:knn_curse}
+
+\section{Why KNN Fails in High Dimensions}
+Human intuition works well in 2D and 3D. But data often has hundreds of dimensions (features).
+As dimensions increase, we encounter a paradox known as the \textbf{Curse of Dimensionality}.
+
+\section{The Sparsity Problem}
+Imagine a unit cube (side length 1).
+\begin{itemize}
+    \item **1D**: 10 points cover the line well.
+    \item **2D**: To cover a square with same density, you need $10^2 = 100$ points.
+    \item **3D**: You need $10^3 = 1000$ points.
+    \item **100D**: You need $10^{100}$ points.
+\end{itemize}
+In high dimensions, unless you have infinite data, the space is mostly \textbf{Empty Air}.
+Points are so far apart that "Nearest Neighbor" implies "Least Far Neighbor". They aren't actually close.
+
+\section{Weighted KNN (Distance Weighting)}
+A standard KNN uses a simple generic vote: "3 neighbors say Red, 2 say Blue $\rightarrow$ Red wins".
+But what if the 3 Red neighbors are very far away, and the 2 Blue neighbors are extremely close?
+
+We can fix this by **Weighting** the vote.
+\begin{definition}
+\textbf{Distance Weighting}: The influence of a neighbor's vote is proportional to the inverse of its distance.
+$$ \text{Weight} = \frac{1}{\text{distance}^2} $$
+\end{definition}
+This ensures that local points matter more than distant points, helping with both outliers and imbalanced data.
+
+\section{HOTS Questions}
+\textbf{Q1: Why does KNN fail with raw Image pixels?}
+\\ \textit{Answer}: A 28x28 image has 784 dimensions. In 784D space, all images are far apart (Curse of Dimensionality). Euclidean distance between two images is often meaningless (shifting an image by 1 pixel changes all pixel values but the image is the same). Convolutional Neural Networks (CNNs) are needed to extract lower-dimensional features first.

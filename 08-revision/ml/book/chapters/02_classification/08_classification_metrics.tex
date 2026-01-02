@@ -1,0 +1,289 @@
+\chapter{Classification Metrics}
+\label{chap:classification_metrics}
+
+% ========================================
+% SECTION 1: INTRODUCTION
+% ========================================
+\section{Introduction: Why Accuracy is Not Enough}
+Accuracy ($\frac{\text{Correct Predictions}}{\text{Total Predictions}}$) is a dangerous metric.
+
+\textbf{Example}: Imagine a dataset with 99 healthy patients and 1 cancer patient.
+\begin{itemize}
+    \item A lazy model predicts ``Healthy'' for everyone.
+    \item Accuracy = $\frac{99}{100} = 99\%$.
+    \item But it killed the one patient it needed to save. It is a \textbf{useless model}.
+\end{itemize}
+
+We need metrics that account for the \textbf{type} of errors, not just the count.
+
+% ========================================
+% SECTION 2: CONFUSION MATRIX
+% ========================================
+\section{The Confusion Matrix}
+We break down predictions into 4 buckets:
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{|l|c|c|}
+    \hline
+    & \textbf{Predicted Positive (1)} & \textbf{Predicted Negative (0)} \\ \hline
+    \textbf{Actual Positive (1)} & True Positive (TP) & False Negative (FN) \\ \hline
+    \textbf{Actual Negative (0)} & False Positive (FP) & True Negative (TN) \\ \hline
+    \end{tabular}
+    \caption{The Confusion Matrix for Binary Classification}
+    \label{tab:confusion_matrix}
+\end{table}
+
+\textbf{How to Remember TP/TN/FP/FN}:
+\begin{itemize}
+    \item \textbf{First Letter (T/F)}: Was the prediction correct? (True = Yes, False = No)
+    \item \textbf{Second Letter (P/N)}: What was the predicted class? (Positive or Negative)
+\end{itemize}
+
+\textbf{Error Types}:
+\begin{itemize}
+    \item \textbf{Type I Error (FP)}: ``False Alarm''. Example: A man told he is pregnant.
+    \item \textbf{Type II Error (FN)}: ``Missed Detection''. Example: A pregnant woman told she is not pregnant.
+\end{itemize}
+
+% ========================================
+% SECTION 3: PRECISION
+% ========================================
+\section{Precision: ``Out of My Positive Claims, How Many Were Right?''}
+\begin{definition}
+\textbf{Precision}: Out of all instances \textit{predicted} as Positive, how many were \textit{actually} Positive?
+\begin{equation}
+    \text{Precision} = \frac{TP}{TP + FP}
+\end{equation}
+\end{definition}
+
+\textbf{Scenario: Spam Filter}.
+\begin{itemize}
+    \item \textbf{FP is costly}: A real email from your boss is marked as Spam. (Disaster).
+    \item \textbf{Goal}: We want to be very sure before flagging something as Spam. We need \textbf{High Precision}.
+\end{itemize}
+
+% ========================================
+% SECTION 4: RECALL
+% ========================================
+\section{Recall: ``Out of All Actual Positives, How Many Did I Find?''}
+\begin{definition}
+\textbf{Recall} (Sensitivity, True Positive Rate): Out of all \textit{actual} Positive instances, how many did the model capture?
+\begin{equation}
+    \text{Recall} = \frac{TP}{TP + FN}
+\end{equation}
+\end{definition}
+
+\textbf{Scenario: Cancer Detection}.
+\begin{itemize}
+    \item \textbf{FN is fatal}: A sick patient is told they are healthy.
+    \item \textbf{FP is okay}: A healthy person undergoes extra tests. (Annoying but safe).
+    \item \textbf{Goal}: We cannot afford to miss any cancer case. We need \textbf{High Recall}.
+\end{itemize}
+
+% ========================================
+% SECTION 5: F1-SCORE
+% ========================================
+\section{F1-Score: The Balanced Metric}
+Often, we need a balance. Simple average is biased. We use the \textbf{Harmonic Mean}.
+
+\begin{definition}
+\textbf{F1-Score}: The harmonic mean of Precision and Recall.
+\begin{equation}
+    \text{F1} = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}} = \frac{2 \cdot TP}{2 \cdot TP + FP + FN}
+\end{equation}
+\end{definition}
+
+\textbf{Why Harmonic Mean?}: It penalizes extreme values. If Precision=1.0 and Recall=0.0:
+\begin{itemize}
+    \item Arithmetic Mean: $(1.0 + 0.0)/2 = 0.5$ (Misleading).
+    \item Harmonic Mean: $2 \times \frac{1.0 \times 0.0}{1.0 + 0.0} = 0$ (Correct - model is useless).
+\end{itemize}
+
+% ========================================
+% SECTION 6: ROC-AUC
+% ========================================
+\section{ROC-AUC: Threshold-Independent Metric}
+All the above metrics depend on choosing a threshold (default 0.5). The \textbf{ROC Curve} evaluates performance across \textit{all possible thresholds}.
+
+\begin{definition}
+\textbf{ROC Curve} (Receiver Operating Characteristic): A plot of True Positive Rate (Recall) vs False Positive Rate at various threshold settings.
+\begin{equation}
+    \text{FPR} = \frac{FP}{FP + TN} = \frac{\text{False Alarms}}{\text{Total Actual Negatives}}
+\end{equation}
+\end{definition}
+
+\begin{definition}
+\textbf{AUC} (Area Under the Curve): The area under the ROC curve. Ranges from 0 to 1.
+\begin{itemize}
+    \item AUC = 1.0: Perfect classifier.
+    \item AUC = 0.5: Random guessing (diagonal line).
+    \item AUC $<$ 0.5: Worse than random (invert predictions).
+\end{itemize}
+\end{definition}
+
+% ========================================
+% SECTION 7: MULTICLASS METRICS
+% ========================================
+\section{Multiclass Classification Metrics}
+For problems with more than 2 classes, we need to extend these metrics.
+
+\subsection{Multiclass Confusion Matrix}
+For $K$ classes, the confusion matrix is a $K \times K$ table.
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{|l|c|c|c|}
+    \hline
+    & \textbf{Pred: Setosa} & \textbf{Pred: Versicolor} & \textbf{Pred: Virginica} \\ \hline
+    \textbf{Actual: Setosa} & 50 & 0 & 0 \\ \hline
+    \textbf{Actual: Versicolor} & 0 & 45 & 5 \\ \hline
+    \textbf{Actual: Virginica} & 0 & 3 & 47 \\ \hline
+    \end{tabular}
+    \caption{Confusion Matrix for Iris Dataset (3 Classes)}
+    \label{tab:multiclass_cm}
+\end{table}
+
+\textbf{Reading}: Rows are actual classes, columns are predicted classes. Diagonal = correct predictions.
+
+\subsection{Per-Class Precision, Recall, and F1}
+For each class $c$, we treat it as a binary problem:
+\begin{itemize}
+    \item \textbf{TP$_c$}: Correctly predicted as class $c$.
+    \item \textbf{FP$_c$}: Predicted as $c$ but was actually another class.
+    \item \textbf{FN$_c$}: Actually $c$ but predicted as another class.
+\end{itemize}
+
+\textbf{Example for Versicolor} (from Table \ref{tab:multiclass_cm}):
+\begin{itemize}
+    \item TP = 45 (Versicolor correctly predicted)
+    \item FP = 3 (Virginica mispredicted as Versicolor)
+    \item FN = 5 (Versicolor mispredicted as Virginica)
+    \item Precision$_{\text{Versicolor}}$ = $\frac{45}{45+3} = 0.94$
+    \item Recall$_{\text{Versicolor}}$ = $\frac{45}{45+5} = 0.90$
+\end{itemize}
+
+\subsection{Averaging Strategies}
+To get a single number for the whole model, we average per-class metrics.
+
+\begin{definition}
+\textbf{Macro Average}: Simple average of per-class metrics. Treats all classes equally.
+\begin{equation}
+    \text{Macro F1} = \frac{1}{K} \sum_{c=1}^{K} F1_c
+\end{equation}
+\end{definition}
+
+\begin{definition}
+\textbf{Weighted Average}: Average weighted by the number of samples in each class (support).
+\begin{equation}
+    \text{Weighted F1} = \sum_{c=1}^{K} \frac{n_c}{N} \cdot F1_c
+\end{equation}
+\end{definition}
+
+\begin{definition}
+\textbf{Micro Average}: Calculate TP, FP, FN globally across all classes, then compute metrics.
+\begin{equation}
+    \text{Micro Precision} = \frac{\sum TP_c}{\sum TP_c + \sum FP_c}
+\end{equation}
+\end{definition}
+
+\textbf{When to Use Which}:
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Averaging} & \textbf{Use When...} \\ \hline
+Macro & All classes are equally important \\ \hline
+Weighted & You want to account for class imbalance \\ \hline
+Micro & You care about overall accuracy \\ \hline
+\end{tabular}
+\end{center}
+
+% ========================================
+% SECTION 8: IMPLEMENTATION
+% ========================================
+\section{Implementation in Python}
+\begin{lstlisting}[language=Python, caption=Classification Metrics with Scikit-Learn]
+from sklearn.metrics import (
+    classification_report, confusion_matrix,
+    precision_score, recall_score, f1_score, roc_auc_score
+)
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+
+# Load and split data
+X, y = load_iris(return_X_y=True)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
+
+# Train model
+model = LogisticRegression(max_iter=200)
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+
+# 1. Confusion Matrix
+print("Confusion Matrix:")
+print(confusion_matrix(y_test, y_pred))
+
+# 2. Classification Report (All metrics at once)
+print("\nClassification Report:")
+print(classification_report(y_test, y_pred, 
+      target_names=['Setosa', 'Versicolor', 'Virginica']))
+
+# 3. Specific Averaging
+print(f"Macro F1: {f1_score(y_test, y_pred, average='macro'):.3f}")
+print(f"Weighted F1: {f1_score(y_test, y_pred, average='weighted'):.3f}")
+\end{lstlisting}
+
+\textbf{Sample Output}:
+\begin{verbatim}
+              precision    recall  f1-score   support
+     Setosa       1.00      1.00      1.00        15
+ Versicolor       0.94      0.90      0.92        18
+  Virginica       0.88      0.93      0.90        12
+   accuracy                           0.93        45
+  macro avg       0.94      0.94      0.94        45
+weighted avg      0.94      0.93      0.93        45
+\end{verbatim}
+
+% ========================================
+% SECTION 9: SUMMARY TABLE
+% ========================================
+\section{Summary: When to Use Which Metric}
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Metric} & \textbf{Use When...} & \textbf{Example} \\ \hline
+Accuracy & Classes are balanced & General purpose \\ \hline
+Precision & FP is costly & Spam filter, Legal \\ \hline
+Recall & FN is costly & Cancer, Fraud detection \\ \hline
+F1-Score & Need balance & Most imbalanced datasets \\ \hline
+ROC-AUC & Comparing models & Model selection \\ \hline
+Macro F1 & All classes equal & Rare disease classes \\ \hline
+Weighted F1 & Account for imbalance & Production systems \\ \hline
+\end{tabular}
+\end{center}
+
+% ========================================
+% SECTION 10: HOTS QUESTIONS
+% ========================================
+\section{HOTS: Interview Questions}
+\textbf{Q1: What is the difference between Macro and Weighted F1?}
+\begin{itemize}
+    \item Macro F1 gives equal weight to each class, regardless of size.
+    \item Weighted F1 weights each class by its number of samples.
+    \item Use Macro when minority classes are important; use Weighted for overall performance.
+\end{itemize}
+
+\textbf{Q2: How do you calculate Precision for a specific class in multiclass?}
+\begin{itemize}
+    \item Treat it as ``Class $c$ vs Rest''.
+    \item TP = correctly predicted as $c$.
+    \item FP = incorrectly predicted as $c$ (was actually another class).
+    \item Precision$_c$ = TP / (TP + FP).
+\end{itemize}
+
+\textbf{Q3: Why is ROC-AUC not suitable for highly imbalanced data?}
+\begin{itemize}
+    \item ROC uses FPR which can be low even when FP is high (if TN is very large).
+    \item For imbalanced data, use PR-AUC (Precision-Recall AUC) instead.
+\end{itemize}

@@ -1,0 +1,84 @@
+\chapter{Kernels and Non-Linear SVM}
+\label{chap:svm_kernels}
+
+\section{The Limits of Linearity}
+Everything we discussed so far assumes the data is \textbf{Linearly Separable}.
+But what if the data looks like a target board? (Red points in the bullseye, Blue points in the outer ring).
+No straight line can separate these.
+
+\section{The Kernel Trick}
+SVM has a superpower. If we can't separate data in 2D, we can project it into 3D (or higher) where it \textit{might} be separable.
+
+\begin{definition}
+\textbf{The Kernel Trick}: A technique that maps input vectors into a higher-dimensional feature space without explicitly computing the coordinates in that space. It allows valid linear separation in high dimensions that corresponds to non-linear separation in the original space.
+\end{definition}
+
+\subsection{Example: 1D to 2D}
+Imagine points on a line:
+\begin{itemize}
+    \item Red points at $x = -1, 0, 1$ (Center).
+    \item Blue points at $x = -5, 5$ (Edges).
+\end{itemize}
+We cannot separate them with a single point (cut).
+\\ \textbf{Transformation}: Let $y = x^2$.
+\begin{itemize}
+    \item Red points become $(0,0), (-1,1), (1,1)$. Height is low.
+    \item Blue points become $(-5, 25), (5, 25)$. Height is high.
+\end{itemize}
+Now, we can draw a horizontal line at $y=10$. Everything below is Red, everything above is Blue.
+In the original 1D space, this translates to \textit{two} cuts at $-3$ and $+3$.
+
+\section{Popular Kernels}
+\subsection{1. Polynomial Kernel}
+Maps data to polynomial combinations (like $x_1^2, x_1x_2, x_2^2$).
+$$ K(x, y) = (x^T y + c)^d $$
+Good for simple curved boundaries.
+
+\subsection{2. RBF (Radial Basis Function) Kernel}
+This is the default and most powerful kernel. It behaves like a \textbf{Similarity Function}.
+\begin{equation}
+    K(x, y) = \exp(-\gamma ||x - y||^2)
+\end{equation}
+It essentially lifts the support vectors into infinite dimensions, creating "mountains" (Gaussian bells) around the data points.
+
+\section{Understanding Gamma ($\gamma$)}
+The RBF kernel has a critical hyperparameter: **Gamma**.
+$$ \gamma = \frac{1}{2 \sigma^2} $$
+\begin{itemize}
+    \item \textbf{Low Gamma}: Wide Gaussian Bell. A single point influences a huge area. The decision boundary is smooth.
+    \item \textbf{High Gamma}: Narrow, pointy Gaussian Bell. A point only influences its immediate neighborhood. This leads to ``Islands'' around points. \textbf{Overfitting}.
+\end{itemize}
+
+\section{Implementation in Python}
+\begin{lstlisting}[language=Python, caption=SVM with RBF Kernel]
+from sklearn.svm import SVC
+from sklearn.datasets import make_circles
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+
+# Non-linearly separable data (concentric circles)
+X, y = make_circles(n_samples=200, noise=0.1, factor=0.3)
+
+# Scale features
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# Train SVM with RBF kernel
+svm_rbf = SVC(kernel='rbf', C=1.0, gamma='scale')
+svm_rbf.fit(X_scaled, y)
+
+print(f"Accuracy: {svm_rbf.score(X_scaled, y):.2f}")
+\end{lstlisting}
+
+\section{HOTS: Interview Questions}
+\textbf{Q1: What is the Kernel Trick and why is it useful?}
+\begin{itemize}
+    \item The Kernel Trick allows SVM to work in a high-dimensional feature space without explicitly computing the coordinates, using only dot products. This makes non-linear separation computationally feasible.
+\end{itemize}
+
+\textbf{Q2: How do you choose between Polynomial and RBF kernels?}
+\begin{itemize}
+    \item RBF is the default choice and works well in most cases.
+    \item Polynomial is useful when you know the data has a polynomial relationship.
+    \item Use cross-validation to compare performance.
+\end{itemize}

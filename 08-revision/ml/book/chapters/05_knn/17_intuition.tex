@@ -1,0 +1,77 @@
+\chapter{K-Nearest Neighbors (KNN)}
+\label{chap:knn_intuition}
+
+\section{The Core Philosophy}
+\begin{quote}
+``You are the average of the five people you spend the most time with.'' -- Jim Rohn
+\end{quote}
+This self-help quote is the exact mathematical foundation of the K-Nearest Neighbors algorithm.
+The assumption is simple: \textbf{Similar things exist in close proximity}.
+
+\begin{definition}
+\textbf{K-Nearest Neighbors (KNN)}: A non-parametric supervised learning algorithm that classifies a new data point based on the majority class of its 'K' closest neighbors in the feature space.
+\end{definition}
+
+\section{How the Algorithm Works}
+KNN is deceptively simple. It follows three steps:
+\begin{enumerate}
+    \item \textbf{Store}: Save the training data. (That's it. No math yet).
+    \item \textbf{Distance}: When a new point $X_{new}$ arrives, calculate its distance to every single point in the database.
+    \item \textbf{Vote}: Pick the top $K$ closest points. Let them vote. The majority wins.
+\end{enumerate}
+
+\section{Lazy vs Eager Learning}
+This highlights a fundamental distinction in ML.
+
+\begin{definition}
+\textbf{Eager Learners} (e.g., Linear Regression, SVM): They analyze the training data \textit{beforehand} and construct a generalized model formula (weights $w$ and bias $b$). Once trained, they can discard the original data. Prediction is fast ($O(1)$).
+\end{definition}
+
+\begin{definition}
+\textbf{Lazy Learners} (e.g., KNN): They do not build a model during training. They strictly memorize the data. All the computation happens during Prediction time. Prediction is slow ($O(N)$).
+\end{definition}
+
+\section{Regression with KNN}
+KNN is not limited to Classification.
+If we want to predict a continuous value (e.g., House Price):
+\begin{itemize}
+    \item Instead of a Majority Vote (Mode), we calculate the \textbf{Average (Mean)} of the neighbors.
+    \item If the 3 nearest houses cost \$100k, \$120k, and \$110k, the prediction is \$110k.
+\end{itemize}
+
+\section{Implementation in Python}
+\begin{lstlisting}[language=Python, caption=KNN Classifier]
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+
+# Load data
+X, y = load_iris(return_X_y=True)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# Scale features (CRITICAL for KNN!)
+scaler = StandardScaler()
+X_train_s = scaler.fit_transform(X_train)
+X_test_s = scaler.transform(X_test)
+
+# Train KNN
+knn = KNeighborsClassifier(n_neighbors=5)
+knn.fit(X_train_s, y_train)
+
+print(f"Accuracy: {knn.score(X_test_s, y_test):.2f}")
+\end{lstlisting}
+
+\section{HOTS: Interview Questions}
+\textbf{Q1: Why is KNN called a ``Lazy Learner''?}
+\begin{itemize}
+    \item Because it does no work during training. It simply stores the data. All computation (distance calculation) happens at prediction time.
+\end{itemize}
+
+\textbf{Q2: What are the main disadvantages of KNN?}
+\begin{itemize}
+    \item Slow prediction time ($O(N \cdot D)$ where N = samples, D = dimensions).
+    \item Requires feature scaling.
+    \item Suffers from the Curse of Dimensionality.
+    \item Sensitive to noisy data and outliers.
+\end{itemize}

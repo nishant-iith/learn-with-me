@@ -1,0 +1,84 @@
+\chapter{K-Nearest Neighbors (KNN)}
+
+\section{Introduction}
+\begin{quote}
+    ``You are the average of the five people you spend the most time with.'' — Jim Rohn
+\end{quote}
+This quote perfectly summarizes KNN. It is a simple, intuitive algorithm that classifies a new data point based on the majority class of its neighbors.
+
+\subsection{Standard vs Lazy Learners}
+\begin{itemize}
+    \item \textbf{Eager Learners (Linear Regression, SVM, Trees)}: try to learn a function $f(x)$ during training. They discard the training data after building the model.
+    \item \textbf{Lazy Learners (KNN)}: do \textbf{zero work} during training. They simply memorize the dataset. All computation (distance calculation) happens at \textbf{Inference Time}.
+\end{itemize}
+
+\section{The Algorithm}
+For a new point $p$:
+\begin{enumerate}
+    \item \textbf{Calculate Distance}: Compute distance between $p$ and every training point.
+    \item \textbf{Sort}: Find the $K$ points with the smallest distances.
+    \item \textbf{Vote}:
+    \begin{itemize}
+        \item \textbf{Classification}: Return the Mode (Majority Class).
+        \item \textbf{Regression}: Return the Mean (Average Value).
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Distance Metrics}
+\begin{itemize}
+    \item \textbf{Euclidean Distance (L2)}: Straight line distance. (Standard).
+    $$ d(x, y) = \sqrt{\sum (x_i - y_i)^2} $$
+    \item \textbf{Manhattan Distance (L1)}: Grid-like distance.
+    $$ d(x, y) = \sum |x_i - y_i| $$
+\end{itemize}
+
+\section{Choosing K (Bias-Variance Tradeoff)}
+The value of $K$ is the most critical hyperparameter.
+\begin{itemize}
+    \item \textbf{Low K (e.g., K=1)}: Model is very complex and jagged. It captures noise. \textbf{High Variance (Overfitting)}.
+    \item \textbf{High K}: Model becomes too smooth. It predicts the majority class everywhere. \textbf{High Bias (Underfitting)}.
+    \item \textbf{Optimal K}: Found using Cross-Validation (Elbow Method). A common heuristic is $K = \sqrt{N}$.
+\end{itemize}
+
+\section{Curse of Dimensionality}
+KNN fails when the number of features ($d$) is large.
+In high-dimensional space, points become sparse, and the concept of "distance" loses meaning (all points are roughly equidistant). KNN requires dimensionality reduction (like PCA) for high-dimensional data.
+
+\section{Implementation in Python}
+\textbf{CRITICAL}: Because KNN uses distance, features with larger scales will dominate. You \textbf{MUST} use \texttt{StandardScaler}.
+
+\begin{lstlisting}[language=Python, caption=KNN Implementation with Tuning]
+import matplotlib.pyplot as plt
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.datasets import load_breast_cancer
+
+# 1. Load & Scale (MANDATORY)
+data = load_breast_cancer()
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(data.data)
+y = data.target
+
+X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2)
+
+# 2. Find Optimal K using Cross-Validation
+k_values = range(1, 30, 2) # Odd numbers to avoid ties
+cv_scores = []
+
+for k in k_values:
+    knn = KNeighborsClassifier(n_neighbors=k)
+    scores = cross_val_score(knn, X_train, y_train, cv=10, scoring='accuracy')
+    cv_scores.append(scores.mean())
+
+# Plot Elbow Curve
+plt.plot(k_values, cv_scores, marker='o')
+plt.title('Accuracy vs K')
+plt.show()
+
+# 3. Train Final Model
+best_k = 9 # Assume we found 9 is best
+knn_final = KNeighborsClassifier(n_neighbors=best_k)
+knn_final.fit(X_train, y_train)
+print("Test Acc:", knn_final.score(X_test, y_test))
+\end{lstlisting}

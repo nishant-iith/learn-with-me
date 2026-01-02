@@ -1,0 +1,76 @@
+\documentclass[11pt]{elegantbook}
+
+\title{Machine Learning: A Simple Guide}
+\subtitle{Supervised Learning}
+
+\author{Nishant}
+\institute{IITH}
+\date{\today}
+\version{1.0}
+
+\extrainfo{A comprehensive guide to Machine Learning concepts.}
+
+\logo{logo-blue.png}
+\cover{cover.jpg}
+
+% modify the color in the middle of titlepage
+\definecolor{customcolor}{RGB}{32,178,170}
+\colorlet{coverlinecolor}{customcolor}
+\usepackage{cprotect}
+\usepackage{pgfplots} % For plotting
+\pgfplotsset{compat=1.18}
+\usepackage{tikz}
+
+% Graphic path
+\graphicspath{{./assets/}{./image/}{./figure/}}
+
+\addbibresource[location=local]{reference.bib} % bib
+
+\begin{document}
+
+\maketitle
+
+\frontmatter
+\tableofcontents
+
+\mainmatter
+
+\part{Regression Analysis}
+\include{chapters/01_regression/01_simple_linear_regression}
+\include{chapters/01_regression/02_evaluation_metrics}
+\include{chapters/01_regression/03_multiple_polynomial_regression}
+\include{chapters/01_regression/04_gradient_descent}
+\include{chapters/01_regression/05_regularization}
+
+\part{Classification}
+\include{chapters/02_classification/06_logistic_regression_basics}
+\include{chapters/02_classification/07_loss_function}
+\include{chapters/02_classification/08_classification_metrics}
+\part{Decision Trees}
+\include{chapters/03_decision_trees/10_intuition_geometry}
+\include{chapters/03_decision_trees/11_splitting_metrics}
+\include{chapters/03_decision_trees/12_algorithms}
+\include{chapters/03_decision_trees/13_overfitting_pruning}
+%\include{chapters/03_decision_trees} % Refactored
+
+\part{Support Vector Machines}
+\include{chapters/04_svm/14_intuition}
+\include{chapters/04_svm/15_math}
+\include{chapters/04_svm/16_kernels}
+%\include{chapters/04_svm} % Refactored
+
+\part{K-Nearest Neighbors}
+\include{chapters/05_knn/17_intuition}
+\include{chapters/05_knn/18_distance_metrics}
+\include{chapters/05_knn/19_curse_of_dimensionality}
+%\include{chapters/05_knn} % Refactored
+
+\appendix
+%\include{chapters/appendix}
+
+\end{document}
+\sum_{i=1}^n x_i \equiv x_1 + x_2 +\cdots + x_n
+\end{equation}
+
+
+\end{document}

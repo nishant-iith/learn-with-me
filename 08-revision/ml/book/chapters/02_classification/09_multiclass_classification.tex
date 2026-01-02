@@ -1,0 +1,131 @@
+\chapter{Multiclass Classification}
+\label{chap:multiclass}
+
+% ========================================
+% SECTION 1: INTRODUCTION
+% ========================================
+\section{Introduction}
+So far, we have dealt with Binary classification (2 classes: 0 or 1).
+What if we have more than two classes? (e.g., classifying a fruit as Apple, Banana, or Orange).
+Logistic Regression with Sigmoid is natively binary. How do we extend it?
+
+% ========================================
+% SECTION 2: ONE-VS-REST
+% ========================================
+\section{Strategy 1: One-Vs-Rest (OvR)}
+\begin{definition}
+\textbf{One-Vs-Rest (OvR)}: A strategy that breaks a K-class problem into K binary classification problems. For each class, we train a separate model that distinguishes it from all other classes combined.
+\end{definition}
+
+For 3 classes (A, B, C), we train 3 models:
+\begin{enumerate}
+    \item \textbf{Model 1}: Is it A? (A vs Not-A, i.e., B $\cup$ C)
+    \item \textbf{Model 2}: Is it B? (B vs Not-B)
+    \item \textbf{Model 3}: Is it C? (C vs Not-C)
+\end{enumerate}
+
+For a new data point, we run all 3 models. The one with the \textbf{highest probability} wins.
+
+\textbf{Pros}: Simple to implement. Works with any binary classifier.
+\textbf{Cons}: Trains $K$ separate models. Class imbalance issues.
+
+% ========================================
+% SECTION 3: SOFTMAX REGRESSION
+% ========================================
+\section{Strategy 2: Softmax Regression (Multinomial Logistic)}
+Instead of training multiple models, we generalize the Sigmoid function to multiple dimensions.
+
+\begin{definition}
+\textbf{Softmax Function}: A generalization of Sigmoid to $K$ classes. It converts $K$ raw scores (logits) into a probability distribution.
+\begin{equation}
+    P(y=j|x) = \frac{e^{z_j}}{\sum_{k=1}^{K} e^{z_k}}
+\end{equation}
+\end{definition}
+
+\textbf{Key Property}: The probabilities of all classes sum to 1.
+\begin{itemize}
+    \item Example output: [Apple: 0.7, Banana: 0.2, Orange: 0.1].
+    \item Prediction: Apple (highest probability).
+\end{itemize}
+
+% ========================================
+% SECTION 4: CATEGORICAL CROSS ENTROPY
+% ========================================
+\section{Loss Function: Categorical Cross Entropy}
+\begin{definition}
+\textbf{Categorical Cross Entropy}: The generalization of Binary Cross Entropy to multiple classes.
+\begin{equation}
+    J = - \sum_{i=1}^{n} \sum_{j=1}^{K} y_{ij} \log(\hat{y}_{ij})
+\end{equation}
+\end{definition}
+Where $y_{ij}$ is 1 if sample $i$ belongs to class $j$, else 0 (one-hot encoding).
+
+% ========================================
+% SECTION 5: CODE IMPLEMENTATION
+% ========================================
+\section{Implementation in Python}
+Let us implement a classifier for the famous Iris dataset (3 flower species).
+
+\begin{lstlisting}[language=Python, caption=Multiclass Classification with Softmax]
+from sklearn.datasets import load_iris
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import classification_report
+
+# ============================================
+# STEP 1: Load Data
+# ============================================
+data = load_iris()
+X, y = data.data, data.target
+# Classes: 0 (Setosa), 1 (Versicolor), 2 (Virginica)
+
+# ============================================
+# STEP 2: Split and Scale
+# ============================================
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+scaler = StandardScaler()
+X_train_s = scaler.fit_transform(X_train)
+X_test_s = scaler.transform(X_test)
+
+# ============================================
+# STEP 3: Train Softmax Model
+# ============================================
+# multi_class='multinomial' uses Softmax
+model = LogisticRegression(multi_class='multinomial', solver='lbfgs', max_iter=200)
+model.fit(X_train_s, y_train)
+
+# ============================================
+# STEP 4: Evaluate
+# ============================================
+y_pred = model.predict(X_test_s)
+print(classification_report(y_test, y_pred, target_names=data.target_names))
+\end{lstlisting}
+
+% ========================================
+% SECTION 6: KEY TAKEAWAYS
+% ========================================
+\section{Key Takeaways}
+\begin{enumerate}
+    \item \textbf{Binary vs Multiclass}: Binary uses Sigmoid (2 classes). Multiclass uses Softmax ($K$ classes).
+    \item \textbf{OvR}: Trains $K$ binary models. Simple but can be slow.
+    \item \textbf{Softmax}: Single model, outputs a probability distribution over all $K$ classes.
+    \item \textbf{Loss}: Categorical Cross Entropy generalizes Binary Cross Entropy.
+\end{enumerate}
+
+% ========================================
+% SECTION 7: HOTS QUESTIONS
+% ========================================
+\section{HOTS: Interview Questions}
+\textbf{Q1: What is the difference between One-Vs-Rest and One-Vs-One?}
+\begin{itemize}
+    \item \textbf{OvR}: $K$ models. Each model is Class\_j vs All Others.
+    \item \textbf{OvO}: $\binom{K}{2} = K(K-1)/2$ models. Each model is Class\_i vs Class\_j. More models, but each is simpler.
+\end{itemize}
+
+\textbf{Q2: When would Softmax fail?}
+\begin{itemize}
+    \item Softmax assumes classes are \textbf{mutually exclusive}. If an image can be both ``Dog'' and ``Brown'', Softmax is inappropriate. Use multiple Sigmoid outputs instead (Multi-Label Classification).
+\end{itemize}

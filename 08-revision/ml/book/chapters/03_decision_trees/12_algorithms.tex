@@ -1,0 +1,76 @@
+\chapter{Tree Algorithms: ID3 vs CART}
+\label{chap:tree_algorithms}
+
+\section{Evolution of Tree Algorithms}
+Decision Trees are not a single algorithm but a family of algorithms. The most famous ones are ID3, C4.5, and CART.
+
+\section{ID3 (Iterative Dichotomiser 3)}
+Developed by Ross Quinlan in 1986. It was the first widely used algorithm.
+\begin{itemize}
+    \item **Metric**: Uses \textbf{Entropy} and Information Gain.
+    \item **Structure**: It creates \textbf{Multi-way Splits}. If a feature "Color" has 3 values (Red, Green, Blue), ID3 creates 3 child nodes immediately.
+    \item **Start Limitation**: It could not handle numerical features (e.g., Salary) directly; they had to be converted into categories (Low, Med, High).
+\end{itemize}
+
+\section{CART (Classification And Regression Trees)}
+This is the modern standard and the algorithm used by Python's Scikit-Learn.
+
+\begin{definition}
+\textbf{CART}: A flexible tree algorithm that constructs strictly \textbf{Binary Trees} (only 2 children per node). It supports both Classification (using Gini) and Regression (using MSE).
+\end{definition}
+
+\subsection{Key Differences}
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Feature} & \textbf{ID3 / C4.5} & \textbf{CART (Scikit-Learn)} \\ \hline
+\textbf{Splitting Criteria} & Entropy (Info Gain) & Gini Impurity (Default) \\ \hline
+\textbf{Structure} & Multi-way Tree (Variable branches) & Binary Tree (Always Yes/No) \\ \hline
+\textbf{Numerical Data} & Poor support (ID3) & Full support (Sort \& Threshold) \\ \hline
+\textbf{Task} & Classification Only & Classification \& Regression \\ \hline
+\end{tabular}
+\caption{Comparison of classic ID3 vs modern CART.}
+\label{tab:id3_vs_cart}
+\end{table}
+
+\section{Decision Trees for Regression}
+It may seem counter-intuitive that a tree (which outputs "Classes") can predict a number.
+\begin{itemize}
+    \item **Splitting**: Instead of minimizing Impurity (Gini), it minimizes \textbf{Variance} (Mean Squared Error).
+    \item **Prediction**: The prediction for a Leaf Node is not a "Vote", but the \textbf{Mean Average} of all training samples in that leaf.
+\end{itemize}
+
+\begin{definition}
+\textbf{Step Function}: The output of a Regression Tree is not a smooth curve. It is a series of flat steps (Piecewise Constant). $y = \text{mean}(Leaf_1)$ if $x \in R_1$, etc.
+\end{definition}
+
+\section{Implementation in Python}
+\begin{lstlisting}[language=Python, caption=Regression Tree Example]
+from sklearn.tree import DecisionTreeRegressor
+import numpy as np
+
+# Create simple data
+X = np.arange(1, 11).reshape(-1, 1)
+y = np.array([1.5, 1.7, 1.9, 5.0, 5.2, 5.5, 8.0, 8.2, 8.5, 9.0])
+
+# Fit Regression Tree
+tree = DecisionTreeRegressor(max_depth=2)
+tree.fit(X, y)
+
+# Predictions are step-wise constant
+print(tree.predict([[2.5], [6], [9.5]]))  # Output: flat values per region
+\end{lstlisting}
+
+\section{HOTS: Interview Questions}
+\textbf{Q1: What is the key difference between ID3 and CART?}
+\begin{itemize}
+    \item ID3 creates multi-way splits and only handles categorical data.
+    \item CART always creates binary splits and handles both numerical and categorical data.
+\end{itemize}
+
+\textbf{Q2: How does a Regression Tree make predictions?}
+\begin{itemize}
+    \item It predicts the \textbf{mean} of the target values for all training samples that fall into that leaf.
+    \item This results in a step-function (piecewise constant) prediction surface.
+\end{itemize}

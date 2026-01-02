@@ -1,0 +1,52 @@
+\chapter{Overfitting and Pruning}
+\label{chap:pruning}
+
+\section{The Tree's Achilles Heel: Overfitting}
+Decision Trees are aggressive learners. If left unchecked, they will split the data until every single leaf node is "Pure".
+\begin{itemize}
+    \item Imagine a leaf node containing just \textbf{1 person} who is an outlier (e.g., a smoker who lived to 100).
+    \item The tree learns a rule: "If you smoke and live in this specific zip code $\rightarrow$ You live to 100".
+    \item This is \textbf{Overfitting}. The tree memorizes the training noise.
+\end{itemize}
+
+\begin{definition}
+\textbf{Pruning}: The technique of reducing the size of a decision tree by removing sections that provide little power to classify instances. It allows the tree to generalize better.
+\end{definition}
+
+\section{Pre-Pruning (Early Stopping)}
+We stop the tree \textit{while} it is growing. This is done using Hyperparameters.
+
+\begin{itemize}
+    \item \texttt{max\_depth}: Constraint the tree height (e.g., max 5 levels).
+    \item \texttt{min\_samples\_split}: "Don't split this node unless it has at least 50 people".
+    \item \texttt{min\_samples\_leaf}: "Don't create a leaf unless it has at least 10 people". (Crucial for smoothing).
+\end{itemize}
+
+\section{Post-Pruning (Cost Complexity Pruning)}
+Pre-pruning is basically guessing parameters. A more mathematical approach is to let the tree grow fully (to 100\% purity), and then cut off the "weakest" branches.
+Scikit-Learn uses **Minimal Cost-Complexity Pruning**.
+
+\subsection{The Math: Cost Function}
+We assign a "Cost" to a tree $T$:
+\begin{equation}
+    R_\alpha(T) = R(T) + \alpha |T|
+\end{equation}
+Where:
+\begin{itemize}
+    \item $R(T)$: The Total Impurity (Error) of the tree.
+    \item $|T|$: The Number of Leaf Nodes (Complexity).
+    \item $\alpha$ (Alpha): A tuning parameter that penalizes complexity.
+\end{itemize}
+
+\begin{itemize}
+    \item If $\alpha = 0$: We get the full, complex tree (Low Error, High Complexity).
+    \item If $\alpha$ is large: The penalty for having leaves is huge. The tree shrinks to a stump.
+\end{itemize}
+We use Cross-Validation to find the optimal $\alpha$ that gives the best Test Accuracy.
+
+\section{HOTS Questions}
+\textbf{Q1: Why is a single Decision Tree called a "Weak Learner"?}
+\\ \textit{Answer}: It suffers from High Variance. A small change in the training data (changing one point) can result in a completely different tree structure. This instability is why we combine hundreds of trees to form a **Random Forest**.
+
+\textbf{Q2: Which pruning method is better?}
+\\ \textit{Answer}: Post-Pruning is generally robust because it sees the "full picture" before cutting. Pre-pruning might stop too early (The "Horizon Effect")—it might not split a node because the immediate gain is low, missing a massive gain one step deeper.

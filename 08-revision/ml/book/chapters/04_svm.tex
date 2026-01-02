@@ -1,0 +1,98 @@
+\chapter{Support Vector Machines (SVM)}
+
+\section{Introduction}
+Support Vector Machines (SVM) take a geometric approach to classification. Unlike Logistic Regression which finds \textit{any} separating line, SVM aims to find the \textbf{Best} separating line.
+
+\subsection{Geometric Intuition: The Widest Street}
+Imagine the decision boundary as a road.
+\begin{itemize}
+    \item We want the road (\textbf{Margin}) to be as wide as possible without touching any data points.
+    \item A wider margin implies the model is more confident and robust to outliers.
+\end{itemize}
+
+\subsection{Terminology}
+\begin{itemize}
+    \item \textbf{Hyperplane ($\pi$)}: The central decision boundary ($w^T x + b = 0$).
+    \item \textbf{Support Vectors}: The specific data points that lie on the edge of the margin. The entire model depends \textit{only} on these points.
+    \item \textbf{Margin ($d$)}: The distance between the positive and negative class boundaries.
+\end{itemize}
+
+\section{Mathematical Formulation}
+
+\subsection{Hard Margin (Perfect Separation)}
+Assuming the data is perfectly separable, we want to maximize the margin $d$.
+It can be derived that the margin width is $d = \frac{2}{||w||}$.
+To maximize $d$, we must \textbf{minimize $||w||$} (or effectively $\frac{1}{2}||w||^2$).
+
+\textbf{Optimization Goal:}
+\begin{equation}
+    \min_{w,b} \frac{1}{2} ||w||^2
+\end{equation}
+\textbf{Subject to constraint:}
+\begin{equation}
+    y_i (w^T x_i + b) \ge 1 \quad \forall i
+\end{equation}
+This ensures that every point is correctly classified and lies outside the margin.
+
+\subsection{Soft Margin (Handling Outliers)}
+Real-world data is rarely perfectly separable. We introduce \textbf{Slack Variables ($\xi_i$)} to allow some points to violate the margin.
+
+\textbf{New Objective:}
+\begin{equation}
+    \min_{w,b} \left[ \frac{1}{2} ||w||^2 + C \sum_{i=1}^{n} \xi_i \right]
+\end{equation}
+
+\subsubsection{The Hyperparameter C}
+$C$ controls the trade-off:
+\begin{itemize}
+    \item \textbf{High C}: Strict penalty for errors. Tries to classify everything correctly. Risk of \textbf{Overfitting}.
+    \item \textbf{Low C}: Loose penalty. Allows wider margin even if some points are misclassified. Risk of \textbf{Underfitting} (but more robust).
+\end{itemize}
+
+\section{Kernels and Non-Linearity}
+What if the data is not linearly separable (e.g., concentric circles)?
+We use the \textbf{Kernel Trick} to map data into a higher-dimensional space where it becomes linearly separable.
+
+\subsection{Common Kernels}
+\begin{itemize}
+    \item \textbf{Polynomial Kernel}: Maps to polynomial dimensions ($x^2, x^3$).
+    \item \textbf{RBF (Radial Basis Function) Kernel}: Maps to infinite dimensions. Creates "hills" around points.
+        \begin{equation}
+            K(x_1, x_2) = \exp(-\gamma ||x_1 - x_2||^2)
+        \end{equation}
+\end{itemize}
+
+\subsection{The Gamma ($\gamma$) Parameter}
+For RBF Kernel:
+\begin{itemize}
+    \item \textbf{High Gamma}: Each point has narrow influence. Creates complex, wiggly boundaries. (Overfitting).
+    \item \textbf{Low Gamma}: Points have wide influence. Creates smooth boundaries. (Underfitting).
+\end{itemize}
+
+\section{Implementation in Python}
+\textbf{CRITICAL}: SVM is distance-based, so \textbf{Feature Scaling} is mandatory.
+
+\begin{lstlisting}[language=Python, caption=SVM Implementation with Scaling]
+from sklearn.svm import SVC
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+from sklearn.datasets import load_breast_cancer
+
+# 1. Load Data
+data = load_breast_cancer()
+X, y = data.data, data.target
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# 2. Scale Data (Mandatory)
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+# 3. Train Model
+# Kernel='rbf' is default.
+model = SVC(kernel='rbf', C=1.0, gamma='scale')
+model.fit(X_train_scaled, y_train)
+
+# 4. Evaluate
+print("Accuracy:", model.score(X_test_scaled, y_test))
+\end{lstlisting}

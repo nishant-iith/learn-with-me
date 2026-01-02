@@ -1,0 +1,200 @@
+\chapter{The Mathematics of SVM}
+\label{chap:svm_math}
+
+% ========================================
+% SECTION 1: DERIVING MARGIN WIDTH
+% ========================================
+\section{Deriving the Width of the Street}
+How do we turn ``Maximize the Road'' into math?
+We define our three planes:
+\begin{enumerate}
+    \item \textbf{Decision Boundary}: $w^T x + b = 0$
+    \item \textbf{Positive Gutter}: $w^T x + b = +1$
+    \item \textbf{Negative Gutter}: $w^T x + b = -1$
+\end{enumerate}
+(Why 1 and -1? It is just a scaling convention. We can always scale $w$ and $b$ to make this true for the nearest points.)
+
+\subsection{Step-by-Step Margin Derivation}
+\textbf{Goal}: Find the distance $d$ between the two parallel planes $w^T x + b = 1$ and $w^T x + b = -1$.
+
+\textbf{Step 1}: Pick any point $x_1$ on the positive gutter: $w^T x_1 + b = 1$.
+
+\textbf{Step 2}: The projection along the normal direction (which is $\frac{w}{||w||}$) to the negative gutter gives us: $x_2 = x_1 - d \cdot \frac{w}{||w||}$
+
+\textbf{Step 3}: Since $x_2$ lies on the negative gutter: $w^T x_2 + b = -1$
+
+\textbf{Step 4}: Substitute $x_2$:
+\begin{align}
+w^T \left( x_1 - d \cdot \frac{w}{||w||} \right) + b &= -1 \\
+w^T x_1 + b - d \cdot \frac{w^T w}{||w||} &= -1 \\
+1 - d \cdot \frac{||w||^2}{||w||} &= -1 \\
+1 - d \cdot ||w|| &= -1 \\
+d \cdot ||w|| &= 2
+\end{align}
+
+\textbf{Result}:
+\begin{equation}
+\boxed{d = \frac{2}{||w||}}
+\end{equation}
+
+% ========================================
+% SECTION 2: HARD MARGIN OPTIMIZATION
+% ========================================
+\section{The Optimization Problem (Hard Margin)}
+To get the widest street, we want to \textbf{Maximize $d$}.
+\begin{itemize}
+    \item $\text{Maximize } \frac{2}{||w||} \iff \text{Minimize } ||w||$.
+    \item For calculus reasons (easier derivatives), minimizing $||w||$ is equivalent to minimizing $\frac{1}{2}||w||^2$.
+\end{itemize}
+
+\begin{definition}
+\textbf{SVM Primal Problem (Hard Margin)}:
+$$ \min_{w, b} \frac{1}{2} ||w||^2 $$
+Subject to the constraint that every point $i$ is correctly classified \textit{outside} the gutter:
+$$ y_i (w^T x_i + b) \ge 1 \quad \forall i $$
+\end{definition}
+
+% ========================================
+% SECTION 3: SOFT MARGIN
+% ========================================
+\section{Soft Margin SVM (Handling Reality)}
+Real-life data is messy. You might have one Red point deep inside the Blue cluster (Noise or Outlier).
+If we insist on a ``Hard Margin'' (Perfect separation), the margin will become tiny or no solution will exist.
+
+\subsection{Slack Variables ($\xi$)}
+We allow the model to make some mistakes, but we penalize them. We introduce a \textbf{Slack Variable} $\xi_i$ (Greek: Zeta) for each point.
+
+\begin{itemize}
+    \item $\xi_i = 0$: Point is correctly classified and \textit{outside} the margin (Safe).
+    \item $0 < \xi_i < 1$: Point is correct but \textit{inside} the margin (Margin Violation).
+    \item $\xi_i \ge 1$: Point is \textbf{Misclassified} (On the wrong side of the hyperplane).
+\end{itemize}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.7\textwidth]{../02-supervised/assets/svm_slack_variables_concept.png}
+\caption{Slack Variables: $\xi=0$ (safe), $0<\xi<1$ (margin violation), $\xi \ge 1$ (misclassified).}
+\label{fig:slack_vars}
+\end{figure}
+
+\subsection{The Soft Margin Objective}
+\begin{equation}
+    J = \underbrace{\frac{1}{2}||w||^2}_{\text{Maximize Margin}} + C \underbrace{\sum_{i=1}^{n} \xi_i}_{\text{Minimize Errors}}
+\end{equation}
+
+% ========================================
+% SECTION 4: THE C HYPERPARAMETER
+% ========================================
+\section{The Hyperparameter C}
+$C$ controls the penalty for misclassification. It is the \textbf{boss} of the bias-variance trade-off.
+
+\begin{itemize}
+    \item \textbf{High C} (``I hate errors''):
+    \begin{itemize}
+        \item The model tries hard to classify everyone correctly.
+        \item Result: Narrow margin, complex boundary.
+        \item Risk: \textbf{Overfitting} (High Variance).
+    \end{itemize}
+    \item \textbf{Low C} (``I don't mind errors''):
+    \begin{itemize}
+        \item The model prioritizes a wider margin over perfect classification.
+        \item Result: Wide margin, smooth boundary, ignores outliers.
+        \item Risk: \textbf{Underfitting} (High Bias).
+    \end{itemize}
+\end{itemize}
+
+\textbf{Analogy}: $C$ is like a ``Fine'' for parking illegally.
+\begin{itemize}
+    \item High $C$: Fine is \$1 Million. You will never park illegally (Hard Margin).
+    \item Low $C$: Fine is \$1. You might park illegally if it's convenient (Soft Margin).
+\end{itemize}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{../02-supervised/assets/svm_c_parameter_comparison.png}
+\caption{Effect of C: High C overfits to noise, Low C creates a robust boundary.}
+\label{fig:c_param}
+\end{figure}
+
+% ========================================
+% SECTION 5: HINGE LOSS
+% ========================================
+\section{Hinge Loss}
+Modern SVM implementations (like Scikit-Learn's \texttt{SGDClassifier}) view this as a Loss Function minimization problem. The loss used is \textbf{Hinge Loss}.
+
+\begin{definition}
+\textbf{Hinge Loss}:
+\begin{equation}
+    L(y, f(x)) = \max(0, 1 - y \cdot f(x))
+\end{equation}
+Where $y \in \{-1, +1\}$ is the true label and $f(x) = w^T x + b$ is the raw prediction.
+\end{definition}
+
+\textbf{How it works}:
+\begin{itemize}
+    \item \textbf{Case 1: Correct and Safe} ($y \cdot f(x) \ge 1$):
+    \begin{itemize}
+        \item $1 - (\text{Large positive}) < 0$.
+        \item $\max(0, \text{Negative}) = 0$. \textbf{No Loss}.
+    \end{itemize}
+    \item \textbf{Case 2: Correct but in Margin} ($0 < y \cdot f(x) < 1$):
+    \begin{itemize}
+        \item Loss is small positive.
+    \end{itemize}
+    \item \textbf{Case 3: Misclassified} ($y \cdot f(x) < 0$):
+    \begin{itemize}
+        \item Example: True $y = +1$, Predicted $f(x) = -2$. Product $= -2$.
+        \item $1 - (-2) = 3$. Loss is \textbf{3} (Linear penalty).
+    \end{itemize}
+\end{itemize}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\textwidth]{../02-supervised/assets/hinge_loss_graph.png}
+\caption{Hinge Loss: Flat at 0 for correct predictions, then rises linearly.}
+\label{fig:hinge_loss}
+\end{figure}
+
+% ========================================
+% SECTION 6: C VS LAMBDA
+% ========================================
+\section{Connection to Regularization: C vs $\lambda$}
+In Logistic Regression, we used Regularization ($\lambda$) to \textit{prevent} overfitting:
+$$ \text{Cost} = \text{Log Loss} + \lambda ||w||^2 $$
+High $\lambda$: Huge penalty on weights $\to$ Simple Model (Underfitting).
+
+In SVM, we use $C$ to \textit{penalize} errors:
+$$ \text{Cost} = C \times \text{Hinge Loss} + \frac{1}{2}||w||^2 $$
+High $C$: Huge penalty on errors $\to$ Complex Model (Overfitting).
+
+\begin{definition}
+\textbf{Key Relationship}: $C$ is inversely proportional to $\lambda$.
+$$ C \propto \frac{1}{\lambda} $$
+\begin{itemize}
+    \item \textbf{Large C} $\approx$ \textbf{Small $\lambda$} (Weak Regularization, High Variance).
+    \item \textbf{Small C} $\approx$ \textbf{Large $\lambda$} (Strong Regularization, High Bias).
+\end{itemize}
+\end{definition}
+
+% ========================================
+% SECTION 7: HOTS QUESTIONS
+% ========================================
+\section{HOTS: Interview Questions}
+\textbf{Q1: What is the role of Slack Variables in SVM?}
+\begin{itemize}
+    \item They allow the SVM to tolerate some misclassifications in exchange for a wider margin.
+    \item $\xi_i$ measures how much point $i$ violates the margin constraint.
+\end{itemize}
+
+\textbf{Q2: How do you choose the hyperparameter C?}
+\begin{itemize}
+    \item Use cross-validation (\texttt{GridSearchCV}).
+    \item Try a logarithmic range: $C \in [0.001, 0.01, 0.1, 1, 10, 100]$.
+\end{itemize}
+
+\textbf{Q3: Why is Hinge Loss preferred over Log Loss for SVM?}
+\begin{itemize}
+    \item Hinge Loss only penalizes points that are misclassified or within the margin.
+    \item Log Loss penalizes all points, even those far from the boundary.
+    \item Hinge Loss leads to sparse solutions (only support vectors matter).
+\end{itemize}

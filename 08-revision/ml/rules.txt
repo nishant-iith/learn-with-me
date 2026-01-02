@@ -1,0 +1,72 @@
+# Rules for ML LaTeX Book - Comprehensive Guidelines
+
+## 1. Target Audience
+- **Primary Reader**: 16-year-old first-year college student.
+- **Assumption**: Reader has NO prior knowledge of Machine Learning.
+- **Tone**: Friendly but professional. No slang, no emojis.
+- **Goal**: The reader should be able to understand the material WITHOUT a professor.
+
+## 2. Content Depth and Flow
+- **Smooth Transitions**: Every section must logically connect to the previous one. Use phrases like "Building on the previous concept...", "Recall that we learned...".
+- **Multiple Intuitions**: Explain every major concept using at least TWO different approaches:
+    1. **Real-World Analogy** (e.g., "Imagine a seesaw for balance...")
+    2. **Geometric/Visual Intuition** (e.g., "Picture a line on a graph...")
+    3. **Mathematical Derivation** (step-by-step, never skip steps)
+- **No Assumptions**: Define every term before using it. Use `\begin{definition}...\end{definition}` blocks.
+- **HOTS Questions**: Include critical thinking questions at the end of key sections.
+
+## 3. Chapter Structure Template
+Each chapter MUST follow this structure:
+1.  **Introduction**: What is the problem? Why does it matter?
+2.  **Intuition**: Explain with a story/analogy.
+3.  **Mathematical Formulation**: Define the equations clearly.
+4.  **Worked Example**: Solve a problem by hand (step-by-step).
+5.  **Code Implementation**: Provide Python/Scikit-Learn code with explanations.
+6.  **Visualization**: Include a TikZ/PGFPlots figure OR an image from `assets/`.
+7.  **Summary/Key Takeaways**: Bulleted list of main points.
+8.  **HOTS Questions**: 2-3 interview-style or thought-provoking questions.
+
+## 4. LaTeX Rules
+- **No Syntax Errors**: Compile and check the log before finalizing.
+- **Consistent Notation**:
+    - Weights: $w$, Bias: $b$, Learning Rate: $\eta$ or $\alpha$.
+    - Vectors: Lowercase bold ($\mathbf{x}$) or $w^T x$.
+    - Matrices: Uppercase bold ($\mathbf{X}$).
+- **Definitions**: Use `\begin{definition}...\end{definition}` for key terms.
+- **Code Blocks**: Use `lstlisting` environment with `language=Python`.
+- **Figures**: Use `\begin{figure}[htbp]...\end{figure}` with captions and labels.
+- **TikZ/PGFPlots**: Prefer for conceptual diagrams. Use `\begin{tikzpicture}...\end{tikzpicture}`.
+- **Existing Images**: Copy from `02-supervised/assets/` to `book/figures/` and use `\includegraphics`.
+
+## 5. Code Examples
+- Provide as many code examples as possible.
+- **Step-by-step Explanation**: Add numbered comments in code.
+- Use standard libraries: `numpy`, `pandas`, `matplotlib`, `sklearn`.
+- Always include `from sklearn.model_selection import train_test_split`.
+- Always show sample output (accuracy, plot, etc.) in comments or text.
+
+## 6. Image and Asset Usage
+- Check `02-supervised/assets/` for existing images first.
+- Copy relevant images to `book/figures/` before including.
+- For conceptual plots (scatter, line, bar), prefer TikZ/PGFPlots.
+
+## 7. Mistakes Log (Add entries as they occur)
+- **[2026-01-02]**: Using `**text**` for bold in LaTeX is invalid. Use `\textbf{text}`.
+- **[2026-01-02]**: `uber thick` is not a valid TikZ style. Use `ultra thick` or `very thick`.
+- **[2026-01-02]**: Avoid placing `axis` environment inside another `tikzpicture` without proper `at` positioning.
+- **[2026-01-02]**: Always check `ml_book.log` tail for errors after compilation.
+
+## 8. Source Material Mapping (02-supervised/)
+| File | Target Chapter/Section |
+|------|------------------------|
+| 01_linear_regression.md | Part I, Ch 1 |
+| 02_regression_metrics.md | Part I, Ch 2 |
+| 03_multiple_linear_regression.md | Part I, Ch 3 |
+| 04-07 GD files | Part I, Ch 4 |
+| 08_polynomial_regression.md | Part I, Ch 3 |
+| 09_sklearn_implementation.md | Part I, Ch 5 |
+| 10-13 Regularization | Part I, Ch 5 |
+| 14-23 Logistic Regression | Part II |
+| 24-27 Decision Trees | Part III |
+| 28-32 SVM | Part IV |
+| 33-36 KNN | Part V |

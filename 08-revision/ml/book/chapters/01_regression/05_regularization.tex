@@ -1,0 +1,168 @@
+\chapter{Regularization: Ridge, Lasso, and Elastic Net}
+\label{chap:regularization}
+
+% ========================================
+% SECTION 1: THE PROBLEM
+% ========================================
+\section{The Problem: Overfitting}
+We have seen that a model can be ``too good'' at fitting the training data. This is called \textbf{Overfitting}.
+
+\begin{definition}
+\textbf{Overfitting}: When a model learns the training data too well, including its noise and random fluctuations. It performs excellently on training data but poorly on new, unseen test data.
+\end{definition}
+
+\textbf{Symptoms of Overfitting}:
+\begin{itemize}
+    \item Training Error is very low.
+    \item Test Error is significantly higher than Training Error.
+\end{itemize}
+
+\section{Bias vs Variance}
+To understand overfitting, we decompose prediction error into two components.
+
+\begin{definition}
+\textbf{Bias}: The error due to oversimplification. A model with high bias does not capture the true relationship in the data. It \textbf{underfits}.
+\end{definition}
+
+\begin{definition}
+\textbf{Variance}: The error due to sensitivity to small fluctuations in the training data. A model with high variance learns noise. It \textbf{overfits}.
+\end{definition}
+
+\textbf{The Tradeoff}:
+\begin{itemize}
+    \item \textbf{Simple Model (High Bias, Low Variance)}: Consistent but consistently wrong.
+    \item \textbf{Complex Model (Low Bias, High Variance)}: Can be very right on training data, but wildly wrong on test data.
+    \item \textbf{Ideal}: Find a balance where both Bias and Variance are low.
+\end{itemize}
+
+% ========================================
+% SECTION 2: THE SOLUTION - REGULARIZATION
+% ========================================
+\section{The Solution: Regularization}
+\begin{definition}
+\textbf{Regularization}: A technique that adds a penalty term to the loss function to discourage overly complex models (large coefficients).
+\end{definition}
+
+The modified loss function looks like:
+$$ J = \text{MSE} + \lambda \cdot \text{Penalty} $$
+Where $\lambda$ (lambda) is a hyperparameter controlling the strength of the penalty.
+
+% ========================================
+% SECTION 3: RIDGE REGRESSION (L2)
+% ========================================
+\section{Ridge Regression (L2 Regularization)}
+\begin{definition}
+\textbf{Ridge Regression}: Adds a penalty equal to the \textbf{sum of squared coefficients}.
+\begin{equation}
+    J = \sum (y_i - \hat{y}_i)^2 + \lambda \sum_{j=1}^{p} \beta_j^2
+\end{equation}
+\end{definition}
+
+\textbf{Effect}:
+\begin{itemize}
+    \item Coefficients are \textbf{shrunk towards zero}, but \textit{never become exactly zero}.
+    \item All features are retained in the model (no feature selection).
+    \item Good for: Handling multicollinearity, preventing overfitting.
+\end{itemize}
+
+% ========================================
+% SECTION 4: LASSO REGRESSION (L1)
+% ========================================
+\section{Lasso Regression (L1 Regularization)}
+\begin{definition}
+\textbf{Lasso Regression}: Adds a penalty equal to the \textbf{sum of absolute values of coefficients}.
+\begin{equation}
+    J = \sum (y_i - \hat{y}_i)^2 + \lambda \sum_{j=1}^{p} |\beta_j|
+\end{equation}
+\end{definition}
+
+\textbf{Effect}:
+\begin{itemize}
+    \item Coefficients can be shrunk \textbf{exactly to zero}.
+    \item This means Lasso performs \textbf{automatic feature selection}.
+    \item Good for: Sparse models, when you have many features and suspect many are irrelevant.
+\end{itemize}
+
+% ========================================
+% SECTION 5: ELASTIC NET
+% ========================================
+\section{Elastic Net (L1 + L2)}
+\begin{definition}
+\textbf{Elastic Net}: A combination of Ridge and Lasso penalties.
+\begin{equation}
+    J = \text{MSE} + \lambda_1 \sum |\beta_j| + \lambda_2 \sum \beta_j^2
+\end{equation}
+\end{definition}
+
+\textbf{When to use}: When you have many correlated features. Lasso tends to arbitrarily pick one from a group of correlated features, while Elastic Net can select groups.
+
+% ========================================
+% SECTION 6: CODE IMPLEMENTATION
+% ========================================
+\section{Implementation in Python}
+\begin{lstlisting}[language=Python, caption=Regularized Regression with Scikit-Learn]
+from sklearn.linear_model import Ridge, Lasso, ElasticNet
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import GridSearchCV
+
+# IMPORTANT: Always scale features before regularization!
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+# Ridge Regression
+ridge = Ridge(alpha=1.0) # alpha is lambda
+ridge.fit(X_train_scaled, y_train)
+
+# Lasso Regression
+lasso = Lasso(alpha=0.1)
+lasso.fit(X_train_scaled, y_train)
+print(f"Lasso Coefficients (some may be 0): {lasso.coef_}")
+
+# Elastic Net
+enet = ElasticNet(alpha=0.1, l1_ratio=0.5) # l1_ratio balances L1 vs L2
+enet.fit(X_train_scaled, y_train)
+
+# Finding optimal alpha using Cross-Validation
+params = {'alpha': [0.01, 0.1, 1, 10, 100]}
+grid = GridSearchCV(Ridge(), params, cv=5, scoring='neg_mean_squared_error')
+grid.fit(X_train_scaled, y_train)
+print(f"Best Alpha: {grid.best_params_}")
+\end{lstlisting}
+
+% ========================================
+% SECTION 7: SUMMARY TABLE
+% ========================================
+\section{Summary: When to Use Which?}
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Method} & \textbf{Penalty} & \textbf{Coefficients} & \textbf{Best For} \\ \hline
+Ridge (L2) & $\sum \beta^2$ & Shrink towards 0, never 0 & Multicollinearity \\ \hline
+Lasso (L1) & $\sum |\beta|$ & Can be exactly 0 & Feature Selection \\ \hline
+Elastic Net & $\sum |\beta| + \sum \beta^2$ & Sparse + Grouped & Correlated Features \\ \hline
+\end{tabular}
+\end{center}
+
+% ========================================
+% SECTION 8: HOTS QUESTIONS
+% ========================================
+\section{HOTS: Interview Questions}
+\textbf{Q1: Why does Lasso set coefficients to exactly zero, but Ridge does not?}
+\begin{itemize}
+    \item The L1 penalty ($|\beta|$) creates a diamond-shaped constraint region. The optimal solution often lies at a corner of this diamond, where some $\beta_j = 0$.
+    \item The L2 penalty ($\beta^2$) creates a circular constraint region. The optimal solution lies on the curve, not at a corner, so coefficients shrink but rarely hit exactly zero.
+\end{itemize}
+
+\textbf{Q2: How does $\lambda$ affect Bias and Variance?}
+\begin{itemize}
+    \item High $\lambda$: Increases Bias (simpler model), Decreases Variance.
+    \item Low $\lambda$: Decreases Bias (more complex), Increases Variance.
+\end{itemize}
+
+\textbf{Q3: Why is feature scaling mandatory before regularization?}
+\begin{itemize}
+    \item The penalty $\lambda \sum \beta_j^2$ depends on the \textit{magnitude} of coefficients.
+    \item If features have different scales (e.g., Age: 0-100, Salary: 0-100000), the coefficient for Salary will be much smaller than Age, even if Salary is more important.
+    \item The penalty would unfairly penalize Age. Scaling ensures fair comparison.
+\end{itemize}

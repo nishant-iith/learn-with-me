@@ -1,0 +1,118 @@
+\chapter{Decision Trees}
+
+\section{Introduction}
+Decision Trees are one of the most intuitive Machine Learning algorithms, often compared to the game of "20 Questions". The goal is to make a decision or prediction by asking a sequence of simple "Yes/No" questions.
+
+\subsection{Intuition}
+Imagine trying to guess an animal:
+\begin{itemize}
+    \item \textbf{Q1}: Is it alive? $\rightarrow$ Yes.
+    \item \textbf{Q2}: Is it smaller than a cat? $\rightarrow$ No.
+    \item \textbf{Q3}: Does it bark? $\rightarrow$ Yes.
+    \item \textbf{Conclusion}: It is a Dog.
+\end{itemize}
+Programmatically, this is a structure of nested \texttt{if-else} statements. Mathematically, however, a Decision Tree acts as a \textbf{Space Cutter}.
+
+\subsection{Geometric Perspective}
+While Linear Regression draws a single line (or hyperplane), Decision Trees draw \textbf{Orthogonal Cuts} (parallel to the axes).
+\begin{itemize}
+    \item Cut 1: $X > 5$ (Vertical line).
+    \item Cut 2: $Y < 3$ (Horizontal line).
+\end{itemize}
+These cuts divide the feature space into rectangular regions called \textbf{Hyper-cuboids}. Inside each region, the model makes a constant prediction (e.g., majority class for classification).
+
+\section{Splitting Criteria: Measuring Impurity}
+To separate classes effectively, the tree looks for "Pure" nodes (nodes containing only one class). We use metrics like \textbf{Entropy} and \textbf{Gini Impurity} to measure "messiness".
+
+\subsection{Entropy and Information Gain}
+Entropy measures unpredictability (impurity).
+\begin{equation}
+    H(S) = - \sum_{i=1}^{K} p_i \log_2(p_i)
+\end{equation}
+\begin{itemize}
+    \item If a node is 50/50 (e.g., 2 Yes, 2 No), Entropy is \textbf{1.0} (Maximum impurity).
+    \item If a node is 100/0 (e.g., 4 Yes, 0 No), Entropy is \textbf{0.0} (Pure).
+\end{itemize}
+
+\textbf{Information Gain (IG)} is the reduction in Entropy after a split. Ideally, we choose the split that maximizes IG.
+
+\subsection{Gini Impurity}
+The \textbf{CART} algorithm (used by Scikit-Learn) uses Gini Impurity instead of Entropy because it is computationally faster (no logarithms).
+\begin{equation}
+    \text{Gini} = 1 - \sum_{i=1}^{K} p_i^2
+\end{equation}
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{|l|l|l|}
+    \hline
+    \textbf{Feature} & \textbf{Entropy} & \textbf{Gini Impurity} \\ \hline
+    Range & $[0, 1]$ & $[0, 0.5]$ \\ \hline
+    Computation & Slower (Logarithms) & Faster (Squares) \\ \hline
+    Usage & ID3, C4.5 Algorithms & CART (Scikit-Learn Default) \\ \hline
+    \end{tabular}
+    \caption{Entropy vs Gini Impurity}
+\end{table}
+
+\section{The CART Algorithm}
+\textbf{CART} (Classification And Regression Trees) builds binary trees directly. It is a \textbf{Greedy Algorithm} that searches for the best feature and best threshold at every step to maximize purity.
+
+\subsection{Classification vs Regression Trees}
+\begin{itemize}
+    \item \textbf{Classification}:
+        \begin{itemize}
+            \item \textbf{Metric}: Gini Impurity or Entropy.
+            \item \textbf{Prediction}: Majority Vote (Mode) of the leaf node.
+        \end{itemize}
+    \item \textbf{Regression}:
+        \begin{itemize}
+            \item \textbf{Metric}: Mean Squared Error (MSE) or Mean Absolute Error (MAE).
+            \item \textbf{Prediction}: Mean (for MSE) or Median (for MAE) of the leaf node.
+            \item \textbf{Geometry}: Result is a \textbf{Step Function} (staircase-like prediction).
+        \end{itemize}
+\end{itemize}
+
+\section{Overfitting and Pruning}
+Decision Trees are prone to \textbf{Overfitting}. If allowed to grow fully, a tree can memorize the training data (Depth = $\infty$, Training Accuracy = 100\%), but fail on new data.
+
+\subsection{Pre-Pruning}
+Stop the tree growth early using hyperparameters:
+\begin{itemize}
+    \item \texttt{max\_depth}: Limit the height of the tree (e.g., 3-5).
+    \item \texttt{min\_samples\_leaf}: Require a minimum number of samples in a leaf (e.g., 10). This prevents the tree from isolating noise (single outlier points).
+\end{itemize}
+
+\subsection{Post-Pruning (Cost Complexity)}
+Grow a full tree first, then cut back weak branches. Scikit-Learn uses \texttt{ccp\_alpha} (Cost Complexity Pruning).
+\begin{itemize}
+    \item \textbf{High alpha}: Aggressive pruning (smaller tree).
+    \item \textbf{Zero alpha}: No pruning (full tree).
+\end{itemize}
+
+\section{Implementation in Python}
+\begin{lstlisting}[language=Python, caption=Decision Tree Classifier with Pruning]
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.datasets import load_ris
+
+# 1. Load Data
+data = load_iris()
+X_train, X_test, y_train, y_test = train_test_split(data.data, data.target, test_size=0.2)
+
+# 2. Decision Tree with Pre-Pruning
+clf = DecisionTreeClassifier(
+    criterion='gini',
+    max_depth=5,            # Prevent infinite growth
+    min_samples_leaf=10,    # Smooth predictions
+    random_state=42
+)
+clf.fit(X_train, y_train)
+
+# 3. Evaluate
+print("Accuracy:", clf.score(X_test, y_test))
+
+# 4. Post-Pruning Example
+path = clf.cost_complexity_pruning_path(X_train, y_train)
+best_alpha = path.ccp_alphas[-2] # Just an example logic
+clf_pruned = DecisionTreeClassifier(ccp_alpha=best_alpha)
+clf_pruned.fit(X_train, y_train)
+\end{lstlisting}
