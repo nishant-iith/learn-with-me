@@ -25,6 +25,8 @@ Description: A 3D scatter plot showing data points in (x1, x2, y) space. A flat 
 Style: Dark mode, neon wireframe plane.
 -->
 
+![Multiple Linear Regression Plane](assets/multiple_lr_plane.png)
+
 ---
 
 ### Matrix Formulation (The Math Behind It)

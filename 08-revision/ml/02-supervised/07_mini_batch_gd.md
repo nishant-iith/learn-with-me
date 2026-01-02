@@ -43,6 +43,8 @@ Description:
 Style: Dark mode comparison.
 -->
 
+![GD Variants Comparison](assets/gd_variants_comparison.png)
+
 ---
 
 ### Python Implementation (From Scratch)

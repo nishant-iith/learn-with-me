@@ -45,6 +45,8 @@ Description:
 Style: Scientific comparison.
 -->
 
+![Batch GD vs SGD Contour](assets/batch_vs_sgd_contour.png)
+
 ---
 
 ### The Problem of Fluctuation (And Solution)

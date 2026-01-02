@@ -45,6 +45,8 @@ Description:
 Style: Dark educational theme.
 -->
 
+![Bias Variance Tradeoff](assets/bias_variance_tradeoff.png)
+
 ---
 
 ### How to Reduce Overfitting (High Variance)?

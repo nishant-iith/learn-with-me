@@ -43,6 +43,8 @@ Description:
 Style: Educational comparison.
 -->
 
+![Polynomial Degrees Comparison](assets/polynomial_degrees_comparison.png)
+
 ---
 
 ### Python Implementation (Scikit-Learn)

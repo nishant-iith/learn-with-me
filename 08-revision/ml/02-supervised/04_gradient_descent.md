@@ -20,6 +20,8 @@ Description: A distinct 'U' shaped bowl (Convex function). A ball rolling down f
 Style: Neon, dark background.
 -->
 
+![Gradient Descent Bowl](assets/gradient_descent_bowl.png)
+
 ---
 
 ### The Algorithm (Maths)
@@ -63,6 +65,8 @@ Description:
 - Highlight "Local Minima" (small dip), "Global Minima" (deepest dip), and "Saddle Point" (flat but not min/max).
 Style: Educational cartoon style.
 -->
+
+![Convex vs Non-Convex](assets/convex_vs_non_convex.png)
 
 ---
 

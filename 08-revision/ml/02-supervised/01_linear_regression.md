@@ -21,6 +21,8 @@ Description: A hierarchical tree diagram showing 'Linear Regression' at the root
 Style: Minimalist, professional, dark mode friendly.
 -->
 
+![Linear Regression Hierarchy](assets/linear_regression_hierarchy.png)
+
 ---
 
 ### Intuition (Simple LR)
@@ -51,6 +53,8 @@ Description: A scatter plot showing 'CGPA' on X-axis and 'Package' on Y-axis.
 - Highlight the intercept 'c' on the Y-axis.
 Style: Hand-drawn style or clean technical plot.
 -->
+
+![Best Fit Line](assets/linear_regression_fit_plot.png)
 
 ---
 
@@ -102,6 +106,8 @@ Description:
 Style: Mathematical visualization.
 -->
 
+![Loss Function Minima](assets/loss_function_minima.png)
+
 #### 3. Minimize Loss (Differentiation)
 To find the minima of a curve, we take the derivative (slope) and set it to 0. Since $J$ depends on both $m$ and $c$, we take **partial derivatives**.
 
@@ -111,10 +117,14 @@ Using Chain Rule:
 $$\sum 2(y_i - mx_i - c)(-1) = 0$$
 $$-2 \sum (y_i - mx_i - c) = 0$$
 $$\sum y_i - m \sum x_i - \sum c = 0$$
-$$\sum y_i - m \sum x_i - nc = 0$$ (Since $\sum_{1}^{n} c = nc$)
+$$\sum y_i - m \sum x_i - nc = 0$$
+
+$$(Since, \sum_ {1}^{n} c = nc)$$
+
 $$nc = \sum y_i - m \sum x_i$$
 $$c = \frac{\sum y_i}{n} - m \frac{\sum x_i}{n}$$
-$$c = \bar{y} - m\bar{x}$$  **(Equation 1)**
+
+$c = \bar{y} - m\bar{x}$ : **(Equation 1)**
 
 **Step B: Derivative w.r.t $m$**
 $$\frac{\partial J}{\partial m} = \frac{\partial}{\partial m} \sum (y_i - mx_i - c)^2 = 0$$

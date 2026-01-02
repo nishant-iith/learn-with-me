@@ -22,6 +22,8 @@ Description:
 Style: Chalkboard or dark mode technical style.
 -->
 
+![MAE Visualization](assets/regression_metrics_mae.png)
+
 #### 2. Mean Squared Error (MSE)
 $$MSE = \frac{1}{n} \sum (y_i - \hat{y}_i)^2$$
 
@@ -41,6 +43,8 @@ Description:
 - Annotation: "MSE = Average area of these squares".
 Style: Geometric validation style.
 -->
+
+![MSE Visualization](assets/regression_metrics_mse.png)
 
 #### 3. Root Mean Squared Error (RMSE)
 $$RMSE = \sqrt{MSE} = \sqrt{\frac{1}{n} \sum (y_i - \hat{y}_i)^2}$$
