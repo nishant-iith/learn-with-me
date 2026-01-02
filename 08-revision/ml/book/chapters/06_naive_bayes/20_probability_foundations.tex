@@ -1,0 +1,89 @@
+\chapter{Probability Foundations for Naive Bayes}
+\label{chap:probability_foundations}
+
+\section{Introduction}
+So far, our classifiers (Logistic Regression, SVM, Decision Trees) have been "Discriminative". They try to find a boundary that separates classes.
+\textbf{Naive Bayes} is different. It is a "Generative" model. It uses the laws of probability to model how the data was generated.
+To understand it, we must revisit High School Probability.
+
+\section{Conditional Probability}
+\begin{definition}
+\textbf{Conditional Probability} $P(A|B)$: The probability of Event A happening, \textbf{given} that Event B has already happened.
+\begin{equation}
+    P(A|B) = \frac{P(A \cap B)}{P(B)}
+\end{equation}
+\end{definition}
+
+\textbf{Example}:
+\begin{itemize}
+    \item $P(Rain)$: Probability it rains today covers all scenarios.
+    \item $P(Rain | Clouds)$: Probability it rains \textit{given} we can see dark clouds. This is much higher than raw $P(Rain)$.
+\end{itemize}
+
+\section{Bayes' Theorem}
+This is the heart of the algorithm. It allows us to "flip" conditional probabilities.
+If we know $P(B|A)$, can we find $P(A|B)$?
+
+\begin{theorem}
+\textbf{Bayes' Theorem}:
+\begin{equation}
+    P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}
+\end{equation}
+\end{theorem}
+
+\subsection{Terminology in Machine Learning}
+In ML, we replace $A$ with our \textbf{Hypothesis} (Class $y$) and $B$ with our \textbf{Evidence} (Features $X$).
+
+\begin{equation}
+    P(y|X) = \frac{P(X|y) \cdot P(y)}{P(X)}
+\end{equation}
+
+\begin{enumerate}
+    \item \textbf{Posterior} $P(y|X)$: The probability that the class is $y$, \textit{given} the features $X$. (This is what we want to predict).
+    \item \textbf{Likelihood} $P(X|y)$: The probability of observing these features $X$, \textit{given} that the class is $y$. (e.g., If the email is Spam, what is the probability it contains the word "Free"?).
+    \item \textbf{Prior} $P(y)$: The initial probability of the class before seeing any data. (e.g., 90\% of all emails are Spam).
+    \item \textbf{Evidence} $P(X)$: The total probability of the features occurring. (Often acts as a normalizing constant).
+\end{enumerate}
+
+\begin{equation}
+    \text{Posterior} \propto \text{Likelihood} \times \text{Prior}
+\end{equation}
+
+\section{Example Calculation: The Medical Test Paradox}
+\textbf{Scenario}: Testing for a rare disease.
+\begin{itemize}
+    \item **Prior**: 1\% of people have the disease ($P(D) = 0.01$).
+    \item **Likelihood**: The test is 99\% accurate.
+    \begin{itemize}
+        \item If you have the disease, it says Positive 99\% of time ($P(+|D) = 0.99$).
+        \item If you are healthy, it says Negative 99\% of time ($P(-|H) = 0.99 \implies P(+|H) = 0.01$).
+    \end{itemize}
+\end{itemize}
+
+\textbf{Question}: You tested Positive. What is the probability you actually have the disease?
+
+\textbf{Step 1: Calculate Numerator (True Positive Path)}
+$$ P(+|D) \cdot P(D) = 0.99 \times 0.01 = 0.0099 $$
+
+\textbf{Step 2: Calculate Denominator (Total Evidence)}
+$$ P(+) = [P(+|D) \cdot P(D)] + [P(+|H) \cdot P(H)] $$
+$$ P(+) = [0.99 \times 0.01] + [0.01 \times 0.99] $$
+$$ P(+) = 0.0099 + 0.0099 = 0.0198 $$
+
+\textbf{Step 3: Posterior Probability}
+$$ P(D|+) = \frac{0.0099}{0.0198} = 0.5 \quad (50\%) $$
+
+\textbf{Conclusion}: Even with a 99\% accurate test, you only have a 50\% chance of being sick! This effectively illustrates why \textit{Priors} matter. This is a famous paradox used in interviews.
+
+\section{HOTS: Interview Questions}
+\textbf{Q1: What is the difference between Prior and Posterior probability?}
+\begin{itemize}
+    \item **Prior** ($P(y)$): Probability *before* seeing evidence. Based on general domain knowledge (e.g., "Most emails are not spam").
+    \item **Posterior** ($P(y|X)$): Probability *after* seeing evidence. It updates the prior using the likelihood of the observed features.
+\end{itemize}
+
+\textbf{Q2: Why do we ignore the Evidence $P(X)$ in Naive Bayes prediction?}
+\begin{itemize}
+    \item When comparing classes (e.g., $P(Spam|X)$ vs $P(Ham|X)$), the denominator $P(X)$ is the same for both.
+    \item We only care about the ratio (which class is higher?), so we can ignore the denominator and just compare the numerators.
+\end{itemize}

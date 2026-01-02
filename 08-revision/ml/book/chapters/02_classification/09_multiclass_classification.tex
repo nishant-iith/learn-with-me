@@ -49,7 +49,69 @@ Instead of training multiple models, we generalize the Sigmoid function to multi
 \end{itemize}
 
 % ========================================
-% SECTION 4: CATEGORICAL CROSS ENTROPY
+% SECTION 4: EVALUATING MULTICLASS MODELS
+% ========================================
+\section{Evaluating Multiclass Models}
+Evaluating a 2-class model is easy. Evaluating a 3+ class model requires us to look deeper.
+We extend the Confusion Matrix from $2 \times 2$ to $N \times N$.
+
+\subsection{The Confusion Matrix ($N \times N$)}
+Consider a model classifying images into \textbf{Dog}, \textbf{Cat}, or \textbf{Rabbit}.
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{|l|c|c|c||c|}
+    \hline
+    & \textbf{Pred Dog} & \textbf{Pred Cat} & \textbf{Pred Rabbit} & \textbf{Total Actual} \\ \hline
+    \textbf{Actual Dog} & \textbf{25 (TP)} & 5 & 10 & 40 \\ \hline
+    \textbf{Actual Cat} & 0 & \textbf{30 (TP)} & 4 & 34 \\ \hline
+    \textbf{Actual Rabbit} & 4 & 10 & \textbf{20 (TP)} & 34 \\ \hline\hline
+    \textbf{Total Pred} & 29 & 45 & 34 & \textbf{108} \\ \hline
+    \end{tabular}
+    \caption{Confusion Matrix Example. Diagonal elements are correct predictions.}
+    \label{tab:dog_cat_rabbit}
+\end{table}
+
+\subsection{Precision, Recall, and F1 (Per Class)}
+We calculate metrics for each class individually by treating it as ``This Class'' vs ``Everything Else''.
+
+\begin{itemize}
+    \item \textbf{Precision (Col Exactness)}: $TP / \text{Total Predicted}$.
+    \begin{itemize}
+        \item Dog: $25 / 29 = \mathbf{0.86}$.
+        \item Cat: $30 / 45 = \mathbf{0.66}$.
+        \item Rabbit: $20 / 34 = \mathbf{0.58}$.
+    \end{itemize}
+    
+    \item \textbf{Recall (Row Completeness)}: $TP / \text{Total Actual}$.
+    \begin{itemize}
+        \item Dog: $25 / 40 = \mathbf{0.62}$.
+        \item Cat: $30 / 34 = \mathbf{0.88}$.
+        \item Rabbit: $20 / 34 = \mathbf{0.58}$.
+    \end{itemize}
+    
+    \item \textbf{F1-Score}: Harmonic mean of Precision and Recall.
+    \begin{itemize}
+        \item Dog: $2(0.86 \cdot 0.62)/(0.86+0.62) = \mathbf{0.72}$.
+        \item Cat: $\mathbf{0.75}$. Rabbit: $\mathbf{0.58}$.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Global Metrics (Averaging)}
+How do we summarize these 3 numbers into one?
+
+\begin{enumerate}
+    \item \textbf{Macro Average}: Simple average. Treats every class equally (even if small).
+    $$ \text{Macro P} = \frac{0.86 + 0.66 + 0.58}{3} = \mathbf{0.70} $$
+    \textit{Use when minority classes (e.g., Rare Disease) are important.}
+    
+    \item \textbf{Weighted Average}: Weights by class size (Support).
+    $$ \text{Weighted P} = \frac{40(0.86) + 34(0.66) + 34(0.58)}{108} \approx \mathbf{0.71} $$
+    \textit{Use when you want to look good on the majority classes.}
+\end{enumerate}
+
+% ========================================
+% SECTION 5: CATEGORICAL CROSS ENTROPY
 % ========================================
 \section{Loss Function: Categorical Cross Entropy}
 \begin{definition}

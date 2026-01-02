@@ -1,0 +1,105 @@
+\chapter{Naive Bayes Intuition}
+\label{chap:naive_bayes_intuition}
+
+\section{The General Problem}
+We want to calculate $P(y | x_1, x_2, \ldots, x_n)$.
+Using Bayes Theorem:
+$$ P(y | x_1, \ldots, x_n) \propto P(x_1, \ldots, x_n | y) \cdot P(y) $$
+
+The problem is the \textbf{Likelihood Term}: $P(x_1, x_2, \ldots, x_n | y)$.
+If we have 10 features, we need to find the joint probability of all 10 happening together. This requires an enormous dataset to see every possible combination.
+
+\section{The "Naive" Assumption}
+To simplify the math, we make a \textbf{bold (and naive)} assumption:
+\begin{definition}
+\textbf{Conditional Independence}: We assume that all features $x_i$ are independent of each other, given the class $y$.
+\end{definition}
+
+This means:
+$$ P(x_1, x_2, \ldots, x_n | y) \approx P(x_1|y) \cdot P(x_2|y) \cdot \ldots \cdot P(x_n|y) $$
+
+Instead of looking for the complex joint combination, we just multiply the individual probabilities.
+
+\textbf{Why is this "Naive"?}
+\begin{itemize}
+    \item Because in real life, features are rarely independent.
+    \item \textit{Example}: In Spam detection, the words "Nigerian" and "Prince" are highly correlated. The algorithm assumes they are completely unrelated.
+    \item \textit{Surprisingly}: Despite this wrong assumption, Naive Bayes works remarkably well in practice, especially for Text Classification.
+\end{itemize}
+
+\section{Workflow: Categorical Data (The Tennis Example)}
+Let's see how this works with a concrete example: Predicting \textbf{Play Tennis} (Yes/No).
+
+\textbf{Dataset Sample}:
+\begin{itemize}
+    \item Sunny, Hot $\to$ No
+    \item Overcast, Hot $\to$ Yes
+    \item Rainy, Mild $\to$ Yes
+    \item ... (14 rows total)
+\end{itemize}
+
+\subsection{Step 1: Training (Building Lookup Tables)}
+We calculate Prior and Likelihoods from frequency counts.
+\begin{itemize}
+    \item \textbf{Prior}: $P(Yes) = 9/14$, $P(No) = 5/14$.
+    \item \textbf{Likelihoods (Outlook)}:
+    \begin{itemize}
+        \item $P(Sunny | Yes) = 2/9$
+        \item $P(Sunny | No) = 3/5$
+    \end{itemize}
+    \item We presume conditional independence between "Outlook" and "Temperature".
+\end{itemize}
+
+\subsection{Step 2: Testing}
+Query: \textbf{Outlook=Sunny, Temp=Cool}.
+We calculate the posterior for both classes:
+
+\textbf{For Class Yes}:
+$$ P(Yes|X) \propto P(Yes) \times P(Sunny|Yes) \times P(Cool|Yes) $$
+
+\textbf{For Class No}:
+$$ P(No|X) \propto P(No) \times P(Sunny|No) \times P(Cool|No) $$
+
+We compare the two values and pick the higher one.
+
+\section{Types of Naive Bayes Classifiers}
+Depending on the distribution of the features $P(x_i|y)$, we have different variants:
+
+\begin{enumerate}
+    \item \textbf{Bernoulli Naive Bayes}:
+    \begin{itemize}
+        \item Features are Binary (0 or 1).
+        \item Example: Does the word "Free" appear? (Yes/No).
+    \end{itemize}
+    
+    \item \textbf{Multinomial Naive Bayes}:
+    \begin{itemize}
+        \item Features are Discrete Counts.
+        \item Example: How \textit{many times} does "Free" appear? (Frequency counts).
+        \item Best for Text Classification (NLP).
+    \end{itemize}
+    
+    \item \textbf{Gaussian Naive Bayes}:
+    \begin{itemize}
+        \item Features are Continuous (Real numbers).
+        \item Assumption: The features follow a Normal (Gaussian) Distribution.
+        \item Used for generic tabular data (Iris dataset, Medical data).
+    \end{itemize}
+\end{enumerate}
+
+\section{HOTS: Interview Questions}
+\textbf{Q1: Why is Naive Bayes called "Naive"?}
+\begin{itemize}
+    \item Because it makes the strong assumption that all input features are independent of each other (conditional independence). This simplifies the computation from exponential to linear complexity.
+\end{itemize}
+
+\textbf{Q2: Ideally, how does the complexity change due to the Independence Assumption?}
+\begin{itemize}
+    \item Without assumption: We need to learn $O(2^n)$ parameters (for binary features).
+    \item With assumption: We only need to learn $O(n)$ parameters.
+\end{itemize}
+
+\textbf{Q3: Can Naive Bayes handle missing values?}
+\begin{itemize}
+    \item Yes, gracefully. If a feature is missing for a sample, we simply omit that specific $P(x_i|y)$ term from the product. We don't need to impute it.
+\end{itemize}

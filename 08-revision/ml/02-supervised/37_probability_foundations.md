@@ -29,6 +29,8 @@ Description:
 Style: Mathematical Visualization.
 -->
 
+![Conditional Probability Venn Diagram](assets/bayes_conditional_venn.png)
+
 ---
 
 ### 2. Bayes' Theorem (The Holy Grail)

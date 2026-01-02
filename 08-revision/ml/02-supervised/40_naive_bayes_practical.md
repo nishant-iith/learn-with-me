@@ -27,6 +27,8 @@ Description:
 Style: Machine Learning Comparison.
 -->
 
+![Naive Bayes vs Logistic Regression Boundary](assets/nb_vs_lr_decision_boundary.png)
+
 ---
 
 ### 3. Example: Iris Classification (GaussianNB)

@@ -39,6 +39,14 @@ To understand overfitting, we decompose prediction error into two components.
 % SECTION 2: THE SOLUTION - REGULARIZATION
 % ========================================
 \section{The Solution: Regularization}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{../02-supervised/assets/bias_variance_tradeoff.png}
+\caption{The Bias-Variance Tradeoff. We want the sweet spot in the middle.}
+\label{fig:bias_variance}
+\end{figure}
+
 \begin{definition}
 \textbf{Regularization}: A technique that adds a penalty term to the loss function to discourage overly complex models (large coefficients).
 \end{definition}
@@ -50,13 +58,40 @@ Where $\lambda$ (lambda) is a hyperparameter controlling the strength of the pen
 % ========================================
 % SECTION 3: RIDGE REGRESSION (L2)
 % ========================================
-\section{Ridge Regression (L2 Regularization)}
 \begin{definition}
 \textbf{Ridge Regression}: Adds a penalty equal to the \textbf{sum of squared coefficients}.
 \begin{equation}
     J = \sum (y_i - \hat{y}_i)^2 + \lambda \sum_{j=1}^{p} \beta_j^2
 \end{equation}
 \end{definition}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    xlabel={Penalty $\lambda$},
+    ylabel={Error},
+    axis lines=left,
+    ticks=none,
+    ymax=10, xmax=10,
+    width=0.6\textwidth, height=0.4\textwidth
+]
+% Bias (Increases with Lambda - Simpler model)
+\addplot[domain=0:10, blue, dashed] {0.5*x};
+\addlegendentry{Bias}
+
+% Variance (Decreases with Lambda - More constraints)
+\addplot[domain=0:10, red, dashed] {8*exp(-0.5*x)};
+\addlegendentry{Variance}
+
+% Total Error (U-shaped)
+\addplot[domain=0:10, black, thick] {0.5*x + 8*exp(-0.5*x)};
+\addlegendentry{Total Error}
+\end{axis}
+\end{tikzpicture}
+\caption{Finding the Optimal $\lambda$. Low $\lambda$ = High Variance (Overfit). High $\lambda$ = High Bias (Underfit).}
+\label{fig:lambda_tradeoff}
+\end{figure}
 
 \textbf{Effect}:
 \begin{itemize}

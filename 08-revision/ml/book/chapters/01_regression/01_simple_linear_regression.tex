@@ -13,6 +13,22 @@ Imagine you are a college student appearing for campus placements. You notice a 
     \item \textbf{Student C}: 9.0 CGPA $\rightarrow$ ?
 \end{itemize}
 
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+    level 1/.style={sibling distance=3.2cm},
+    every node/.style={draw, rectangle, rounded corners, align=center, fill=blue!5, font=\small}
+]
+\node {Linear Regression}
+    child { node {Simple Linear\\(1 Input)}}
+    child { node {Multiple Linear\\(Many Inputs)}}
+    child { node {Polynomial\\(Non-Linear)}}
+    child { node {Regularization\\(L1 / L2)}};
+\end{tikzpicture}
+\caption{Types of Linear Regression Techniques.}
+\label{fig:lr_hierarchy}
+\end{figure}
+
 Your intuition tells you that Student C will likely get something higher than 6 LPA, perhaps around 10 LPA. What your brain just did is called \textbf{Regression}. You identified a relationship between an input (CGPA) and an output (Package) and used it to predict a future value.
 
 \begin{definition}

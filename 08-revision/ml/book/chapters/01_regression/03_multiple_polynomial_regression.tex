@@ -36,6 +36,13 @@ How does the ``Best Fit Line'' change when we add more features?
 \label{fig:mlr_plane}
 \end{figure}
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{../02-supervised/assets/multiple_lr_plane.png}
+\caption{Another view of the Multiple Linear Regression Plane.}
+\label{fig:mlr_plane_img}
+\end{figure}
+
 \section{Mathematical Formulation}
 The equation extends naturally:
 \begin{equation}
@@ -47,9 +54,6 @@ The equation extends naturally:
     \item For $p$ features, we have $p+1$ parameters to estimate.
 \end{itemize}
 
-% ========================================
-% SECTION: MATRIX FORMULATION
-% ========================================
 \section{Matrix Formulation}
 For computational efficiency, we express everything using matrices.
 
@@ -72,9 +76,6 @@ For computational efficiency, we express everything using matrices.
 
 The predicted values are: $\hat{\mathbf{Y}} = \mathbf{X} \boldsymbol{\beta}$
 
-% ========================================
-% SECTION: OLS DERIVATION (DETAILED)
-% ========================================
 \section{Deriving the Normal Equation (OLS)}
 We want to find the $\boldsymbol{\beta}$ that minimizes the Sum of Squared Errors (SSE).
 
@@ -95,126 +96,116 @@ Multiply out (FOIL method):
 E &= \mathbf{Y}^T \mathbf{Y} - \mathbf{Y}^T \mathbf{X}\boldsymbol{\beta} - \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{Y} + \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{X} \boldsymbol{\beta}
 \end{align}
 
-\textbf{Key Observation}: The terms $\mathbf{Y}^T \mathbf{X}\boldsymbol{\beta}$ and $\boldsymbol{\beta}^T \mathbf{X}^T \mathbf{Y}$ are both scalars (1$\times$1 matrices). A scalar equals its transpose, so:
-$$\mathbf{Y}^T \mathbf{X}\boldsymbol{\beta} = (\boldsymbol{\beta}^T \mathbf{X}^T \mathbf{Y})^T = \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{Y}$$
-
-Therefore, we can combine them:
+\textbf{Key Observation}: The terms $\mathbf{Y}^T \mathbf{X}\boldsymbol{\beta}$ and $\boldsymbol{\beta}^T \mathbf{X}^T \mathbf{Y}$ are both scalars. Thus:
 \begin{equation}
 E = \mathbf{Y}^T \mathbf{Y} - 2\boldsymbol{\beta}^T \mathbf{X}^T \mathbf{Y} + \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{X} \boldsymbol{\beta}
 \label{eq:sse_expanded}
 \end{equation}
 
-\subsection{Step 4: Differentiate with Respect to $\boldsymbol{\beta}$}
-To find the minimum, we take the derivative and set it to zero.
-
-\textbf{Matrix Calculus Rules}:
-\begin{itemize}
-    \item $\frac{\partial}{\partial \mathbf{x}} (\mathbf{a}^T \mathbf{x}) = \mathbf{a}$ (derivative of a linear term)
-    \item $\frac{\partial}{\partial \mathbf{x}} (\mathbf{x}^T \mathbf{A} \mathbf{x}) = 2\mathbf{A}\mathbf{x}$ (derivative of a quadratic form, when $\mathbf{A}$ is symmetric)
-\end{itemize}
-
-Applying these rules to Equation \ref{eq:sse_expanded}:
-\begin{align}
-\frac{\partial E}{\partial \boldsymbol{\beta}} &= 0 - 2\mathbf{X}^T \mathbf{Y} + 2\mathbf{X}^T \mathbf{X} \boldsymbol{\beta}
-\end{align}
-
-\subsection{Step 5: Set Gradient to Zero and Solve}
-Setting the derivative to zero:
+\subsection{Step 4: Differentiate and Solve}
+Taking the derivative w.r.t $\boldsymbol{\beta}$ and setting to zero:
 $$-2\mathbf{X}^T \mathbf{Y} + 2\mathbf{X}^T \mathbf{X} \boldsymbol{\beta} = 0$$
-
-Rearranging:
 $$\mathbf{X}^T \mathbf{X} \boldsymbol{\beta} = \mathbf{X}^T \mathbf{Y}$$
-
-Multiply both sides by $(\mathbf{X}^T \mathbf{X})^{-1}$ (assuming it exists):
-$$(\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{X} \boldsymbol{\beta} = (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{Y}$$
-
-Since $(\mathbf{X}^T \mathbf{X})^{-1} (\mathbf{X}^T \mathbf{X}) = \mathbf{I}$ (Identity matrix):
 \begin{equation}
 \boxed{\boldsymbol{\beta} = (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{Y}}
-\label{eq:normal_equation_final}
 \end{equation}
 
-This is the \textbf{Normal Equation} (OLS Closed-Form Solution).
-
-\subsection{When Does This Fail?}
-The solution requires $(\mathbf{X}^T \mathbf{X})^{-1}$ to exist. This fails when:
-\begin{enumerate}
-    \item \textbf{Multicollinearity}: Two or more features are perfectly correlated (e.g., $x_2 = 2x_1$).
-    \item \textbf{More features than samples}: $p > n$.
-\end{enumerate}
-\textbf{Solution}: Use Regularization (Ridge Regression) or drop correlated features.
-
-\subsection{Computational Complexity}
-Computing the inverse of a $(p+1) \times (p+1)$ matrix has time complexity $O(p^3)$.
-\begin{itemize}
-    \item For small $p$ (10-100 features): OLS is fast.
-    \item For large $p$ (100,000+ features): Use Gradient Descent instead.
-\end{itemize}
-
-% ========================================
-% SECTION: POLYNOMIAL REGRESSION
-% ========================================
 \section{Polynomial Regression}
-What if the relationship is curved, not linear?
+What if the relationship is curved? We generate new features ($x^2, x^3$).
 
-\begin{definition}
-\textbf{Polynomial Regression}: A technique where we generate new features by raising existing features to powers ($x^2, x^3, \ldots$), and then apply standard Linear Regression.
-\end{definition}
+\textbf{Model with Interaction Terms}:
+For 2 features with Degree 2, we get:
+$$ y = \beta_0 + \beta_1 x_1 + \beta_2 x_1^2 + \beta_3 x_2 + \beta_4 x_2^2 + \beta_5 (x_1 x_2) $$
 
-\textbf{Key Insight}: The algorithm itself does not change. We only transform the input data.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{../02-supervised/assets/polynomial_degrees_comparison.png}
+\caption{Degree 1 (Underfit) vs Degree 2 (Good Fit) vs Degree 20 (Overfit).}
+\label{fig:poly_degrees}
+\end{figure}
 
-\textbf{For one feature $x$}:
-\begin{itemize}
-    \item \textbf{Degree 1}: $y = \beta_0 + \beta_1 x$ (Straight line).
-    \item \textbf{Degree 2}: $y = \beta_0 + \beta_1 x + \beta_2 x^2$ (Parabola).
-    \item \textbf{Degree 3}: $y = \beta_0 + \beta_1 x + \beta_2 x^2 + \beta_3 x^3$ (Cubic curve).
-\end{itemize}
-
-\textbf{Why is it still ``Linear'' Regression?}
-The model is \textit{non-linear} in terms of $x$, but it is still \textit{linear} in terms of the coefficients $\beta$. We are doing Multiple Linear Regression with derived features ($x, x^2, x^3$).
-
-\section{Implementation in Python}
-\begin{lstlisting}[language=Python, caption=Normal Equation Implementation]
+\section{Implementation in Python (Scikit-Learn)}
+\begin{lstlisting}[language=Python, caption=Polynomial Regression Pipeline]
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LinearRegression
+from sklearn.pipeline import Pipeline
 import numpy as np
 
-def fit_normal_equation(X, y):
-    """Fit Multiple LR using Normal Equation."""
-    # Step 1: Add column of 1s for intercept
-    n = X.shape[0]
-    X_b = np.c_[np.ones((n, 1)), X]  # Shape: (n, p+1)
-    
-    # Step 2: Apply Normal Equation
-    # beta = (X^T X)^(-1) X^T y
-    XtX = X_b.T @ X_b           # (p+1, p+1)
-    XtX_inv = np.linalg.inv(XtX) # Inverse
-    Xty = X_b.T @ y              # (p+1, 1)
-    beta = XtX_inv @ Xty         # (p+1, 1)
-    
-    return beta
+# 1. Create Non-linear Data
+X = np.array([1, 2, 3, 4, 5]).reshape(-1, 1)
+y = np.array([1, 4, 9, 16, 25]) # y = x^2
 
-# Example
-X = np.array([[1], [2], [3], [4], [5]])  # 1 feature
-y = np.array([2, 4, 5, 4, 5])
-beta = fit_normal_equation(X, y)
-print(f"Intercept: {beta[0]:.2f}, Slope: {beta[1]:.2f}")
+# 2. Use Pipeline
+pipe = Pipeline([
+    ('poly', PolynomialFeatures(degree=2)),
+    ('model', LinearRegression())
+])
+pipe.fit(X, y)
+\end{lstlisting}
+
+\section{Implementation from Scratch (Matrix Method)}
+\begin{lstlisting}[language=Python, caption=Multiple Linear Regression from Scratch]
+import numpy as np
+
+class MeraMultipleLR:
+    def __init__(self):
+        self.coef_ = None
+        self.intercept_ = None
+        
+    def fit(self, X_train, y_train):
+        # 1. Add column of 1s for intercept (Beta_0)
+        # X_train shape: (n, m) -> (n, m+1)
+        X_b = np.insert(X_train, 0, 1, axis=1)
+        
+        # 2. Apply Normal Equation: beta = (X^T X)^-1 X^T Y
+        # np.linalg.inv computes the inverse
+        try:
+            betas = np.linalg.inv(np.dot(X_b.T, X_b)).dot(np.dot(X_b.T, y_train))
+            
+            self.intercept_ = betas[0]
+            self.coef_ = betas[1:]
+            print(f"Intercept: {self.intercept_}")
+            print(f"Coefficients: {self.coef_}")
+            
+        except np.linalg.LinAlgError:
+            print("Error: Matrix is Singular (Not Invertible). Check for multicollinearity.")
+
+    def predict(self, X_test):
+        # y_pred = beta_0 + beta_1*x_1 + ...
+        # Formula: y = X_test * coef + intercept
+        return np.dot(X_test, self.coef_) + self.intercept_
 \end{lstlisting}
 
 \section{HOTS: Interview Questions}
-\textbf{Q1: Is Polynomial Regression a linear or non-linear model?}
+\textbf{Q1: What happens if the matrix $(X^T X)$ is not invertible (Singular)?}
 \begin{itemize}
-    \item It is a \textbf{Linear Model} because it is linear with respect to the \textit{parameters} (coefficients $\beta$). The non-linearity is in the features, not the model itself.
+    \item The Normal Equation fails. This happens if:
+    \begin{enumerate}
+        \item \textbf{Multicollinearity}: Features are perfectly correlated (e.g., $x_2 = 2x_1$).
+        \item \textbf{More features than samples} ($p > n$).
+    \end{enumerate}
+    \item \textbf{Fix}: Use Regularization (Ridge) or drop correlated features.
 \end{itemize}
 
-\textbf{Q2: Walk me through the Normal Equation derivation.}
+\textbf{Q2: How does geometric interpretation change from 2D to 3D?}
 \begin{itemize}
-    \item We define the error as $\mathbf{e} = \mathbf{Y} - \mathbf{X}\boldsymbol{\beta}$.
-    \item We minimize SSE = $\mathbf{e}^T\mathbf{e}$.
-    \item Expand, differentiate w.r.t. $\boldsymbol{\beta}$, set to zero.
-    \item Solve to get $\boldsymbol{\beta} = (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{Y}$.
+    \item \textbf{2D} (1 feature): Line.
+    \item \textbf{3D} (2 features): Plane.
+    \item \textbf{ND} (3+ features): Hyperplane.
 \end{itemize}
 
-\textbf{Q3: Why is feature scaling important in Polynomial Regression?}
+\textbf{Q3: Why is Gradient Descent preferred over OLS for Deep Learning?}
 \begin{itemize}
-    \item If $x = 1000$, then $x^2 = 1,000,000$ and $x^3 = 1,000,000,000$. Feature magnitudes explode, causing numerical instability.
-    \item Always use \texttt{StandardScaler} before polynomial transformation.
+    \item Computing $(X^T X)^{-1}$ is $O(n^3)$. For millions of parameters (Deep Learning), this is impossible.
+    \item Gradient Descent scales linearly ($O(n)$) and is iterative, making it feasible for massive datasets.
+\end{itemize}
+
+\textbf{Q4: Is Polynomial Regression a linear or non-linear model?}
+\begin{itemize}
+    \item It is a \textbf{Linear Model} because it is linear with respect to the \textit{parameters} ($\beta$). The non-linearity is in the features.
+\end{itemize}
+
+\textbf{Q5: Why is feature scaling important in Polynomial Regression?}
+\begin{itemize}
+    \item Powers like $x^2, x^3$ explode magnitude. $1000^3$ is huge. Numeric instability occurs without scaling.
 \end{itemize}

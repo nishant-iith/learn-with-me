@@ -107,6 +107,8 @@ Description:
 Style: Data Visualization.
 -->
 
+![RBF Gamma Comparison](assets/svm_rbf_gamma_comparison.png)
+
 ---
 
 ### 6. Summary: Parameters C vs Gamma

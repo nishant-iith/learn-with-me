@@ -91,6 +91,52 @@ The equation of this boundary is our familiar linear equation:
 \end{itemize}
 
 % ========================================
+% SECTION: PERCEPTRON TRICK
+% ========================================
+\section{The Precursor: The Perceptron Trick}
+Before Logistic Regression, there was the \textbf{Perceptron}. It uses a simple ``Push and Pull'' logic to find the decision boundary.
+
+\subsection{The Algorithm}
+\begin{enumerate}
+    \item Start with a random line (random weights).
+    \item Pick a random data point $(x_i, y_i)$.
+    \item If it is \textbf{correctly classified}, do nothing.
+    \item If it is \textbf{misclassified}:
+    \begin{itemize}
+        \item \textbf{Positive point in negative region}: Move the line \textit{towards} the point (Add $x_i$ to weights).
+        \item \textbf{Negative point in positive region}: Move the line \textit{away} from the point (Subtract $x_i$ from weights).
+    \end{itemize}
+\end{enumerate}
+
+\textbf{Unified Update Rule}:
+\begin{equation}
+    W_{\text{new}} = W_{\text{old}} + \eta (y_i - \hat{y}_i) x_i
+\end{equation}
+
+\subsection{Why did we move to Logistic Regression?}
+The Perceptron has two major flaws:
+\begin{enumerate}
+    \item \textbf{No Conviction}: It stops as soon as points are separated, even if the line is barely touching the points. It doesn't find the \textit{best} line, just \textit{any} separating line.
+    \item \textbf{Binary Output}: It gives a hard Yes/No, not a probability.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python, caption=Perceptron Step Function]
+import numpy as np
+
+def perceptron_step(X, y, weights, lr=0.1):
+    """Updates weights based on one random point."""
+    idx = np.random.randint(0, X.shape[0])
+    x_i, y_i = X[idx], y[idx]
+    
+    # Predict (Step Function)
+    y_pred = 1 if np.dot(weights, x_i) >= 0 else 0
+    
+    # Update: W = W + lr * (y - y_pred) * x
+    weights = weights + lr * (y_i - y_pred) * x_i
+    return weights
+\end{lstlisting}
+
+% ========================================
 % SECTION 4: THE SIGMOID FUNCTION
 % ========================================
 \section{The Sigmoid Function}

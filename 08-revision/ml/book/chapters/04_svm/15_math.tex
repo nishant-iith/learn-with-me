@@ -55,7 +55,27 @@ $$ y_i (w^T x_i + b) \ge 1 \quad \forall i $$
 \end{definition}
 
 % ========================================
-% SECTION 3: SOFT MARGIN
+% SECTION 3: THE DUAL PROBLEM
+% ========================================
+\section{The Dual Problem (Why Kernels Work)}
+To solve the Primal Problem, we use \textbf{Lagrange Multipliers}. This converts the minimization problem into a maximization problem (The Dual Form).
+
+\subsection{The Lagrangian}
+$$ L(w, b, \alpha) = \frac{1}{2}||w||^2 - \sum_{i=1}^{n} \alpha_i (y_i(w^T x_i + b) - 1) $$
+Where $\alpha_i \ge 0$ are the Lagrange Multipliers.
+
+Taking derivatives and setting to zero, we get the \textbf{Dual Objective}:
+\begin{equation}
+    \max_{\alpha} \sum_{i=1}^{n} \alpha_i - \frac{1}{2} \sum_{i=1}^{n} \sum_{j=1}^{n} \alpha_i \alpha_j y_i y_j (x_i^T x_j)
+\end{equation}
+Subject to $\sum \alpha_i y_i = 0$ and $\alpha_i \ge 0$.
+
+\subsection{The Magic of Dot Products}
+Notice the term $(x_i^T x_j)$. The optimization depends \textit{only} on the \textbf{Dot Product} of data points, not their absolute coordinates.
+\\ This is the key that enables the **Kernel Trick**. We can replace $(x_i^T x_j)$ with a Kernel function $K(x_i, x_j)$ that computes the dot product in a higher dimension without actually going there.
+
+% ========================================
+% SECTION 4: SOFT MARGIN
 % ========================================
 \section{Soft Margin SVM (Handling Reality)}
 Real-life data is messy. You might have one Red point deep inside the Blue cluster (Noise or Outlier).

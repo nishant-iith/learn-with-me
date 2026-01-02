@@ -31,6 +31,8 @@ Description:
 Style: Hand-drawn diagram style matching user notes.
 -->
 
+![KNN Intuition](assets/knn_intuition_concept.png)
+
 **How it works**:
 1.  We plot all **100 data points**.
 2.  For a new student (Query Point), we find the $K$ closest students geometrically.

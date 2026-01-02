@@ -28,6 +28,44 @@ We cannot separate them with a single point (cut).
 Now, we can draw a horizontal line at $y=10$. Everything below is Red, everything above is Blue.
 In the original 1D space, this translates to \textit{two} cuts at $-3$ and $+3$.
 
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+    % 1D Space (Bottom)
+    \draw[->] (-4, -1) -- (4, -1) node[right] {$x$};
+    \foreach \x/\c in {-1/red, 0/red, 1/red, -3.5/blue, 3.5/blue}
+        \fill[\c] (\x, -1) circle (3pt);
+    \node at (0, -1.5) {1D: Not Separable};
+    
+    % Projection Arrows
+    \draw[->, dashed, orange] (-3.5, -0.8) -- (-3.5, 3.5^2/4 - 1);
+    \draw[->, dashed, orange] (0, -0.8) -- (0, 0 - 1);
+    
+    % 2D Space (Parabola)
+    \begin{axis}[
+        at={(0,0)},
+        width=0.6\textwidth, height=0.5\textwidth,
+        axis lines=middle,
+        ymin=-1, ymax=15,
+        ticks=none,
+        xlabel=$x$, ylabel=$x^2$
+    ]
+    % Parabola Curve
+    \addplot[domain=-4:4, smooth, black] {x^2};
+    
+    % Points
+    \addplot[only marks, mark=*, color=red] coordinates {(0,0) (-1,1) (1,1)};
+    \addplot[only marks, mark=*, color=blue] coordinates {(-3.5, 12.25) (3.5, 12.25)};
+    
+    % Separator
+    \addplot[domain=-4:4, dashed, green!50!black, thick] {6};
+    \node[right, color=green!50!black] at (axis cs:2, 6.5) {Linear Separator};
+    \end{axis}
+\end{tikzpicture}
+\caption{Kernel Trick: Points non-separable in 1D become separable when projected to $y=x^2$.}
+\label{fig:kernel_trick}
+\end{figure}
+
 \section{Popular Kernels}
 \subsection{1. Polynomial Kernel}
 Maps data to polynomial combinations (like $x_1^2, x_1x_2, x_2^2$).

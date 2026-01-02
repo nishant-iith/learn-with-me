@@ -31,6 +31,8 @@ Description:
 Style: Network Diagram.
 -->
 
+![Bayesian Network Independence](assets/naive_bayes_network_diagram.png)
+
 ---
 
 ### 3. Workflow: Categorical Data (Lookup Tables)
@@ -77,3 +79,5 @@ Description:
 - Label: "Laplace Smoothing prevents Zero Frequency Problem".
 Style: Data Visualization.
 -->
+
+![Laplace Smoothing Comparison](assets/laplace_smoothing_comparison.png)

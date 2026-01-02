@@ -27,6 +27,13 @@ Which line is ``better''? Metrics give us an objective answer.
 \end{equation}
 \end{definition}
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\textwidth]{../02-supervised/assets/regression_metrics_mae.png}
+\caption{MAE measures the average absolute vertical distance (residuals) from the line.}
+\label{fig:mae_viz}
+\end{figure}
+
 \textbf{Intuition}: Imagine you are measuring how far each student's actual package is from what you predicted. You take the average of all those distances.
 
 \textbf{Advantages}:
@@ -48,6 +55,13 @@ Which line is ``better''? Metrics give us an objective answer.
 \end{equation}
 \end{definition}
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\textwidth]{../02-supervised/assets/regression_metrics_mse.png}
+\caption{MSE Squares the errors. Notice how the outlier creates a massive square area.}
+\label{fig:mse_viz}
+\end{figure}
+
 \textbf{Intuition}: Similar to MAE, but instead of just measuring the distance, you square it. This makes larger errors contribute disproportionately more to the total.
 
 \textbf{Advantages}:
@@ -59,6 +73,42 @@ Which line is ``better''? Metrics give us an objective answer.
 \begin{itemize}
     \item Units are squared (e.g., if salary is in LPA, MSE is in $LPA^2$).
     \item \textbf{Sensitive to outliers}: A single large error gets squared, massively inflating the total.
+\end{itemize}
+
+% ... [Rest of metrics omitted for brevity] ...
+
+\section{HOTS: Interview Questions}
+\textbf{Q1: Can $R^2$ be negative? What does it mean?}
+\begin{itemize}
+    \item Yes, $R^2$ can be negative.
+    \item It means the model is performing \textit{worse} than simply predicting the mean of the target variable. This usually indicates the model is severely overfitting or is fundamentally wrong for the data.
+\end{itemize}
+
+\textbf{Q2: MSE vs MAE: When would you choose MAE?}
+\begin{itemize}
+    \item Choose MAE when your data has many \textbf{outliers} that are valid data points (e.g., salary data with a few millionaires).
+    \item MAE treats all errors linearly, so outliers do not disproportionately inflate the total error.
+\end{itemize}
+
+\textbf{Q3: Why is Adjusted $R^2$ always less than or equal to $R^2$?}
+\begin{itemize}
+    \item Because the penalty term $(n-1)/(n-k-1)$ is always $\geq 1$ when $k \geq 0$.
+    \item Adding more features increases $k$, which increases the penalty.
+\end{itemize}
+
+\textbf{Q4: What is the range of $R^2$ score?}
+\begin{itemize}
+    \item The range is $(-\infty, 1]$.
+    \item 1 is perfect prediction.
+    \item 0 is the baseline model (predicting the mean).
+    \item Negative means worse than baseline.
+\end{itemize}
+
+\textbf{Q5: Which metric is most robust to outliers?}
+\begin{itemize}
+    \item \textbf{MAE (Mean Absolute Error)}.
+    \item Since it relies on the absolute difference $|y - \hat{y}|$, errors grow linearly.
+    \item MSE squares the errors, making outliers have an exponential impact.
 \end{itemize}
 
 \subsection{3. Root Mean Squared Error (RMSE)}

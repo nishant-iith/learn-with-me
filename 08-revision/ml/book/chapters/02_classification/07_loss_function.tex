@@ -135,7 +135,52 @@ This is remarkably similar to Linear Regression. The update rule is:
 \end{equation}
 
 % ========================================
-% SECTION 6: HOTS
+% SECTION 6: IMPLEMENTATION
+% ========================================
+\section{Implementation in Python (From Scratch)}
+\begin{lstlisting}[language=Python, caption=Logistic Regression with Gradient Descent]
+import numpy as np
+
+class LogisticRegressionGD:
+    def __init__(self, lr=0.01, epochs=1000):
+        self.lr = lr
+        self.epochs = epochs
+        self.weights = None
+        self.bias = None
+        
+    def sigmoid(self, z):
+        return 1 / (1 + np.exp(-z))
+        
+    def fit(self, X, y):
+        n_samples, n_features = X.shape
+        self.weights = np.zeros(n_features)
+        self.bias = 0
+        
+        for _ in range(self.epochs):
+            # 1. Forward Pass (Linear + Sigmoid)
+            linear_model = np.dot(X, self.weights) + self.bias
+            y_pred = self.sigmoid(linear_model)
+            
+            # 2. Compute Gradients (Vectorized)
+            # dw = (1/n) * X.T * (y_pred - y)
+            dw = (1 / n_samples) * np.dot(X.T, (y_pred - y))
+            db = (1 / n_samples) * np.sum(y_pred - y)
+            
+            # 3. Update Parameters
+            self.weights -= self.lr * dw
+            self.bias -= self.lr * db
+            
+    def predict_proba(self, X):
+        linear_model = np.dot(X, self.weights) + self.bias
+        return self.sigmoid(linear_model)
+        
+    def predict(self, X):
+        y_proba = self.predict_proba(X)
+        return [1 if p > 0.5 else 0 for p in y_proba]
+\end{lstlisting}
+
+% ========================================
+% SECTION 7: HOTS
 % ========================================
 \section{HOTS: Interview Questions}
 \textbf{Q1: Why is Log Loss convex but MSE with Sigmoid is not?}

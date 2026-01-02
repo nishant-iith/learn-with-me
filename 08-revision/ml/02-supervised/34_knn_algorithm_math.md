@@ -52,6 +52,8 @@ Description:
 Style: Scientific Plot.
 -->
 
+![KNN Elbow Method](assets/knn_elbow_method_k_selection.png)
+
 ---
 
 ### 4. Visualizing the Decision Boundary (Surface)

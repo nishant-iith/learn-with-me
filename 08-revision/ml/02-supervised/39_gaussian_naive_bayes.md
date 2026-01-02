@@ -52,6 +52,8 @@ Description:
 Style: Statistical Visualization.
 -->
 
+![Gaussian Naive Bayes PDF](assets/gaussian_naive_bayes_pdf.png)
+
 ---
 
 ### 4. Other Distributions
