@@ -20,6 +20,13 @@ To understand it, we must revisit High School Probability.
     \item $P(Rain | Clouds)$: Probability it rains \textit{given} we can see dark clouds. This is much higher than raw $P(Rain)$.
 \end{itemize}
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\textwidth]{../02-supervised/assets/bayes_conditional_venn.png}
+\caption{Venn diagram illustrating conditional probability $P(A|B)$.}
+\label{fig:bayes_venn}
+\end{figure}
+
 \section{Bayes' Theorem}
 This is the heart of the algorithm. It allows us to "flip" conditional probabilities.
 If we know $P(B|A)$, can we find $P(A|B)$?

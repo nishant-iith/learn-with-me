@@ -1,0 +1,108 @@
+\chapter{Data Preprocessing}
+\label{chap:preprocessing}
+
+Real-world data is messy. It has missing values, text instead of numbers, and different scales. Before we train any model, we must clean and prepare the data.
+
+% ========================================
+% SECTION 1: HANDLING MISSING VALUES
+% ========================================
+\section{Handling Missing Values}
+Use \texttt{SimpleImputer} to fill in gaps.
+\begin{itemize}
+    \item \textbf{Numerical Data}: Replace with \texttt{mean} or \texttt{median}.
+    \item \textbf{Categorical Data}: Replace with \texttt{most\_frequent} (mode) or a constant value like ``Unknown''.
+\end{itemize}
+
+\begin{lstlisting}[language=Python, caption=Handling Missing Values]
+from sklearn.impute import SimpleImputer
+import numpy as np
+
+# Data with missing values (NaN)
+X = np.array([[1, 2], [np.nan, 3], [7, 6]])
+
+# Impute with Mean
+imputer = SimpleImputer(strategy='mean')
+X_clean = imputer.fit_transform(X)
+# Result: NaN is replaced by (1+7)/2 = 4
+\end{lstlisting}
+
+% ========================================
+% SECTION 2: CATEGORICAL DATA (ONE-HOT CODING)
+% ========================================
+\section{Handling Categorical Data}
+Machine Learning models (like Linear Regression, SVM) only understand numbers. They cannot understand "Red", "Green", "Blue".
+
+\subsection{Why NOT Label Encoding?}
+If we assign Red=1, Green=2, Blue=3:
+\begin{itemize}
+    \item The model thinks Blue $>$ Green $>$ Red.
+    \item It assumes an order (Ordinality) where none exists.
+    \item Equation: $y = 3w$ (Blue) vs $y = 1w$ (Red). This is wrong.
+\end{itemize}
+
+\subsection{The Solution: One-Hot Encoding}
+We create a new binary column for each category.
+\begin{table}[htbp]
+\centering
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Color} & \textbf{Is\_Red} & \textbf{Is\_Green} & \textbf{Is\_Blue} \\ \hline
+Red & 1 & 0 & 0 \\ \hline
+Green & 0 & 1 & 0 \\ \hline
+Blue & 0 & 0 & 1 \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{lstlisting}[language=Python, caption=One-Hot Encoding]
+from sklearn.preprocessing import OneHotEncoder
+import pandas as pd
+
+df = pd.DataFrame({'Color': ['Red', 'Green', 'Blue', 'Red']})
+
+# Option 1: Pandas (Quick)
+df_ohe = pd.get_dummies(df, columns=['Color'])
+
+# Option 2: Scikit-Learn (Pipeline friendly)
+encoder = OneHotEncoder(sparse=False, handle_unknown='ignore')
+encoded_matrix = encoder.fit_transform(df[['Color']])
+\end{lstlisting}
+
+% ========================================
+% SECTION 3: THE PREPROCESSING PIPELINE
+% ========================================
+\section{Putting It All Together: A Pipeline}
+In production, we chain these steps using \texttt{Pipeline} and \texttt{ColumnTransformer}.
+
+\begin{lstlisting}[language=Python, caption=Full Preprocessing Pipeline]
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
+
+# Define features
+numeric_features = ['age', 'salary']
+categorical_features = ['city', 'gender']
+
+# 1. Pipe for Numbers: Impute -> Scale
+num_pipe = Pipeline([
+    ('imputer', SimpleImputer(strategy='median')),
+    ('scaler', StandardScaler())
+])
+
+# 2. Pipe for Categories: Impute -> OneHot
+cat_pipe = Pipeline([
+    ('imputer', SimpleImputer(strategy='constant', fill_value='missing')),
+    ('onehot', OneHotEncoder(handle_unknown='ignore'))
+])
+
+# 3. Combine
+preprocessor = ColumnTransformer([
+    ('num', num_pipe, numeric_features),
+    ('cat', cat_pipe, categorical_features)
+])
+
+# 4. Final Model
+model = Pipeline([
+    ('preprocessor', preprocessor),
+    ('classifier', LogisticRegression())
+])
+\end{lstlisting}

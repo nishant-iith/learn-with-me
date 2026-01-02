@@ -74,6 +74,12 @@ Subject to $\sum \alpha_i y_i = 0$ and $\alpha_i \ge 0$.
 Notice the term $(x_i^T x_j)$. The optimization depends \textit{only} on the \textbf{Dot Product} of data points, not their absolute coordinates.
 \\ This is the key that enables the **Kernel Trick**. We can replace $(x_i^T x_j)$ with a Kernel function $K(x_i, x_j)$ that computes the dot product in a higher dimension without actually going there.
 
+\subsection{Why switch to Dual?}
+\begin{enumerate}
+    \item \textbf{Computational Efficiency}: The Primal Form scales with number of features ($D$). The Dual Form scales with number of samples ($N$). If $D \gg N$ (or $D$ is infinite, as in RBF Kernel), Primal is impossible, but Dual is easy.
+    \item \textbf{Kernel Trick}: We cannot use Kernels in the Primal form because we need explicit coordinates $w$. In Dual form, we only need dot products.
+\end{enumerate}
+
 % ========================================
 % SECTION 4: SOFT MARGIN
 % ========================================

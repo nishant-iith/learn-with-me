@@ -114,17 +114,20 @@ How do we summarize these 3 numbers into one?
 % SECTION 5: CATEGORICAL CROSS ENTROPY
 % ========================================
 \section{Loss Function: Categorical Cross Entropy}
-\begin{definition}
-\textbf{Categorical Cross Entropy}: The generalization of Binary Cross Entropy to multiple classes.
+\subsection{Categorical Cross Entropy}
+For multiclass problems, we use **Categorical Cross Entropy**.
 \begin{equation}
-    J = - \sum_{i=1}^{n} \sum_{j=1}^{K} y_{ij} \log(\hat{y}_{ij})
+    J = - \sum_{i=1}^{n} \sum_{k=1}^{K} y_{ik} \log(\hat{y}_{ik})
 \end{equation}
-\end{definition}
-Where $y_{ij}$ is 1 if sample $i$ belongs to class $j$, else 0 (one-hot encoding).
+Where:
+\begin{itemize}
+    \item $y_{ik}$: 1 if sample $i$ belongs to class $k$, else 0 (One-Hot Encoded).
+    \item $\hat{y}_{ik}$: Predicted probability that sample $i$ belongs to class $k$.
+\end{itemize}
 
-% ========================================
-% SECTION 5: CODE IMPLEMENTATION
-% ========================================
+\begin{quote}
+\textbf{Note}: This formula requires labels to be **One-Hot Encoded**. If you are unfamiliar with One-Hot terms like `[0, 0, 1, 0]`, refer to \textbf{Appendix \ref{chap:preprocessing}: Data Preprocessing}.
+\end{quote}% ========================================
 \section{Implementation in Python}
 Let us implement a classifier for the famous Iris dataset (3 flower species).
 

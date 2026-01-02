@@ -46,6 +46,13 @@ We break down predictions into 4 buckets:
     \item \textbf{Type II Error (FN)}: ``Missed Detection''. Example: A pregnant woman told she is not pregnant.
 \end{itemize}
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.7\textwidth]{../02-supervised/assets/confusion_matrix_visual.png}
+\caption{Visual representation of the Confusion Matrix components.}
+\label{fig:confusion_visual}
+\end{figure}
+
 % ========================================
 % SECTION 3: PRECISION
 % ========================================
@@ -80,6 +87,15 @@ We break down predictions into 4 buckets:
     \item \textbf{FP is okay}: A healthy person undergoes extra tests. (Annoying but safe).
     \item \textbf{Goal}: We cannot afford to miss any cancer case. We need \textbf{High Recall}.
 \end{itemize}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.45\textwidth]{../02-supervised/assets/precision_spam_visual.png}
+\hfill
+\includegraphics[width=0.45\textwidth]{../02-supervised/assets/recall_cancer_visual.png}
+\caption{Left: Precision matters in Spam detection (avoid FP). Right: Recall matters in Cancer detection (avoid FN).}
+\label{fig:precision_recall_visual}
+\end{figure}
 
 % ========================================
 % SECTION 5: F1-SCORE

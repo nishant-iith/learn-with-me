@@ -78,7 +78,64 @@ The learning rate is a crucial hyperparameter.
 \end{itemize}
 
 % ========================================
-% SECTION 5: TYPES OF GRADIENT DESCENT
+% SECTION 5: THE IMPORTANCE OF FEATURE SCALING
+% ========================================
+\section{The Importance of Feature Scaling}
+\label{sec:gd_scaling}
+
+You might have noticed that in our Scikit-Learn example, we used `StandardScaler`. This is not optional for Gradient Descent; it is \textbf{mandatory}.
+
+\subsection{The "Elongated Bowl" Problem}
+Imagine predicting House Price using two features:
+\begin{itemize}
+    \item $x_1$: Number of Rooms (Range: 1 to 5).
+    \item $x_2$: Area in sq ft (Range: 500 to 5000).
+\end{itemize}
+
+Since $x_2$ is 1000 times larger than $x_1$, a small change in its weight ($\beta_2$) will cause a massive explosion in the prediction ($y = \beta_1 x_1 + \beta_2 x_2$).
+\begin{enumerate}
+    \item The Loss Function becomes an **Elongated Bowl** (like a narrow taco shell).
+    \item The Gradient will be very steep in one direction and very flat in the other.
+    \item Gradient Descent will zig-zag wildly across the steep walls and take forever to reach the bottom.
+\end{enumerate}
+
+\subsection{The Solution: Scale Features}
+When we scale both features to the same range (e.g., Mean=0, Variance=1):
+\begin{enumerate}
+    \item The Loss Function becomes a **Perfectly Round Bowl**.
+    \item The Gradient points directly to the center.
+    \item Convergence is straight and fast.
+\end{enumerate}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+    % Unscaled (Elongated)
+    \begin{scope}
+        \draw[thick, ->] (0,0) -- (3,0) node[right] {$w_1$};
+        \draw[thick, ->] (0,0) -- (0,3) node[above] {$w_2$};
+        \draw[blue, thick] (1.5,1.5) ellipse (1.2cm and 0.4cm);
+        \draw[blue, thick] (1.5,1.5) ellipse (0.8cm and 0.25cm);
+        \draw[red, thick, ->] (1.5, 2.5) -- (1.5, 1.8) -- (1.0, 1.8) -- (1.0, 1.6) -- node[right, font=\tiny]{Zig-Zag} (1.5, 1.5);
+        \node[below] at (1.5, -0.2) {Unscaled (Slow)};
+    \end{scope}
+    
+    % Scaled (Round)
+    \begin{scope}[xshift=4cm]
+        \draw[thick, ->] (0,0) -- (3,0) node[right] {$w_1$};
+        \draw[thick, ->] (0,0) -- (0,3) node[above] {$w_2$};
+        \draw[blue, thick] (1.5,1.5) circle (1.0cm);
+        \draw[blue, thick] (1.5,1.5) circle (0.6cm);
+        \draw[red, thick, ->] (2.5, 2.5) -- node[above, font=\tiny]{Straight} (1.5, 1.5);
+        \node[below] at (1.5, -0.2) {Scaled (Fast)};
+    \end{scope}
+\end{tikzpicture}
+\caption{Feature Scaling transforms the Loss Surface from an elongated valley (slow zig-zag) to a round bowl (fast straight path).}
+\label{fig:scaling_geometry}
+\end{figure}
+
+% ========================================
+% SECTION 6: TYPES OF GRADIENT DESCENT
 % ========================================
 \section{Types of Gradient Descent}
 How many data points do we use to calculate the gradient in one step?
