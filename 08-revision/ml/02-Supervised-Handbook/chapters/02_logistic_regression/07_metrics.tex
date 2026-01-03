@@ -1,0 +1,99 @@
+\chapter{Metrics \& Evaluation}
+
+How do we measure if our classifier is "good"?
+Unlike Regression (where we check "how close" the prediction is), Classification is often about "Right or Wrong" ... or is it?
+
+\section{Confusion Matrix}
+A 2x2 table showing the breakdown of predictions.
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+         & \textbf{Predicted Positive (1)} & \textbf{Predicted Negative (0)} \\
+        \hline
+        \textbf{Actual Positive (1)} & \textbf{TP} (True Positive) & \textbf{FN} (False Negative) \\
+        \hline
+        \textbf{Actual Negative (0)} & \textbf{FP} (False Positive) & \textbf{TN} (True Negative) \\
+        \hline
+    \end{tabular}
+    \caption{Confusion Matrix}
+\end{table}
+
+\begin{itemize}
+    \item \textbf{Type I Error (FP)}: False Alarm. (e.g., Man told he is pregnant).
+    \item \textbf{Type II Error (FN)}: Missed Opportunity. (e.g., Pregnant woman told she is not).
+\end{itemize}
+
+\section{Accuracy: The Trap}
+\[ \text{Accuracy} = \frac{TP + TN}{\text{Total}} \]
+\textbf{Why it fails}: Imagine a dataset with 990 healthy people and 10 cancer patients. If a model predicts "Healthy" for everyone, it achieves \textbf{99\% Accuracy}. But it is useless because it caught 0 cancer cases. This is the \textbf{Imbalanced Data Trap}.
+
+\section{Precision and Recall}
+To examine performance more deeply, we ask two specific questions.
+
+\subsection{Precision (Quality)}
+"Out of all points predicted as Positive, how many are actually Positive?"
+\[ \text{Precision} = \frac{TP}{TP + FP} \]
+\begin{itemize}
+    \item \textbf{Focus}: Minimize False Positives.
+    \item \textbf{Use Case}: \textbf{Spam Filter}. You don't want to classify an important email as Spam (FP). You'd rather let a few Spam emails through (FN).
+\end{itemize}
+
+\subsection{Recall (Quantity)}
+"Out of all actual Positives, how many did we find?"
+\[ \text{Recall} = \frac{TP}{TP + FN} \]
+\begin{itemize}
+    \item \textbf{Focus}: Minimize False Negatives.
+    \item \textbf{Use Case}: \textbf{Cancer Detection}. You don't want to tell a sick patient they are healthy (FN). You'd rather run tests on a healthy person (FP).
+\end{itemize}
+
+\section{F1 Score}
+The Harmonic Mean of Precision and Recall.
+\[ \text{F1} = 2 \times \frac{P \times R}{P + R} \]
+Use this when you need a balance (e.g., Cat vs Dog classifier) or when comparing models on imbalanced data.
+
+\section{ROC - AUC Curve}
+The \textbf{Receiver Operating Characteristic (ROC)} curve plots the performance at \textbf{all classification thresholds} (0 to 1).
+
+\begin{itemize}
+    \item \textbf{X-axis}: False Positive Rate (FPR) = $FP / (FP+TN)$
+    \item \textbf{Y-axis}: True Positive Rate (Recall) = $TP / (TP+FN)$
+\end{itemize}
+
+\textbf{AUC (Area Under Curve)}:
+\begin{itemize}
+    \item \textbf{AUC = 1.0}: Perfect Classifier.
+    \item \textbf{AUC = 0.5}: Random Guessing (Diagonal Line).
+    \item \textbf{AUC < 0.5}: Worse than random.
+\end{itemize}
+
+\section{Python Implementation}
+
+\begin{lstlisting}[language=Python, caption=Classification Report]
+from sklearn.metrics import classification_report, confusion_matrix, roc_auc_score
+
+# 1. Confusion Matrix
+print(confusion_matrix(y_true, y_pred))
+
+# 2. Detailed Report (Precision, Recall, F1)
+print(classification_report(y_true, y_pred))
+
+# 3. ROC-AUC (Requires probabilities, not class labels)
+# Use predict_proba to get probability of Positive Class (col 1)
+y_prob = model.predict_proba(X_test)[:, 1]
+print("AUC Score:", roc_auc_score(y_true, y_prob))
+\end{lstlisting}
+
+\section{Interview Questions}
+
+\begin{enumerate}
+    \item \textbf{Precision vs Recall: Which is more important?}
+    \newline \textit{Answer:} It depends on the cost of errors. If False Positives are expensive (Spam Filter), prioritize Precision. If False Negatives are expensive (Medical Diagnosis), prioritize Recall.
+    
+    \item \textbf{Why use F1 Score instead of Arithmetic Mean?}
+    \newline \textit{Answer:} The Harmonic Mean penalizes extreme values more. If Precision is 1.0 and Recall is 0.0, the Arithmetic Mean is 0.5, but F1 is 0.0. This prevents a model from cheating by optimizing only one metric.
+    
+    \item \textbf{What does AUC = 0.8 mean?}
+    \newline \textit{Answer:} It means there is an 80\% probability that the model will rank a random positive instance higher than a random negative instance.
+\end{enumerate}

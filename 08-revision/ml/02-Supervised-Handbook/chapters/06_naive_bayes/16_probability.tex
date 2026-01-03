@@ -1,0 +1,37 @@
+\chapter{Probability Foundations}
+
+\begin{quote}
+    "Probability is the logic of science." — E.T. Jaynes
+\end{quote}
+
+Before understanding Naive Bayes, we must master the language of Uncertainty: Probability.
+
+\section{Conditional Probability}
+What is the probability of Event A happening \textbf{given that} Event B has already occurred?
+\[ P(A|B) = \frac{P(A \cap B)}{P(B)} \]
+We restrict our "Universe" to only cases where B happened.
+
+\section{Bayes' Theorem}
+This is the Holy Grail of Probabilistic Machine Learning. It flips conditional probabilities:
+\[ P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)} \]
+
+\subsection{Terminology (Important)}
+\begin{itemize}
+    \item \textbf{$P(A|B)$ - Posterior}: The probability of the hypothesis A being true given the data B. (This is what we want).
+    \item \textbf{$P(B|A)$ - Likelihood}: The probability of seeing data B given hypothesis A is true.
+    \item \textbf{$P(A)$ - Prior}: The general probability of hypothesis A being true (before seeing data).
+    \item \textbf{$P(B)$ - Evidence}: The probability of data B occurring.
+\end{itemize}
+
+\section{The Medical Test Paradox}
+Why Priors matter.
+\begin{itemize}
+    \item \textbf{Scenario}: A disease affects 1\% of people ($P(D)=0.01$). A test is 99\% accurate ($P(Pos|D)=0.99$).
+    \item \textbf{Question}: You test positive. What is the chance you have the disease?
+    \item \textbf{Answer}: It is NOT 99\%. It is roughly \textbf{50\%}.
+\end{itemize}
+
+\textbf{Derivation}:
+\[ P(D|Pos) = \frac{P(Pos|D)P(D)}{P(Pos)} = \frac{0.99 \times 0.01}{(0.99 \times 0.01) + (0.01 \times 0.99)} = \frac{0.0099}{0.0198} = 0.5 \]
+
+Using Bayes' Theorem helps us avoid this "Base Rate Fallacy". Naive Bayes uses this exact logic to predict classes.

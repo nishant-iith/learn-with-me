@@ -1,0 +1,87 @@
+\chapter{Mathematical Formulation}
+
+How do we mathematically find the "Widest Street"?
+
+\section{Hard Margin SVM}
+Assumption: The data is 100\% linearly separable (No overlap).
+
+\subsection{Optimization Goal}
+The width of the margin is given by $d = \frac{2}{||w||}$.
+To maximize $d$, we must \textbf{minimize} $||w||$. For mathematical convenience, we minimize:
+\begin{equation}
+    \min_{w, b} \frac{1}{2} ||w||^2
+\end{equation}
+
+\subsection{Constraint}
+We must correctly classify every point $i$:
+\begin{equation}
+    y_i (w^T x_i + b) \ge 1
+\end{equation}
+
+\section{Soft Margin SVM}
+Reality: Data often has outliers or overlaps. A Hard Margin would fail or overfit.
+Solution: Allow some errors, but penalize them.
+
+\subsection{Slack Variables ($\xi$)}
+We introduce $\xi_i \ge 0$ (Zeta) for each point.
+\begin{itemize}
+    \item $\xi_i = 0$: Correct and Safe.
+    \item $0 < \xi_i < 1$: Correct but inside margin.
+    \item $\xi_i > 1$: Misclassified.
+\end{itemize}
+
+\subsection{Cost Function}
+\begin{equation}
+    J(w) = \frac{1}{2} ||w||^2 + C \sum_{i=1}^{n} \xi_i
+\end{equation}
+\begin{itemize}
+    \item \textbf{C Parameter}: Controls the trade-off.
+    \begin{itemize}
+        \item \textbf{High C}: Strict. Huge penalty for errors $\rightarrow$ Hard Margin (Overfitting).
+        \item \textbf{Low C}: Loose. Accepts errors for a wider margin $\rightarrow$ Soft Margin (Underfitting).
+    \end{itemize}
+\end{itemize}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{svm_c_parameter_comparison.png}
+    \caption{Effect of C on decision boundary.}
+\end{figure}
+
+\section{Hinge Loss}
+The error used for a single point is:
+\begin{equation}
+    L = \max(0, 1 - y \cdot f(x))
+\end{equation}
+If the point is correct and outside margin, loss is 0. Otherwise, loss increases linearly.
+
+\section{The Kernel Trick}
+What if data is not linearly separable (e.g., Concentric Circles)?
+Idea: Map data to a higher dimension where it \textit{is} separable.
+
+\subsection{RBF Kernel (Gaussian)}
+Maps data to infinite dimensions.
+\begin{equation}
+    K(x_1, x_2) = \exp(-\gamma ||x_1 - x_2||^2)
+\end{equation}
+\begin{itemize}
+    \item \textbf{Gamma ($\gamma$)}: Controls the reach of influence.
+    \item \textbf{High Gamma}: Each point has narrow reach $\rightarrow$ Wiggly boundary (Overfit).
+    \item \textbf{Low Gamma}: Broad reach $\rightarrow$ Smooth boundary (Underfit).
+\end{itemize}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{svm_kernel_gaussian_lift.png}
+    \caption{Mapping 2D circles to a 3D hill using a Kernel.}
+\end{figure}
+
+\section{Interview Questions}
+
+\begin{enumerate}
+    \item \textbf{What is the Kernel Trick?}
+    \newline \textit{Answer:} It is a mathematical technique that allows SVM to perform classification in high-dimensional space without explicitly computing the coordinates of the data in that space. It uses the dot product $K(x, y)$ directly.
+    
+    \item \textbf{Does the C parameter affect Bias or Variance?}
+    \newline \textit{Answer:} Yes. High C $\rightarrow$ Low Bias, High Variance (Overfitting). Low C $\rightarrow$ High Bias, Low Variance (Underfitting).
+\end{enumerate}

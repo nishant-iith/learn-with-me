@@ -1,0 +1,72 @@
+\chapter{SVM Intuition}
+
+\section{Introduction}
+In Logistic Regression, we found \textit{a} line that separates the classes. But which line is the best?
+Support Vector Machines (SVM) find the line that creates the \textbf{widest gap} (margin) between the classes.
+
+\section{Geometric Intuition: The Road and Gutter}
+Imagine the decision boundary is the median strip of a road.
+\begin{itemize}
+    \item We want the road to be as \textbf{wide as possible}.
+    \item We don't want the road to hit any houses (data points).
+    \item The edges of the road touch the nearest houses. These houses "support" the road.
+\end{itemize}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{svm_margin_comparison.png}
+    \caption{Logistic Regression (Risky) vs SVM (Maximum Margin).}
+\end{figure}
+
+\section{Terminology}
+
+\subsection{Hyperplane ($\pi$)}
+The central decision boundary.
+\[ w^T x + b = 0 \]
+
+\subsection{Marginal Planes ($\pi^+$ and $\pi^-$)}
+The edges of the street (Gutters).
+\begin{itemize}
+    \item Positive Plane: $w^T x + b = +1$
+    \item Negative Plane: $w^T x + b = -1$
+\end{itemize}
+The distance between them is the \textbf{Margin} ($d$).
+
+\subsection{Support Vectors}
+These are the specific data points that lie exactly on the Marginal Planes.
+\begin{remark}
+    \textbf{Crucial Property}: The SVM model depends \textit{only} on the Support Vectors. If you remove all other points, the decision boundary does not move. This makes SVM robust to outliers (that are far away).
+\end{remark}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{svm_geometry_annotated.png}
+    \caption{The Hyperplane, Margins, and Support Vectors.}
+\end{figure}
+
+\section{SVM vs Logistic Regression}
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+         & \textbf{Logistic Regression} & \textbf{SVM} \\
+        \hline
+        \textbf{Philosophy} & Probabilistic & Geometric \\
+        \hline
+        \textbf{Goal} & Minimize Log Loss & Maximize Margin \\
+        \hline
+        \textbf{Outliers} & Sensitive & Robust \\
+        \hline
+    \end{tabular}
+    \caption{Comparison of Linear Classifiers}
+\end{table}
+
+\section{Interview Questions}
+
+\begin{enumerate}
+    \item \textbf{Why is it called "Support Vector" Machine?}
+    \newline \textit{Answer:} Because the optimal hyperplane is entirely determined ("supported") by a small subset of data points called Support Vectors. These vectors lie closest to the decision boundary.
+    
+    \item \textbf{What happens to the margin if we remove a non-support vector?}
+    \newline \textit{Answer:} Nothing. Since non-support vectors do not constrain the margin, removing them has zero effect on the model parameters.
+\end{enumerate}

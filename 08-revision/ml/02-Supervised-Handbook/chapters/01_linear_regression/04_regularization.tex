@@ -1,0 +1,103 @@
+\chapter{Regularization}
+
+\section{The Bias-Variance Tradeoff}
+Before we fix a model, we must understand how it fails.
+\begin{itemize}
+    \item \textbf{Bias (Underfitting)}: The model is too simple. It fails to capture the underlying trend. (e.g., Fitting a straight line to a curve).
+    \item \textbf{Variance (Overfitting)}: The model is too complex. It memorizes the noise in the training data. (e.g., A wiggly line connecting every dot).
+\end{itemize}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{bias_variance_tradeoff.png}
+    \caption{Underfitting (High Bias) vs Overfitting (High Variance).}
+\end{figure}
+
+\begin{remark}
+    \textbf{Regularization} is the technique of adding a "Penalty" to the Loss Function to discourage the model from becoming too complex (having large coefficients).
+\end{remark}
+
+\section{Ridge Regression (L2 Regularization)}
+Ridge adds a penalty equal to the \textbf{square of the magnitude} of coefficients.
+
+\begin{equation}
+    J(\beta) = \text{MSE} + \lambda \sum_{j=1}^{p} \beta_j^2
+\end{equation}
+
+\begin{itemize}
+    \item As $\lambda$ increases, the coefficients ($\beta$) shrink towards zero.
+    \item \textbf{Property}: Coefficients become very small but \textbf{never exactly zero}.
+    \item \textbf{Use Case}: Preventing overfitting when all features are somewhat important. Handing Multicollinearity.
+\end{itemize}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{ridge_lambda_error_curve.png}
+    \caption{As $\lambda$ increases, Variance decreases but Bias increases.}
+\end{figure}
+
+\section{Lasso Regression (L1 Regularization)}
+Lasso adds a penalty equal to the \textbf{absolute value} of coefficients.
+
+\begin{equation}
+    J(\beta) = \text{MSE} + \lambda \sum_{j=1}^{p} |\beta_j|
+\end{equation}
+
+\begin{itemize}
+    \item \textbf{Feature Selection}: Lasso tends to force coefficients of useless features to become \textbf{Exactly Zero}.
+    \item \textbf{Use Case}: Sparse models; when you suspect many features are irrelevant.
+\end{itemize}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{lasso_vs_ridge_coef_behavior.png}
+    \caption{Ridge shrinks asymptotically; Lasso hits zero sharply.}
+\end{figure}
+
+\section{Elastic Net}
+Combines both L1 and L2 penalties.
+\[ J(\beta) = \text{MSE} + \lambda_1 \sum |\beta_j| + \lambda_2 \sum \beta_j^2 \]
+\begin{itemize}
+    \item Used when we want feature selection (Lasso) but also need stability (Ridge) for correlated features.
+\end{itemize}
+
+\section{Python Implementation}
+
+\begin{lstlisting}[language=Python, caption=Regularization in Scikit-Learn]
+from sklearn.linear_model import Ridge, Lasso, ElasticNet
+from sklearn.preprocessing import StandardScaler
+
+# Standardization is MANDATORY for Regularization
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# Ridge
+ridge = Ridge(alpha=1.0)
+ridge.fit(X_scaled, y)
+
+# Lasso
+lasso = Lasso(alpha=0.1)
+lasso.fit(X_scaled, y)
+print(f"Zeroed Features: {np.sum(lasso.coef_ == 0)}")
+
+# ElasticNet
+enet = ElasticNet(alpha=0.1, l1_ratio=0.5)
+enet.fit(X_scaled, y)
+\end{lstlisting}
+
+\section{Interview Questions}
+
+\begin{enumerate}
+    \item \textbf{Why does Lasso select features (set coefficients to 0) while Ridge does not?}
+    \newline \textit{Answer:} Geometrically, the L1 constraint ($|\beta_1| + |\beta_2| \le C$) forms a diamond shape with corners on the axes. The Loss function's contours are likely to touch the diamond at these corners (where one coefficient is 0). The L2 constraint ($\beta_1^2 + \beta_2^2 \le C$) forms a circle, which the contours usually touch at a non-zero point.
+    
+    \item \textbf{Can we use Regularization without Feature Scaling?}
+    \newline \textit{Answer:} \textbf{No.} Regularization penalties depend on the magnitude of coefficients. If one feature has huge values (e.g., Salary) and another small (e.g., Age), the coefficients will be on different scales. The penalty term will unfairly target the feature with smaller coefficients (which might need larger weights to compensate). Scaling ensures fair penalization.
+    
+    \item \textbf{What is the Bias-Variance Tradeoff relative to $\lambda$?}
+    \newline \textit{Answer:}
+    \begin{itemize}
+        \item Low $\lambda$: Complex model $\rightarrow$ High Variance, Low Bias (Overfitting).
+        \item High $\lambda$: Simple model $\rightarrow$ Low Variance, High Bias (Underfitting).
+    \end{itemize}
+\end{enumerate}

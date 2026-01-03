@@ -1,0 +1,68 @@
+\chapter{KNN Intuition}
+
+\section{Introduction}
+\begin{quote}
+    "You are the average of the five people you spend the most time with." — Jim Rohn
+\end{quote}
+This quote perfectly summarizes \textbf{K-Nearest Neighbors (KNN)}.
+It is a simple, non-parametric algorithm used for both Classification and Regression. It assumes that similar things exist in close proximity.
+
+\section{The Algorithm}
+KNN is a \textbf{Lazy Learner}. It does not learn a discriminative function (like Logistic Regression or SVM) during training. Instead, it memorizes the training dataset.
+
+\subsection{Steps}
+For a new query point $x_q$:
+\begin{enumerate}
+    \item \textbf{Calculate Distances}: Measure the distance from $x_q$ to every point in the dataset.
+    \item \textbf{Find Neighbors}: Sort distances and pick the top $K$ closest points.
+    \item \textbf{Vote (Classification)}: Assign the most frequent class among the $K$ neighbors.
+    \item \textbf{Average (Regression)}: Assign the mean value of the $K$ neighbors.
+\end{enumerate}
+
+\section{Distance Metrics}
+How do we measure "closeness"?
+
+\subsection{Euclidean Distance (L2 Norm)}
+The straight-line distance. Default in most cases.
+\[ d(p, q) = \sqrt{\sum (p_i - q_i)^2} \]
+
+\subsection{Manhattan Distance (L1 Norm)}
+The "Taxi-cab" distance (grid-like).
+\[ d(p, q) = \sum |p_i - q_i| \]
+
+\begin{remark}
+    \textbf{Importance of Scaling}: Since KNN is based on distance, features with larger magnitudes (e.g., Salary vs Age) will dominate the calculation. \textbf{StandardScalization} (Mean=0, Std=1) is critical.
+\end{remark}
+
+\section{Choosing K (Hyperparameter)}
+The value of $K$ controls the Bias-Variance tradeoff.
+
+\begin{itemize}
+    \item \textbf{Low K (e.g., 1)}: The model captures noise.
+    \item \textbf{High K (e.g., N)}: The model predicts the majority class.
+\end{itemize}
+
+\textbf{Elbow Method}: Plot Error Rate vs $K$. The optimal $K$ is usually where the error drops and stabilizes (the "elbow").
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{knn_elbow_method_k_selection.png}
+    \caption{Finding the optimal K using Cross-Validation.}
+\end{figure}
+
+\section{Interview Questions}
+
+\begin{enumerate}
+    \item \textbf{Why is KNN called a "Lazy Learner"?}
+    \newline \textit{Answer:} Because it performs \textbf{zero} computation during the training phase. It only stores the data. All the heavy lifting (distance calculation) happens during prediction (inference).
+    
+    \item \textbf{What is the time complexity of KNN Prediction?}
+    \newline \textit{Answer:} $O(N \cdot D)$, where $N$ is the number of training samples and $D$ is dimensions. This makes it very slow for large datasets.
+    
+    \item \textbf{How does K affect the decision boundary?}
+    \newline \textit{Answer:}
+    \begin{itemize}
+        \item $K=1$: Very jagged, complex boundary (High Variance).
+        \item $K=\text{Large}$: Smooth, simple boundary (High Bias).
+    \end{itemize}
+\end{enumerate}

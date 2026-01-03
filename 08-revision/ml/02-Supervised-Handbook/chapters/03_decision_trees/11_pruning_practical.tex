@@ -1,0 +1,76 @@
+\chapter{Pruning \& Practicalities}
+
+A Decision Tree has a major flaw: it loves to \textbf{Overfit}.
+If left unchecked, a tree will grow until every single training leaf is "pure" (e.g., creating a dedicated leaf for just one outlier sample).
+
+\section{Overfitting vs Underfitting}
+\begin{itemize}
+    \item \textbf{Overfitting (High Variance)}: 100\% Training Accuracy, but poor Test Accuracy. The tree is too deep and complex.
+    \item \textbf{Underfitting (High Bias)}: Poor Training and Test Accuracy. The tree is too shallow (e.g., Depth=1).
+\end{itemize}
+
+\section{Pre-Pruning (Early Stopping)}
+We stop the tree from growing \textit{while} it is being built.
+\textbf{Key Hyperparameters}:
+
+\begin{enumerate}
+    \item \textbf{max\_depth}: The maximum height of the tree.
+    \item \textbf{min\_samples\_split}: The minimum samples required to split an internal node. (e.g., if a node has only 5 samples, don't split).
+    \item \textbf{min\_samples\_leaf}: The minimum samples required to be at a leaf node.
+    \newline \textbf{Note}: This is often the most effective parameter for smoothing the model (e.g., set to 1-5\% of dataset).
+\end{enumerate}
+
+\section{Post-Pruning (Cost Complexity)}
+We let the tree grow to its full extent (overfit), and then we cut off the "weak" branches.
+Scikit-Learn uses \textbf{Minimal Cost-Complexity Pruning}.
+
+\begin{equation}
+    R_\alpha(T) = R(T) + \alpha |T|
+\end{equation}
+\begin{itemize}
+    \item $R(T)$: Total Impurity (Error) of the tree.
+    \item $|T|$: Number of leaf nodes (Complexity).
+    \item $\alpha$ (Alpha): Penalty term.
+\end{itemize}
+As $\alpha$ increases, we prune more branches (simplify the tree).
+
+\section{Python Implementation}
+
+\begin{lstlisting}[language=Python, caption=Decision Tree with Pruning]
+from sklearn.tree import DecisionTreeClassifier, plot_tree
+
+# 1. Pre-Pruning
+# Limiting depth and requiring minimum samples per leaf
+model_pre = DecisionTreeClassifier(
+    max_depth=5, 
+    min_samples_leaf=10
+)
+model_pre.fit(X_train, y_train)
+
+# 2. Post-Pruning
+# Step A: Get pruning path (candidate alphas)
+path = model_pre.cost_complexity_pruning_path(X_train, y_train)
+alphas = path.ccp_alphas
+
+# Step B: Train a tree for each alpha and pick best using CV
+best_model = DecisionTreeClassifier(ccp_alpha=0.015) 
+best_model.fit(X_train, y_train)
+
+# 3. Visualization
+plt.figure(figsize=(12, 8))
+plot_tree(best_model, filled=True, feature_names=feature_names)
+plt.show()
+\end{lstlisting}
+
+\section{Interview Questions}
+
+\begin{enumerate}
+    \item \textbf{What is the difference between Pre-Pruning and Post-Pruning?}
+    \newline \textit{Answer:} Pre-pruning stops growth early (faster, but might miss subtle patterns - "Horizon Effect"). Post-pruning grows the full tree and then removes useless branches (slower, but usually finds a better structure).
+    
+    \item \textbf{Which hyperparameter handles overfitting best?}
+    \newline \textit{Answer:} \texttt{min\_samples\_leaf} is extremely effective. By forcing every leaf to have at least $K$ samples (e.g., 50), you ensure the prediction isn't based on a single noise point. \texttt{max\_depth} is also good but can be too rigid.
+    
+    \item \textbf{Why are Decision Trees unstable?}
+    \newline \textit{Answer:} Because they are hierarchical. A small change in the top split (e.g., threshold changes from 5.0 to 5.1 shifting one point) propagates down, potentially changing the entire structure of the tree below it.
+\end{enumerate}

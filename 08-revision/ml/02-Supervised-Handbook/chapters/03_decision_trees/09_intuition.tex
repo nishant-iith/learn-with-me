@@ -1,0 +1,90 @@
+\chapter{Decision Tree Intuition}
+
+\section{Introduction}
+A \textbf{Decision Tree} is a flowchart-like structure where an internal node represents a "test" on an attribute (e.g. coin flip comes up heads or tails), each branch represents the outcome of the test, and each leaf node represents a class label (decision taken after computing all attributes).
+
+\section{Variable Intuition: The "20 Questions" Game}
+Imagine you are playing a game where you have to guess an object I'm thinking of.
+\begin{itemize}
+    \item \textbf{Q1}: Is it alive? $\rightarrow$ Yes. (Discards all non-living objects).
+    \item \textbf{Q2}: Is it smaller than a cat? $\rightarrow$ No.
+    \item \textbf{Q3}: Does it bark? $\rightarrow$ Yes.
+    \item \textbf{Conclusion}: It's a \textbf{Dog}.
+\end{itemize}
+Using a sequence of simple Yes/No questions, we narrowed down the search space to a specific answer. This is exactly how a Decision Tree functions.
+
+\section{Geometric Intuition: Space Cutters}
+Mathematically, a Decision Tree cuts the feature space into rectangular regions called \textbf{Hyper-cuboids}.
+
+\begin{itemize}
+    \item \textbf{Linear Models}: Draw a single diagonal line/plane ($w^Tx + b = 0$).
+    \item \textbf{Decision Trees}: Draw \textbf{Orthogonal Cuts} (Parallel to axes).
+    \begin{itemize}
+        \item Cut 1: $X \le 5$ (Vertical Line).
+        \item Cut 2: $Y \le 3$ (Horizontal Line).
+    \end{itemize}
+\end{itemize}
+
+Inside each region (Leaf), the tree makes a constant prediction.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{dt_tree_geometry_mapping.png}
+    \caption{Tree structure vs Geometric partitions.}
+\end{figure}
+
+\section{CART Algorithm}
+Scikit-Learn uses \textbf{CART} (Classification And Regression Trees). It produces \textbf{Binary Trees} (each node has exactly 2 children).
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+         & \textbf{Classification Tree} & \textbf{Regression Tree} \\
+        \hline
+        \textbf{Output} & Class Label & Continuous Number \\
+        \hline
+        \textbf{Prediction} & \textbf{Majority Vote} (Mode) & \textbf{Mean} (or Median) \\
+        \hline
+        \textbf{Geometry} & Colored Regions & Step Function (Staircase) \\
+        \hline
+    \end{tabular}
+    \caption{Classification vs Regression Trees}
+\end{table}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{dt_classification_vs_regression.png}
+    \caption{Classification creates boundaries; Regression creates a step function.}
+\end{figure}
+
+\section{Pros and Cons}
+
+\begin{itemize}
+    \item \textbf{Pros}:
+    \begin{itemize}
+        \item \textbf{Interpretability}: Very easy to visualize and explain to non-technical stakeholders ("White Box" model).
+        \item \textbf{No Scaling}: Works well without feature scaling/normalization.
+        \item \textbf{Non-Linear}: Can capture complex relationships.
+    \end{itemize}
+    
+    \item \textbf{Cons}:
+    \begin{itemize}
+        \item \textbf{Overfitting}: Tends to grow complex trees that memorize noise.
+        \item \textbf{Instability}: A small change in data can completely change the tree structure.
+        \item \textbf{Orthogonal Constraints}: Struggles with diagonal relationships (needs many small steps).
+    \end{itemize}
+\end{itemize}
+
+\section{Interview Questions}
+
+\begin{enumerate}
+    \item \textbf{Why are Decision Tree boundaries always parallel to axes?}
+    \newline \textit{Answer:} Because at each node, the algorithm considers only \textbf{one feature} at a time (e.g., $x_1 > 5$). It does not perform linear combinations of features ($x_1 + x_2 > 5$), which would create diagonal cuts.
+    
+    \item \textbf{Can Decision Trees handle Missing Values?}
+    \newline \textit{Answer:} Theoretically, yes (the CART algorithm supports "Surrogate Splits"). However, Scikit-Learn's implementation currently \textbf{does not} support missing values natively; you must impute them first.
+    
+    \item \textbf{Why don't we need Feature Scaling?}
+    \newline \textit{Answer:} Because Decision Trees use rule-based splits ($x > 50$). The scale of the variable (0-1 vs 0-1000) does not affect the optimal split point or the purity calculation, unlike Distance-based algorithms (KNN, SVM) or Gradient-based ones (Linear Regression).
+\end{enumerate}

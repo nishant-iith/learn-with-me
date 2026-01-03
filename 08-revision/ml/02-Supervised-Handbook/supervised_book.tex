@@ -1,0 +1,47 @@
+\documentclass[lang=en,11pt,fancy,color=blue]{elegantbook}
+
+\title{Supervised Machine Learning Handbook}
+\subtitle{From Intuition to Implementation}
+\author{Nishant \& The AI Team}
+\institute{IITH Placement Prep}
+\date{\today}
+\version{1.0}
+
+\usepackage{graphicx}
+\graphicspath{{assets/}}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\part{Linear Regression}
+\include{chapters/01_linear_regression/01_simple_linear_regression}
+\include{chapters/01_linear_regression/02_gradient_descent}
+\include{chapters/01_linear_regression/03_multiple_regression}
+\include{chapters/01_linear_regression/04_regularization}
+
+\part{Logistic Regression}
+\include{chapters/02_logistic_regression/05_intuition}
+\include{chapters/02_logistic_regression/06_math}
+\include{chapters/02_logistic_regression/07_metrics}
+\include{chapters/02_logistic_regression/08_multiclass}
+
+\part{Decision Trees}
+\include{chapters/03_decision_trees/09_intuition}
+\include{chapters/03_decision_trees/10_cart_algorithms}
+\include{chapters/03_decision_trees/11_pruning_practical}
+
+\part{Support Vector Machines}
+\include{chapters/04_svm/12_intuition}
+\include{chapters/04_svm/13_mathematics}
+
+\part{K-Nearest Neighbors}
+\include{chapters/05_knn/14_intuition}
+\include{chapters/05_knn/15_curse_of_dimensionality}
+
+\part{Naive Bayes}
+\include{chapters/06_naive_bayes/16_probability}
+\include{chapters/06_naive_bayes/17_algorithms}
+
+\end{document}

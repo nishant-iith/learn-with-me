@@ -1,0 +1,159 @@
+\chapter{Simple Linear Regression}
+
+\section{Introduction}
+
+Linear Regression is the "Hello World" of Machine Learning. It is a supervised learning algorithm used for regression problems where the goal is to predict a continuous output (dependent variable) based on one input feature (independent variable).
+
+\begin{definition}{Simple Linear Regression}
+    A statistical method that models the relationship between two variables by fitting a linear equation to observed data. One variable is considered to be an explanatory variable ($X$), and the other is considered to be a dependent variable ($Y$).
+\end{definition}
+
+\begin{example}
+    Imagine you want to predict a student's \textbf{Placement Package} based on their \textbf{CGPA}.
+    \begin{itemize}
+        \item \textbf{Input ($X$)}: CGPA (e.g., 8.5)
+        \item \textbf{Output ($Y$)}: Package (e.g., 12 LPA)
+        \item \textbf{Goal}: Find a rule that maps $X \rightarrow Y$.
+    \end{itemize}
+\end{example}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{linear_regression_hierarchy.png}
+    \caption{Types of Linear Regression}
+\end{figure}
+
+\section{Geometric Intuition}
+
+The core idea is simple: \textbf{Find the Best Fit Line} that passes through the data points with minimal error.
+
+The equation of a straight line is:
+\begin{equation}
+    y = mx + c
+\end{equation}
+In our context:
+\[ \text{Package} = m \times \text{CGPA} + c \]
+
+\begin{itemize}
+    \item $y$: Target (Dependent Variable).
+    \item $x$: Feature (Independent Variable).
+    \item $m$: \textbf{Slope} or Weightage. (How strongly does CGPA affect Package?)
+    \item $c$: \textbf{Intercept} or Bias. (What is the base package if CGPA is 0?)
+\end{itemize}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{linear_regression_fit_plot.png}
+    \caption{The Best Fit Line minimizing the distance to data points.}
+\end{figure}
+
+\section{Mathematical Formulation: Ordinary Least Squares (OLS)}
+
+How do we efficiently find the perfect $m$ and $c$? We need to define "best". The best line is the one that minimizes the total error between predicted values ($\hat{y}$) and actual values ($y$).
+
+\subsection{Defining the Loss Function}
+For a single data point $i$, the error (residual) is:
+\[ d_i = y_i - \hat{y}_i = y_i - (mx_i + c) \]
+
+We simply cannot sum $d_i$ because positive and negative errors would cancel out. Instead, we square them. This leads to the \textbf{Sum of Squared Errors (SSE)}, which serves as our Cost Function $J(m, c)$:
+
+\begin{equation}
+    J(m, c) = \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 = \sum_{i=1}^{n} (y_i - (mx_i + c))^2
+\end{equation}
+
+Our goal is to find $\hat{m}$ and $\hat{c}$ such that $J(m, c)$ is minimized.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{loss_function_minima.png}
+    \caption{The Loss Function $J$ is a convex bowl. The bottom is the global minima.}
+\end{figure}
+
+\subsection{Deriving the OLS Formula}
+To find the minimum, we take partial derivatives of $J$ with respect to $m$ and $c$ and set them to zero.
+
+\textbf{Step 1: Derivative w.r.t $c$}
+\[ \frac{\partial J}{\partial c} = -2 \sum_{i=1}^{n} (y_i - mx_i - c) = 0 \]
+\[ \sum y_i - m \sum x_i - nc = 0 \implies c = \bar{y} - m\bar{x} \]
+
+\textbf{Step 2: Derivative w.r.t $m$}
+\[ \frac{\partial J}{\partial m} = -2 \sum_{i=1}^{n} x_i(y_i - mx_i - c) = 0 \]
+Substituting $c = \bar{y} - m\bar{x}$ and solving for $m$ (after some algebra involving variance and covariance terms) yields:
+
+\begin{equation}
+    \hat{m} = \frac{\sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^{n} (x_i - \bar{x})^2}
+    \quad \text{and} \quad
+    \hat{c} = \bar{y} - \hat{m}\bar{x}
+\end{equation}
+
+This is called the \textbf{Closed-Form Solution}. It gives us the exact optimal values instantly using the dataset's statistics.
+
+\section{Evaluation Metrics}
+Once we have a line, how do we know it's "good"?
+
+\subsection{Mean Absolute Error (MAE)}
+\[ \text{MAE} = \frac{1}{n} \sum |y_i - \hat{y}_i| \]
+\begin{itemize}
+    \item \textbf{Pros}: Robust to outliers; outcome is in the same unit as $Y$.
+    \item \textbf{Cons}: Non-differentiable at 0 (V-shape).
+\end{itemize}
+
+\subsection{Mean Squared Error (MSE) \& RMSE}
+\[ \text{MSE} = \frac{1}{n} \sum (y_i - \hat{y}_i)^2 \quad ; \quad \text{RMSE} = \sqrt{\text{MSE}} \]
+\begin{itemize}
+    \item \textbf{Pros}: Differentiable (smooth cup shape), great for optimization.
+    \item \textbf{Cons}: Sensitive to outliers (squaring penalizes large errors heavily).
+\end{itemize}
+
+\subsection{R2 Score (Coefficient of Determination)}
+Tells us how much better our model is compared to a dumb "Mean Model" (predicting $\bar{y}$ for everyone).
+\begin{equation}
+    R^2 = 1 - \frac{SSR}{SSM} = 1 - \frac{\sum (y_i - \hat{y}_i)^2}{\sum (y_i - \bar{y})^2}
+\end{equation}
+\begin{itemize}
+    \item $R^2 = 1$: Perfect model.
+    \item $R^2 = 0$: Same as predicting the mean (useless basic model).
+    \item $R^2 < 0$: Worse than predicting the mean (terrible).
+\end{itemize}
+
+\section{Implementation from Scratch}
+
+\begin{lstlisting}[language=Python, caption=OLS Implementation in Python]
+class SimpleLinearRegression:
+    def __init__(self):
+        self.m = None
+        self.c = None
+        
+    def fit(self, X_train, y_train):
+        numerator = 0
+        denominator = 0
+        
+        x_mean = X_train.mean()
+        y_mean = y_train.mean()
+        
+        for i in range(X_train.shape[0]):
+            numerator += (X_train[i] - x_mean) * (y_train[i] - y_mean)
+            denominator += (X_train[i] - x_mean) ** 2
+            
+        self.m = numerator / denominator
+        self.c = y_mean - (self.m * x_mean)
+        
+    def predict(self, X_test):
+        return self.m * X_test + self.c
+\end{lstlisting}
+
+\section{Interview Questions}
+
+\begin{enumerate}
+    \item \textbf{What are the assumptions of Linear Regression?}
+    \newline \textit{Answer:} Linear relationship, Independence of errors, Homoscedasticity (constant variance), Normality of residuals, and No multicollinearity.
+    
+    \item \textbf{Why do we square the errors in OLS instead of using absolute values?}
+    \newline \textit{Answer:} Squaring penalizes larger errors more heavily, and more importantly, the squared function ($x^2$) is differentiable everywhere, making it suitable for optimization algorithms like Gradient Descent. Absolute value ($|x|$) is not differentiable at 0.
+    
+    \item \textbf{Can R2 score be negative?}
+    \newline \textit{Answer:} Yes. If the model fits the data worse than a simple horizontal line (mean), $R^2$ will be negative. This usually indicates a completely wrong model choice or extreme overfitting/underfitting.
+    
+    \item \textbf{What is the effect of outliers on OLS?}
+    \newline \textit{Answer:} Since OLS minimizes squared error, a single outlier with a large error contributes disproportionately to the loss. This can "pull" the best fit line towards the outlier, skewing the model.
+\end{enumerate}

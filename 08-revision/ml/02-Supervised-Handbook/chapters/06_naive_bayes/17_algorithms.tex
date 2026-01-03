@@ -1,0 +1,45 @@
+\chapter{Naive Bayes Algorithms}
+
+\section{The "Naive" Assumption}
+Calculating the full joint probability $P(x_1, x_2, ..., x_n | y)$ is computationally impossible because it requires a table for every possible combination of features.
+
+To solve this, we make a \textbf{Naive Assumption}:
+\begin{quote}
+    \textbf{All features are conditionally independent given the class likelihood.}
+\end{quote}
+\[ P(y|X) \propto P(y) \times \prod_{i=1}^{n} P(x_i | y) \]
+This turns a complex $O(2^n)$ problem into a simple $O(n)$ multiplication.
+
+\section{Laplace Smoothing}
+What if a word (e.g., "Covid") never appears in the "Spam" dataset during training?
+$P(\text{"Covid"} | \text{Spam}) = 0$.
+Since we multiply probabilities, the entire prediction becomes 0.
+
+\textbf{Solution}: Add a small constant $\alpha$ (usually 1) to all counts.
+\[ P(x_i|y) = \frac{\text{count}(x_i, y) + 1}{\text{count}(y) + N} \]
+This ensures no probability is ever exactly zero.
+
+\section{Variants of Naive Bayes}
+
+\subsection{1. Gaussian NB}
+Used for \textbf{Numerical Data} (e.g., Age, Salary).
+It assumes features follow a Normal (Bell Curve) distribution. It uses the PDF to calculate likelihood:
+\[ P(x|y) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp({-\frac{(x-\mu)^2}{2\sigma^2}}) \]
+
+\subsection{2. Multinomial NB}
+Used for \textbf{Discrete Counts} (e.g., Text Classification).
+It works well when features represent frequency counts (e.g., "Word Count" in an email).
+
+\subsection{3. Bernoulli NB}
+Used for \textbf{Binary Features} (e.g., True/False).
+It checks only for the \textit{presence} or \textit{absence} of a feature, ignoring frequency.
+
+\section{Interview Questions}
+
+\begin{enumerate}
+    \item \textbf{Why is Naive Bayes called "Naive"?}
+    \newline \textit{Answer:} Because it assumes features are independent, which is rarely true in the real world (e.g., "Salary" and "Age" are correlated). However, it works efficiently despite this flaw.
+    
+    \item \textbf{What is the Zero Frequency Problem?}
+    \newline \textit{Answer:} If a categorical value appears in the test set but not in the training set, its likelihood is 0, killing the entire prediction. Laplace Smoothing fixes this.
+\end{enumerate}

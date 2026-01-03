@@ -1,0 +1,3351 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.11.3)  3 JAN 2026 19:53
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**./supervised_book.tex
+(supervised_book.tex
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-01-04>
+(elegantbook.cls
+Document Class: elegantbook 2022/12/31 v4.5 ElegantBook document class
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.s
+ty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.s
+ty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+))
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count187
+) (C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/base\book.cls
+Document Class: book 2023/05/17 v1.4n Standard LaTeX document class
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/base\bk11.clo
+File: bk11.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count188
+\c@chapter=\count189
+\c@section=\count190
+\c@subsection=\count191
+\c@subsubsection=\count192
+\c@paragraph=\count193
+\c@subparagraph=\count194
+\c@figure=\count195
+\c@table=\count196
+\abovecaptionskip=\skip48
+\belowcaptionskip=\skip49
+\bibindent=\dimen140
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/setspace\setspace.sty
+Package: setspace 2022/12/04 v6.7b set line spacing
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquotes.sty
+Package: csquotes 2024-04-04 v5.2o context-sensitive quotations (JAW)
+\csq@reset=\count197
+\csq@gtype=\count198
+\csq@glevel=\count199
+\csq@qlevel=\count266
+\csq@maxlvl=\count267
+\csq@tshold=\count268
+\csq@ltx@everypar=\toks18
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquotes.def
+File: csquotes.def 2024-04-04 v5.2o csquotes generic definitions (JAW)
+)
+Package csquotes Info: Trying to load configuration file 'csquotes.cfg'...
+Package csquotes Info: ... configuration file loaded successfully.
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquotes.cfg
+File: csquotes.cfg 
+))
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+Package: hyperref 2023-11-26 v7.01g Hypertext links for LaTeX
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr
+.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefi
+nekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape
+.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcm
+ds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+))
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/letltxmacro\letltxmac
+ro.sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/auxhook\auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+Package: nameref 2023-11-26 v2.56 Cross-referencing by name of section
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gett
+itlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count269
+)
+\@linkdim=\dimen141
+\Hy@linkcounter=\count270
+\Hy@pagecounter=\count271
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+File: pd1enc.def 2023-11-26 v7.01g Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+\Hy@SavedSpaceFactor=\count272
+ (C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
+File: puenc.def 2023-11-26 v7.01g Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Hyper figures OFF on input line 4181.
+Package hyperref Info: Link nesting OFF on input line 4186.
+Package hyperref Info: Hyper index ON on input line 4189.
+Package hyperref Info: Plain pages OFF on input line 4196.
+Package hyperref Info: Backreferencing OFF on input line 4201.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4448.
+\c@Hy@tempcnt=\count273
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+\Urlmuskip=\muskip16
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4786.
+\XeTeXLinkMargin=\dimen142
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintca
+lc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count274
+\Field@Width=\dimen143
+\Fld@charsize=\dimen144
+Package hyperref Info: Hyper figures OFF on input line 6065.
+Package hyperref Info: Link nesting OFF on input line 6070.
+Package hyperref Info: Hyper index ON on input line 6073.
+Package hyperref Info: backreferencing OFF on input line 6080.
+Package hyperref Info: Link coloring OFF on input line 6085.
+Package hyperref Info: Link coloring with OCG OFF on input line 6090.
+Package hyperref Info: PDF/A mode OFF on input line 6095.
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/base\atbegshi-ltx.sty
+Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
+package with kernel methods
+)
+\Hy@abspage=\count275
+\c@Item=\count276
+\c@Hfootnote=\count277
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+File: hpdftex.def 2023-11-26 v7.01g Hyperref driver for pdfTeX
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/base\atveryend-ltx.st
+y
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
+kage
+with kernel methods
+)
+\Fld@listcount=\count278
+\c@bookmark@seq@number=\count279
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunf
+ilecheck.sty
+Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniqu
+ecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+84.
+)
+\Hy@SectionHShift=\skip50
+)
+Package hyperref Info: Option `breaklinks' set `true' on input line 125.
+Package hyperref Info: Option `unicode' set `true' on input line 125.
+Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 125.
+
+Package hyperref Info: Option `bookmarksopen' set `true' on input line 125.
+Package hyperref Info: Option `colorlinks' set `true' on input line 125.
+Package hyperref Info: Option `plainpages' set `false' on input line 125.
+Package hyperref Info: Option `linktocpage' set `true' on input line 125.
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+)
+\Gm@cnth=\count280
+\Gm@cntv=\count281
+\c@Gm@tempcnt=\count282
+\Gm@bindingoffset=\dimen145
+\Gm@wd@mp=\dimen146
+\Gm@odd@mp=\dimen147
+\Gm@even@mp=\dimen148
+\Gm@layoutwidth=\dimen149
+\Gm@layoutheight=\dimen150
+\Gm@layouthoffset=\dimen151
+\Gm@layoutvoffset=\dimen152
+\Gm@dimlist=\toks19
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg
+))
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/tools\indentfirst.sty
+Package: indentfirst 2023/07/02 v1.03 Indent first paragraph (DPC)
+) (C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/comment\comment.sty
+\CommentStream=\write3
+Excluding comment 'comment')
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/newtx\newtxtext.sty
+Package: newtxtext 2024/04/01 v1.744(Michael Sharpe) latex and unicode latex su
+pport for TeXGyreTermesX
+
+`newtxtext' v1.744, 2024/04/01 Text macros taking advantage of TeXGyre Termes a
+nd its extensions (msharpe)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/xpatch\xpatch.sty
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
+Package: expl3 2024-01-04 L3 programming layer (loader) 
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-p
+dftex.def
+File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count283
+\l__pdf_internal_box=\box51
+))
+Package: xpatch 2020/03/25 v0.3a Extending etoolbox patching commands
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xparse\xpa
+rse.sty
+Package: xparse 2023-10-10 L3 Experimental document command parser
+))
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+Package: xcolor 2023/11/15 v3.01 LaTeX color extensions (UK)
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cf
+g
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.d
+ef
+File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.lt
+x)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1350.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1354.
+Package xcolor Info: Model `RGB' extended on input line 1366.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1368.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1372.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
+Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.te
+x
+\XKV@toks=\toks20
+\XKV@tempa@toks=\toks21
+)
+\XKV@depth=\count284
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/base\textcomp.sty
+Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/xstring\xstring.sty
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/xstring\xstring.tex
+\xs_counta=\count285
+\xs_countb=\count286
+)
+Package: xstring 2023/08/22 v1.86 String manipulations (CT)
+) (C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
+Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/carlisle\scalefnt.sty
+)
+LaTeX Font Info:    Setting ntxLF sub-encoding to TS1/0 on input line 24.
+LaTeX Font Info:    Setting ntxTLF sub-encoding to TS1/0 on input line 24.
+LaTeX Font Info:    Setting ntxOsF sub-encoding to TS1/0 on input line 24.
+LaTeX Font Info:    Setting ntxTOsF sub-encoding to TS1/0 on input line 24.
+ (C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/binhex\binhex.tex)
+\ntx@tmpcnta=\count287
+\ntx@cnt=\count288
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/fontaxes\fontaxes.sty
+Package: fontaxes 2025-05-24 v2.0.1 Font selection axes (deprecated)
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/fontaxes\fontaxes-v1.
+sty
+Package: fontaxes 2020/07/21 v1.0e Font selection axes
+LaTeX Info: Redefining \upshape on input line 29.
+LaTeX Info: Redefining \itshape on input line 31.
+LaTeX Info: Redefining \slshape on input line 33.
+LaTeX Info: Redefining \swshape on input line 35.
+LaTeX Info: Redefining \scshape on input line 37.
+LaTeX Info: Redefining \sscshape on input line 39.
+LaTeX Info: Redefining \ulcshape on input line 41.
+LaTeX Info: Redefining \textsw on input line 47.
+LaTeX Info: Redefining \textssc on input line 48.
+LaTeX Info: Redefining \textulc on input line 49.
+))
+\tx@sixem=\dimen153
+\tx@y=\dimen154
+\tx@x=\dimen155
+\tx@tmpdima=\dimen156
+\tx@tmpdimb=\dimen157
+\tx@tmpdimc=\dimen158
+\tx@tmpdimd=\dimen159
+\tx@tmpdime=\dimen160
+\tx@tmpdimf=\dimen161
+\tx@dimA=\dimen162
+\tx@dimAA=\dimen163
+\tx@dimB=\dimen164
+\tx@dimBB=\dimen165
+\tx@dimC=\dimen166
+LaTeX Info: Redefining \oldstylenums on input line 902.
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\helvet.sty
+Package: helvet 2020/03/25 PSNFSS-v9.3 (WaS) 
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/anyfontsize\anyfontsi
+ze.sty
+Package: anyfontsize 2007/11/22 anyfontsize.sty by pts
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/colortbl\colortbl.sty
+Package: colortbl 2024/10/29 v1.0k Color table columns (DPC)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
+Package: array 2023/10/16 v2.5g Tabular extension package (FMi)
+\col@sep=\dimen167
+\ar@mcellbox=\box52
+\extrarowheight=\dimen168
+\NC@list=\toks22
+\extratabsurround=\skip51
+\backup@length=\skip52
+\ar@cellbox=\box53
+)
+\everycr=\toks23
+\minrowclearance=\skip53
+\rownum=\count289
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/mwe\mwe.sty
+Package: mwe 2018/03/30 v0.5 Package to support minimal working examples (MWE)
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics
+.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+)
+\Gin@req@height=\dimen169
+\Gin@req@width=\dimen170
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/lipsum\lipsum.sty
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/l3keys2e\l
+3keys2e.sty
+Package: l3keys2e 2023-10-10 LaTeX2e option processing using LaTeX3 keys
+)
+Package: lipsum 2021-09-20 v2.7 150 paragraphs of Lorem Ipsum dummy text
+\g__lipsum_par_int=\count290
+\l__lipsum_a_int=\count291
+\l__lipsum_b_int=\count292
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/lipsum\lipsum.ltd.tex
+))
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/blindtext\blindtext.s
+ty
+Package: blindtext 2012/01/06 V2.0 blindtext-Package
+ (C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/tools\xspace.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+)
+\c@blindtext=\count293
+\c@Blindtext=\count294
+\c@blind@countparstart=\count295
+\blind@countxx=\count296
+\blindtext@numBlindtext=\count297
+\blind@countyy=\count298
+\c@blindlist=\count299
+\c@blindlistlevel=\count300
+\c@blindlist@level=\count301
+\blind@listitem=\count302
+\c@blind@listcount=\count303
+\c@blind@levelcount=\count304
+\blind@mathformula=\count305
+\blind@Mathformula=\count306
+\c@blind@randomcount=\count307
+\c@blind@randommax=\count308
+\c@blind@pangramcount=\count309
+\c@blind@pangrammax=\count310
+)) (C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/tools\enumerate.st
+y
+Package: enumerate 2023/07/04 v3.00 enumerate extensions (DPC)
+\@enLab=\toks24
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/enumitem\enumitem.sty
+Package: enumitem 2025/02/06 v3.11 Customized lists
+\labelindent=\skip54
+\enit@outerparindent=\dimen171
+\enit@toks=\toks25
+\enit@inbox=\box54
+\enit@count@id=\count311
+\enitdp@description=\count312
+) (C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen172
+\captionmargin=\dimen173
+\caption@leftmargin=\dimen174
+\caption@rightmargin=\dimen175
+\caption@width=\dimen176
+\caption@indent=\dimen177
+\caption@parindent=\dimen178
+\caption@hangindent=\dimen179
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count313
+\c@continuedfloat=\count314
+Package caption Info: hyperref package is loaded.
+) (C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+Package: amsmath 2023/05/13 v2.17o AMS math features
+\@mathmargin=\skip55
+For additional information on amsmath, use the `?' option.
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+Package: amstext 2021/08/26 v2.01 AMS text
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks26
+\ex@=\dimen180
+))
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen181
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count315
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count316
+\leftroot@=\count317
+LaTeX Info: Redefining \overline on input line 399.
+LaTeX Info: Redefining \colon on input line 410.
+\classnum@=\count318
+\DOTSCASE@=\count319
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box55
+\strutbox@=\box56
+LaTeX Info: Redefining \big on input line 722.
+LaTeX Info: Redefining \Big on input line 723.
+LaTeX Info: Redefining \bigg on input line 724.
+LaTeX Info: Redefining \Bigg on input line 725.
+\big@size=\dimen182
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count320
+LaTeX Info: Redefining \bmod on input line 905.
+LaTeX Info: Redefining \pmod on input line 910.
+LaTeX Info: Redefining \smash on input line 940.
+LaTeX Info: Redefining \relbar on input line 970.
+LaTeX Info: Redefining \Relbar on input line 971.
+\c@MaxMatrixCols=\count321
+\dotsspace@=\muskip17
+\c@parentequation=\count322
+\dspbrk@lvl=\count323
+\tag@help=\toks27
+\row@=\count324
+\column@=\count325
+\maxfields@=\count326
+\andhelp@=\toks28
+\eqnshift@=\dimen183
+\alignsep@=\dimen184
+\tagshift@=\dimen185
+\tagwidth@=\dimen186
+\totwidth@=\dimen187
+\lineht@=\dimen188
+\@envbody=\toks29
+\multlinegap=\skip56
+\multlinetaggap=\skip57
+\mathdisplay@stack=\toks30
+LaTeX Info: Redefining \[ on input line 2953.
+LaTeX Info: Redefining \] on input line 2954.
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\mathrsfs.sty
+Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
+\symrsfs=\mathgroup4
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup5
+\symAMSb=\mathgroup6
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen189
+\lightrulewidth=\dimen190
+\cmidrulewidth=\dimen191
+\belowrulesep=\dimen192
+\belowbottomsep=\dimen193
+\aboverulesep=\dimen194
+\abovetopsep=\dimen195
+\cmidrulesep=\dimen196
+\cmidrulekern=\dimen197
+\defaultaddspace=\dimen198
+\@cmidla=\count327
+\@cmidlb=\count328
+\@aboverulesep=\dimen199
+\@belowrulesep=\dimen256
+\@thisruleclass=\count329
+\@lastruleclass=\count330
+\@thisrulewidth=\dimen257
+) (C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/tools\multicol.sty
+Package: multicol 2023/03/30 v1.9f multicolumn formatting (FMi)
+\c@tracingmulticols=\count331
+\mult@box=\box57
+\multicol@leftmargin=\dimen258
+\c@unbalance=\count332
+\c@collectmore=\count333
+\doublecol@number=\count334
+\multicoltolerance=\count335
+\multicolpretolerance=\count336
+\full@width=\dimen259
+\page@free=\dimen260
+\premulticols=\dimen261
+\postmulticols=\dimen262
+\multicolsep=\skip58
+\multicolbaselineskip=\skip59
+\partial@page=\box58
+\last@line=\box59
+\mc@boxedresult=\box60
+\maxbalancingoverflow=\dimen263
+\mult@rightbox=\box61
+\mult@grightbox=\box62
+\mult@firstbox=\box63
+\mult@gfirstbox=\box64
+\@tempa=\box65
+\@tempa=\box66
+\@tempa=\box67
+\@tempa=\box68
+\@tempa=\box69
+\@tempa=\box70
+\@tempa=\box71
+\@tempa=\box72
+\@tempa=\box73
+\@tempa=\box74
+\@tempa=\box75
+\@tempa=\box76
+\@tempa=\box77
+\@tempa=\box78
+\@tempa=\box79
+\@tempa=\box80
+\@tempa=\box81
+\@tempa=\box82
+\@tempa=\box83
+\@tempa=\box84
+\@tempa=\box85
+\@tempa=\box86
+\@tempa=\box87
+\@tempa=\box88
+\@tempa=\box89
+\@tempa=\box90
+\@tempa=\box91
+\@tempa=\box92
+\@tempa=\box93
+\@tempa=\box94
+\@tempa=\box95
+\@tempa=\box96
+\@tempa=\box97
+\@tempa=\box98
+\@tempa=\box99
+\@tempa=\box100
+\c@minrows=\count337
+\c@columnbadness=\count338
+\c@finalcolumnbadness=\count339
+\last@try=\dimen264
+\multicolovershoot=\dimen265
+\multicolundershoot=\dimen266
+\mult@nat@firstbox=\box101
+\colbreak@box=\box102
+\mc@col@check@num=\count340
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
+Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
+\multirow@colwidth=\skip60
+\multirow@cntb=\count341
+\multirow@dima=\skip61
+\bigstrutjot=\dimen267
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/fancyvrb\fancyvrb.sty
+Package: fancyvrb 2025/07/28 4.6 verbatim text (tvz,hv)
+\FV@CodeLineNo=\count342
+\FV@InFile=\read2
+\FV@TabBox=\box103
+\c@FancyVerbLine=\count343
+\FV@StepNumber=\count344
+\FV@OutFile=\write4
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/makecell\makecell.sty
+Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
+\rotheadsize=\dimen268
+\c@nlinenum=\count345
+\TeXr@lab=\toks31
+) (C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/hologo\hologo.sty
+Package: hologo 2025-11-11 v1.16 A logo collection with bookmark support (HO)
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/titlesec\titlesec.sty
+Package: titlesec 2025/01/04 v2.17 Sectioning titles
+\ttl@box=\box104
+\beforetitleunit=\skip62
+\aftertitleunit=\skip63
+\ttl@plus=\dimen269
+\ttl@minus=\dimen270
+\ttl@toksa=\toks32
+\titlewidth=\dimen271
+\titlewidthlast=\dimen272
+\titlewidthfirst=\dimen273
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/titlesec\titleps.sty)
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/appendix\appendix.sty
+Package: appendix 2020/02/08 v1.2c extra appendix facilities
+\c@@pps=\count346
+\c@@ppsavesec=\count347
+\c@@ppsaveapp=\count348
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblatex.sty
+Package: biblatex 2023/03/05 v3.19 programmable bibliographies (PK/MW)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/logreq\logreq.sty
+Package: logreq 2010/08/04 v1.0 xml request logger
+\lrq@indent=\count349
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/logreq\logreq.def
+File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
+))
+\c@tabx@nest=\count350
+\c@listtotal=\count351
+\c@listcount=\count352
+\c@liststart=\count353
+\c@liststop=\count354
+\c@citecount=\count355
+\c@citetotal=\count356
+\c@multicitecount=\count357
+\c@multicitetotal=\count358
+\c@instcount=\count359
+\c@maxnames=\count360
+\c@minnames=\count361
+\c@maxitems=\count362
+\c@minitems=\count363
+\c@citecounter=\count364
+\c@maxcitecounter=\count365
+\c@savedcitecounter=\count366
+\c@uniquelist=\count367
+\c@uniquename=\count368
+\c@refsection=\count369
+\c@refsegment=\count370
+\c@maxextratitle=\count371
+\c@maxextratitleyear=\count372
+\c@maxextraname=\count373
+\c@maxextradate=\count374
+\c@maxextraalpha=\count375
+\c@abbrvpenalty=\count376
+\c@highnamepenalty=\count377
+\c@lownamepenalty=\count378
+\c@maxparens=\count379
+\c@parenlevel=\count380
+\blx@tempcnta=\count381
+\blx@tempcntb=\count382
+\blx@tempcntc=\count383
+\c@blx@maxsection=\count384
+\blx@maxsegment@0=\count385
+\blx@notetype=\count386
+\blx@parenlevel@text=\count387
+\blx@parenlevel@foot=\count388
+\blx@sectionciteorder@0=\count389
+\blx@sectionciteorderinternal@0=\count390
+\blx@entrysetcounter=\count391
+\blx@biblioinstance=\count392
+\labelnumberwidth=\skip64
+\labelalphawidth=\skip65
+\biblabelsep=\skip66
+\bibitemsep=\skip67
+\bibnamesep=\skip68
+\bibinitsep=\skip69
+\bibparsep=\skip70
+\bibhang=\skip71
+\blx@bcfin=\read3
+\blx@bcfout=\write5
+\blx@langwohyphens=\language79
+\c@mincomprange=\count393
+\c@maxcomprange=\count394
+\c@mincompwidth=\count395
+Package biblatex Info: Trying to load biblatex default data model...
+Package biblatex Info: ... file 'blx-dm.def' found.
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-dm.def
+File: blx-dm.def 2023/03/05 v3.19 biblatex localization (PK/MW)
+)
+Package biblatex Info: Trying to load biblatex citestyle data model...
+Package biblatex Info: ... file 'numeric-comp.dbx' not found.
+Package biblatex Info: Trying to load biblatex bibstyle data model...
+Package biblatex Info: ... file 'numeric.dbx' not found.
+Package biblatex Info: Trying to load biblatex custom data model...
+Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
+\c@afterword=\count396
+\c@savedafterword=\count397
+\c@annotator=\count398
+\c@savedannotator=\count399
+\c@author=\count400
+\c@savedauthor=\count401
+\c@bookauthor=\count402
+\c@savedbookauthor=\count403
+\c@commentator=\count404
+\c@savedcommentator=\count405
+\c@editor=\count406
+\c@savededitor=\count407
+\c@editora=\count408
+\c@savededitora=\count409
+\c@editorb=\count410
+\c@savededitorb=\count411
+\c@editorc=\count412
+\c@savededitorc=\count413
+\c@foreword=\count414
+\c@savedforeword=\count415
+\c@holder=\count416
+\c@savedholder=\count417
+\c@introduction=\count418
+\c@savedintroduction=\count419
+\c@namea=\count420
+\c@savednamea=\count421
+\c@nameb=\count422
+\c@savednameb=\count423
+\c@namec=\count424
+\c@savednamec=\count425
+\c@translator=\count426
+\c@savedtranslator=\count427
+\c@shortauthor=\count428
+\c@savedshortauthor=\count429
+\c@shorteditor=\count430
+\c@savedshorteditor=\count431
+\c@labelname=\count432
+\c@savedlabelname=\count433
+\c@institution=\count434
+\c@savedinstitution=\count435
+\c@lista=\count436
+\c@savedlista=\count437
+\c@listb=\count438
+\c@savedlistb=\count439
+\c@listc=\count440
+\c@savedlistc=\count441
+\c@listd=\count442
+\c@savedlistd=\count443
+\c@liste=\count444
+\c@savedliste=\count445
+\c@listf=\count446
+\c@savedlistf=\count447
+\c@location=\count448
+\c@savedlocation=\count449
+\c@organization=\count450
+\c@savedorganization=\count451
+\c@origlocation=\count452
+\c@savedoriglocation=\count453
+\c@origpublisher=\count454
+\c@savedorigpublisher=\count455
+\c@publisher=\count456
+\c@savedpublisher=\count457
+\c@language=\count458
+\c@savedlanguage=\count459
+\c@origlanguage=\count460
+\c@savedoriglanguage=\count461
+\c@pageref=\count462
+\c@savedpageref=\count463
+\shorthandwidth=\skip72
+\shortjournalwidth=\skip73
+\shortserieswidth=\skip74
+\shorttitlewidth=\skip75
+\shortauthorwidth=\skip76
+\shorteditorwidth=\skip77
+\locallabelnumberwidth=\skip78
+\locallabelalphawidth=\skip79
+\localshorthandwidth=\skip80
+\localshortjournalwidth=\skip81
+\localshortserieswidth=\skip82
+\localshorttitlewidth=\skip83
+\localshortauthorwidth=\skip84
+\localshorteditorwidth=\skip85
+Package biblatex Info: Trying to load compatibility code...
+Package biblatex Info: ... file 'blx-compat.def' found.
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-compat.d
+ef
+File: blx-compat.def 2023/03/05 v3.19 biblatex compatibility (PK/MW)
+)
+Package biblatex Info: Trying to load generic definitions...
+Package biblatex Info: ... file 'biblatex.def' found.
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblatex.def
+File: biblatex.def 2023/03/05 v3.19 biblatex compatibility (PK/MW)
+\c@textcitecount=\count464
+\c@textcitetotal=\count465
+\c@textcitemaxnames=\count466
+\c@biburlbigbreakpenalty=\count467
+\c@biburlbreakpenalty=\count468
+\c@biburlnumpenalty=\count469
+\c@biburlucpenalty=\count470
+\c@biburllcpenalty=\count471
+\biburlbigskip=\muskip18
+\biburlnumskip=\muskip19
+\biburlucskip=\muskip20
+\biburllcskip=\muskip21
+\c@smartand=\count472
+)
+Package biblatex Info: Trying to load bibliography style 'numeric'...
+Package biblatex Info: ... file 'numeric.bbx' found.
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/bbx\numeric.
+bbx
+File: numeric.bbx 2023/03/05 v3.19 biblatex bibliography style (PK/MW)
+Package biblatex Info: Trying to load bibliography style 'standard'...
+Package biblatex Info: ... file 'standard.bbx' found.
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/bbx\standard
+.bbx
+File: standard.bbx 2023/03/05 v3.19 biblatex bibliography style (PK/MW)
+\c@bbx:relatedcount=\count473
+\c@bbx:relatedtotal=\count474
+))
+Package biblatex Info: Trying to load citation style 'numeric-comp'...
+Package biblatex Info: ... file 'numeric-comp.cbx' found.
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/cbx\numeric-
+comp.cbx
+File: numeric-comp.cbx 2023/03/05 v3.19 biblatex citation style (PK/MW)
+\c@cbx@tempcnta=\count475
+\c@cbx@tempcntb=\count476
+\c@cbx@tempcntc=\count477
+\c@cbx@tempcntd=\count478
+Package biblatex Info: Redefining '\cite'.
+Package biblatex Info: Redefining '\parencite'.
+Package biblatex Info: Redefining '\footcite'.
+Package biblatex Info: Redefining '\footcitetext'.
+Package biblatex Info: Redefining '\smartcite'.
+Package biblatex Info: Redefining '\supercite'.
+Package biblatex Info: Redefining '\textcite'.
+Package biblatex Info: Redefining '\textcites'.
+Package biblatex Info: Redefining '\cites'.
+Package biblatex Info: Redefining '\parencites'.
+Package biblatex Info: Redefining '\smartcites'.
+)
+Package biblatex Info: Trying to load configuration file...
+Package biblatex Info: ... file 'biblatex.cfg' found.
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblatex.cfg
+File: biblatex.cfg 
+)
+Package biblatex Info: Input encoding 'utf8' detected.
+Package biblatex Info: Document encoding is UTF8 ....
+Package biblatex Info: ... and expl3
+(biblatex)             2024-01-04 L3 programming layer (loader) 
+(biblatex)             is new enough (at least 2020/04/06),
+(biblatex)             setting 'casechanger=expl3'.
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-case-exp
+l3.sty
+Package: blx-case-expl3 2023/03/05 v3.19 expl3 case changing code for biblatex
+))
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlayer\tik
+z.sty
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgf.st
+y
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfrcs.
+sty
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfut
+il-common.tex
+\pgfutil@everybye=\toks33
+\pgfutil@tempdima=\dimen274
+\pgfutil@tempdimb=\dimen275
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfut
+il-latex.def
+\pgfutil@abb=\box105
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfrc
+s.code.tex
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.revision.te
+x)
+Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
+))
+Package: pgf 2023-01-15 v3.1.10 (3.1.10)
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgfcor
+e.sty
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlayer\pgfsy
+s.sty
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf
+sys.code.tex
+Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfke
+ys.code.tex
+\pgfkeys@pathtoks=\toks34
+\pgfkeys@temptoks=\toks35
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfke
+yslibraryfiltered.code.tex
+\pgfkeys@tmptoks=\toks36
+))
+\pgf@x=\dimen276
+\pgf@y=\dimen277
+\pgf@xa=\dimen278
+\pgf@ya=\dimen279
+\pgf@xb=\dimen280
+\pgf@yb=\dimen281
+\pgf@xc=\dimen282
+\pgf@yc=\dimen283
+\pgf@xd=\dimen284
+\pgf@yd=\dimen285
+\w@pgf@writea=\write6
+\r@pgf@reada=\read4
+\c@pgf@counta=\count479
+\c@pgf@countb=\count480
+\c@pgf@countc=\count481
+\c@pgf@countd=\count482
+\t@pgf@toka=\toks37
+\t@pgf@tokb=\toks38
+\t@pgf@tokc=\toks39
+\pgf@sys@id@count=\count483
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf
+.cfg
+File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
+)
+Driver file for pgf: pgfsys-pdftex.def
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf
+sys-pdftex.def
+File: pgfsys-pdftex.def 2023-01-15 v3.1.10 (3.1.10)
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf
+sys-common-pdf.def
+File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
+)))
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf
+syssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfsyssoftpath@smallbuffer@items=\count484
+\pgfsyssoftpath@bigbuffer@items=\count485
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf
+sysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+ore.code.tex
+Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.co
+de.tex
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathuti
+l.code.tex)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathpar
+ser.code.tex
+\pgfmath@dimen=\dimen286
+\pgfmath@count=\count486
+\pgfmath@box=\box106
+\pgfmath@toks=\toks40
+\pgfmath@stack@operand=\toks41
+\pgfmath@stack@operation=\toks42
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfun
+ctions.code.tex)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfun
+ctions.basic.code.tex)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfun
+ctions.trigonometric.code.tex)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfun
+ctions.random.code.tex)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfun
+ctions.comparison.code.tex)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfun
+ctions.base.code.tex)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfun
+ctions.round.code.tex)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfun
+ctions.misc.code.tex)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfun
+ctions.integerarithmetics.code.tex)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathcal
+c.code.tex)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathflo
+at.code.tex
+\c@pgfmathroundto@lastzeros=\count487
+))
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfint.cod
+e.tex)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+orepoints.code.tex
+File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@picminx=\dimen287
+\pgf@picmaxx=\dimen288
+\pgf@picminy=\dimen289
+\pgf@picmaxy=\dimen290
+\pgf@pathminx=\dimen291
+\pgf@pathmaxx=\dimen292
+\pgf@pathminy=\dimen293
+\pgf@pathmaxy=\dimen294
+\pgf@xx=\dimen295
+\pgf@xy=\dimen296
+\pgf@yx=\dimen297
+\pgf@yy=\dimen298
+\pgf@zx=\dimen299
+\pgf@zy=\dimen300
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+orepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@path@lastx=\dimen301
+\pgf@path@lasty=\dimen302
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+orepathusage.code.tex
+File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@shorten@end@additional=\dimen303
+\pgf@shorten@start@additional=\dimen304
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+orescopes.code.tex
+File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfpic=\box107
+\pgf@hbox=\box108
+\pgf@layerbox@main=\box109
+\pgf@picture@serial@count=\count488
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+oregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgflinewidth=\dimen305
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+oretransformations.code.tex
+File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@pt@x=\dimen306
+\pgf@pt@y=\dimen307
+\pgf@pt@temp=\dimen308
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+orequick.code.tex
+File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+oreobjects.code.tex
+File: pgfcoreobjects.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+orepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+orearrows.code.tex
+File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfarrowsep=\dimen309
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+oreshade.code.tex
+File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@max=\dimen310
+\pgf@sys@shading@range@num=\count489
+\pgf@shadingcount=\count490
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+oreimage.code.tex
+File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+oreexternal.code.tex
+File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfexternal@startupbox=\box110
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+orelayers.code.tex
+File: pgfcorelayers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+oretransparency.code.tex
+File: pgfcoretransparency.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+orepatterns.code.tex
+File: pgfcorepatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+orerdf.code.tex
+File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)))
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodu
+leshapes.code.tex
+File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfnodeparttextbox=\box111
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodu
+leplot.code.tex
+File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgf
+comp-version-0-65.sty
+Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
+\pgf@nodesepstart=\dimen311
+\pgf@nodesepend=\dimen312
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgf
+comp-version-1-18.sty
+Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
+))
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgffor.
+sty
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfkeys
+.sty
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfke
+ys.code.tex))
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/pgf/math\pgfmath.sty
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.co
+de.tex))
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgffo
+r.code.tex
+Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
+\pgffor@iter=\dimen313
+\pgffor@skip=\dimen314
+\pgffor@stack=\toks43
+\pgffor@toks=\toks44
+))
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/t
+ikz\tikz.code.tex
+Package: tikz 2023-01-15 v3.1.10 (3.1.10)
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgfli
+braryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@plot@mark@count=\count491
+\pgfplotmarksize=\dimen315
+)
+\tikz@lastx=\dimen316
+\tikz@lasty=\dimen317
+\tikz@lastxsaved=\dimen318
+\tikz@lastysaved=\dimen319
+\tikz@lastmovetox=\dimen320
+\tikz@lastmovetoy=\dimen321
+\tikzleveldistance=\dimen322
+\tikzsiblingdistance=\dimen323
+\tikz@figbox=\box112
+\tikz@figbox@bg=\box113
+\tikz@tempbox=\box114
+\tikz@tempbox@bg=\box115
+\tikztreelevel=\count492
+\tikznumberofchildren=\count493
+\tikznumberofcurrentchild=\count494
+\tikz@fig@count=\count495
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodu
+lematrix.code.tex
+File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfmatrixcurrentrow=\count496
+\pgfmatrixcurrentcolumn=\count497
+\pgf@matrix@numberofcolumns=\count498
+)
+\tikz@expandcount=\count499
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/t
+ikz/libraries\tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)))
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/t
+ikz/libraries\tikzlibrarybackgrounds.code.tex
+File: tikzlibrarybackgrounds.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@layerbox@background=\box116
+\pgf@layerboxsaved@background=\box117
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/t
+ikz/libraries\tikzlibrarycalc.code.tex
+File: tikzlibrarycalc.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/t
+ikz/libraries\tikzlibraryshadows.code.tex
+File: tikzlibraryshadows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/t
+ikz/libraries\tikzlibraryfadings.code.tex
+File: tikzlibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgfli
+braryfadings.code.tex
+File: pgflibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)))
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/t
+ikz/libraries\tikzlibrarypositioning.code.tex
+File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/t
+ikz/libraries\tikzlibraryfit.code.tex
+File: tikzlibraryfit.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/apptools\apptools.sty
+Package: apptools 2012/11/28 v1.0 Tools for customizing appendices
+) (C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\pifont.sty
+Package: pifont 2020/03/25 PSNFSS-v9.3 Pi font support (SPQR) 
+LaTeX Font Info:    Trying to load font information for U+pzd on input line 63.
+
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\upzd.fd
+File: upzd.fd 2001/06/04 font definitions for U/pzd.
+)
+LaTeX Font Info:    Trying to load font information for U+psy on input line 64.
+
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\upsy.fd
+File: upsy.fd 2001/06/04 font definitions for U/psy.
+))
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/manfnt\manfnt.sty
+Package: manfnt 1999/07/010.2LaTeX2e manfnt package
+\dbend@height=\skip86
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/bbding\bbding.sty
+Package: bbding 1999/04/15 v1.01 Dingbats symbols
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcolorbox.s
+ty
+Package: tcolorbox 2024/01/10 version 6.2.0 text color boxes
+ (C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/tools\verbatim.sty
+Package: verbatim 2023-11-06 v1.5v LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks45
+\verbatim@line=\toks46
+\verbatim@in@stream=\read5
+) (C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/environ\environ.sty
+Package: environ 2014/05/04 v0.3 A new way to define environments
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/trimspaces\trimspaces
+.sty
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+))
+\tcb@titlebox=\box118
+\tcb@upperbox=\box119
+\tcb@lowerbox=\box120
+\tcb@phantombox=\box121
+\c@tcbbreakpart=\count500
+\c@tcblayer=\count501
+\c@tcolorbox@number=\count502
+\l__tcobox_tmpa_box=\box122
+\l__tcobox_tmpa_dim=\dimen324
+\tcb@temp=\box123
+\tcb@temp=\box124
+\tcb@temp=\box125
+\tcb@temp=\box126
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbraster.c
+ode.tex
+Library (tcolorbox): 'tcbraster.code.tex' version '6.2.0'
+\c@tcbrastercolumn=\count503
+\c@tcbrasterrow=\count504
+\c@tcbrasternum=\count505
+\c@tcbraster=\count506
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbskins.co
+de.tex
+Library (tcolorbox): 'tcbskins.code.tex' version '6.2.0'
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/tikzfill\tikzfill.ima
+ge.sty
+Package: tikzfill.image 2023/08/08 v1.0.1 Image filling library for TikZ
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/tikzfill\tikzfill-com
+mon.sty
+Package: tikzfill-common 2023/08/08 v1.0.1 Auxiliary code for tikzfill
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/tikzfill\tikzlibraryf
+ill.image.code.tex
+File: tikzlibraryfill.image.code.tex 2023/08/08 v1.0.1 Image filling library
+\l__tikzfill_img_box=\box127
+))
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbskinsjig
+saw.code.tex
+Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '6.2.0'
+))
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbbreakabl
+e.code.tex
+Library (tcolorbox): 'tcbbreakable.code.tex' version '6.2.0'
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/pdfcol\pdfcol.sty
+Package: pdfcol 2022-09-21 v1.7 Handle new color stacks for pdfTeX (HO)
+)
+Package pdfcol Info: New color stack `tcb@breakable' = 1 on input line 23.
+\tcb@testbox=\box128
+\tcb@totalupperbox=\box129
+\tcb@totallowerbox=\box130
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbhooks.co
+de.tex
+Library (tcolorbox): 'tcbhooks.code.tex' version '6.2.0'
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbtheorems
+.code.tex
+Library (tcolorbox): 'tcbtheorems.code.tex' version '6.2.0'
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbfitting.
+code.tex
+Library (tcolorbox): 'tcbfitting.code.tex' version '6.2.0'
+\tcbfitdim=\dimen325
+\tcb@lowerfitdim=\dimen326
+\tcb@upperfitdim=\dimen327
+\tcb@cur@hbadness=\count507
+))
+\c@tcb@cnt@theorem=\count508
+\c@tcb@cnt@definition=\count509
+\c@tcb@cnt@postulate=\count510
+\c@tcb@cnt@axiom=\count511
+\c@tcb@cnt@corollary=\count512
+\c@tcb@cnt@lemma=\count513
+\c@tcb@cnt@proposition=\count514
+\c@exam=\count515
+\c@exer=\count516
+\c@prob=\count517
+ (C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/adforn\adforn.sty
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/svn-prov\svn-prov.sty
+Package: svn-prov 2010/04/24 v3.1862 Package Date/Version from SVN Keywords
+)
+Package: adforn 2025/03/31 v1.3 (SVN Rev: 10986)
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty
+Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
+
+\f@nch@headwidth=\skip87
+\f@nch@offset@elh=\skip88
+\f@nch@offset@erh=\skip89
+\f@nch@offset@olh=\skip90
+\f@nch@offset@orh=\skip91
+\f@nch@offset@elf=\skip92
+\f@nch@offset@erf=\skip93
+\f@nch@offset@olf=\skip94
+\f@nch@offset@orf=\skip95
+\f@nch@height=\skip96
+\f@nch@footalignment=\skip97
+\f@nch@widthL=\skip98
+\f@nch@widthC=\skip99
+\f@nch@widthR=\skip100
+\@temptokenb=\toks47
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
+\lst@mode=\count518
+\lst@gtempboxa=\box131
+\lst@token=\toks48
+\lst@length=\count519
+\lst@currlwidth=\dimen328
+\lst@column=\count520
+\lst@pos=\count521
+\lst@lostspace=\dimen329
+\lst@width=\dimen330
+\lst@newlines=\count522
+\lst@lineno=\count523
+\lst@maxwidth=\dimen331
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
+File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
+\c@lstnumber=\count524
+\lst@skipnumbers=\count525
+\lst@framebox=\box132
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg
+File: listings.cfg 2023/02/27 1.9 listings configuration
+))
+Package: listings 2023/02/27 1.9 (Carsten Heinz)
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang2.sty
+File: lstlang2.sty 2023/02/27 1.9 listings language file
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang3.sty
+File: lstlang3.sty 2023/02/27 1.9 listings language file
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang2.sty
+File: lstlang2.sty 2023/02/27 1.9 listings language file
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang3.sty
+File: lstlang3.sty 2023/02/27 1.9 listings language file
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang2.sty
+File: lstlang2.sty 2023/02/27 1.9 listings language file
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang3.sty
+File: lstlang3.sty 2023/02/27 1.9 listings language file
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
+File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
+) (C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/tools\bm.sty
+Package: bm 2023/07/08 v1.2f Bold Symbol Support (DPC/FMi)
+Package bm Info: No bold for \OMX/cmex/m/n, using \pmb.
+Package bm Info: No bold for \U/rsfs/m/n, using \pmb.
+Package bm Info: No bold for \U/msa/m/n, using \pmb.
+Package bm Info: No bold for \U/msb/m/n, using \pmb.
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty
+Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count526
+\calc@Bcount=\count527
+\calc@Adimen=\dimen332
+\calc@Bdimen=\dimen333
+\calc@Askip=\skip101
+\calc@Bskip=\skip102
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count528
+\calc@Cskip=\skip103
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/tocloft\tocloft.sty
+Package: tocloft 2017/08/31 v2.3i parameterised ToC, etc., typesetting
+Package tocloft Info: The document has chapter divisions on input line 51.
+\cftparskip=\skip104
+\cftbeforetoctitleskip=\skip105
+\cftaftertoctitleskip=\skip106
+\cftbeforepartskip=\skip107
+\cftpartnumwidth=\skip108
+\cftpartindent=\skip109
+\cftbeforechapskip=\skip110
+\cftchapindent=\skip111
+\cftchapnumwidth=\skip112
+\cftbeforesecskip=\skip113
+\cftsecindent=\skip114
+\cftsecnumwidth=\skip115
+\cftbeforesubsecskip=\skip116
+\cftsubsecindent=\skip117
+\cftsubsecnumwidth=\skip118
+\cftbeforesubsubsecskip=\skip119
+\cftsubsubsecindent=\skip120
+\cftsubsubsecnumwidth=\skip121
+\cftbeforeparaskip=\skip122
+\cftparaindent=\skip123
+\cftparanumwidth=\skip124
+\cftbeforesubparaskip=\skip125
+\cftsubparaindent=\skip126
+\cftsubparanumwidth=\skip127
+\cftbeforeloftitleskip=\skip128
+\cftafterloftitleskip=\skip129
+\cftbeforefigskip=\skip130
+\cftfigindent=\skip131
+\cftfignumwidth=\skip132
+\c@lofdepth=\count529
+\c@lotdepth=\count530
+\cftbeforelottitleskip=\skip133
+\cftafterlottitleskip=\skip134
+\cftbeforetabskip=\skip135
+\cfttabindent=\skip136
+\cfttabnumwidth=\skip137
+))
+Package csquotes Info: Checking for multilingual support...
+Package csquotes Info: ... none found.
+LaTeX Font Info:    Trying to load font information for OT1+ntxtlf on input lin
+e 13.
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/newtx\ot1ntxtlf.fd
+File: ot1ntxtlf.fd 2021/05/24 v1.0 font definition file for OT1/ntx/tlf
+)
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
+(Font)              scaled to size 10.95pt on input line 13.
+
+(supervised_book.aux
+(chapters/01_linear_regression/01_simple_linear_regression.aux)
+(chapters/01_linear_regression/02_gradient_descent.aux)
+(chapters/01_linear_regression/03_multiple_regression.aux)
+(chapters/01_linear_regression/04_regularization.aux)
+(chapters/02_logistic_regression/05_intuition.aux)
+(chapters/02_logistic_regression/06_math.aux)
+(chapters/02_logistic_regression/07_metrics.aux)
+(chapters/02_logistic_regression/08_multiclass.aux)
+(chapters/03_decision_trees/09_intuition.aux)
+(chapters/03_decision_trees/10_cart_algorithms.aux)
+(chapters/03_decision_trees/11_pruning_practical.aux)
+(chapters/04_svm/12_intuition.aux) (chapters/04_svm/13_mathematics.aux)
+(chapters/05_knn/14_intuition.aux)
+(chapters/05_knn/15_curse_of_dimensionality.aux)
+(chapters/06_naive_bayes/16_probability.aux)
+(chapters/06_naive_bayes/17_algorithms.aux))
+\openout1 = `supervised_book.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+Package hyperref Info: Link coloring ON on input line 13.
+ (supervised_book.out)
+(supervised_book.out)
+\@outlinefile=\write7
+\openout7 = `supervised_book.out'.
+
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(56.9055pt, 483.69687pt, 56.9055pt)
+* v-part:(T,H,B)=(72.26997pt, 700.5069pt, 72.26997pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=483.69687pt
+* \textheight=700.5069pt
+* \oddsidemargin=-15.36449pt
+* \evensidemargin=-15.36449pt
+* \topmargin=-73.12352pt
+* \headheight=61.74242pt
+* \headsep=11.38109pt
+* \topskip=11.0pt
+* \footskip=34.1433pt
+* \marginparwidth=53.0pt
+* \marginparsep=7.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.
+mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count531
+\scratchdimen=\dimen334
+\scratchbox=\box133
+\nofMPsegments=\count532
+\nofMParguments=\count533
+\everyMPshowfont=\toks49
+\MPscratchCnt=\count534
+\MPscratchDim=\dimen335
+\MPnumerator=\count535
+\makeMPintoPDFobject=\count536
+\everyMPtoPDFconversion=\toks50
+)
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf
+-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/grfext\grfext.sty
+Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 504.
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys
+.cfg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+))
+\c@mv@tabular=\count537
+\c@mv@boldtabular=\count538
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: listings package is loaded.
+Package caption Info: End \AtBeginDocument code.
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/footmisc\footmisc.sty
+Package: footmisc 2025/05/09 v7.0b a miscellany of footnote facilities
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/footmisc\footmisc-202
+2-02-14.sty
+Package: footmisc 2024/12/24 v6.0g a miscellany of footnote facilities
+\FN@temptoken=\toks51
+\footnotemargin=\dimen336
+\@outputbox@depth=\dimen337
+Package footmisc Info: Declaring symbol style bringhurst on input line 699.
+Package footmisc Info: Declaring symbol style chicago on input line 707.
+Package footmisc Info: Declaring symbol style wiley on input line 716.
+Package footmisc Info: Declaring symbol style lamport-robust on input line 727.
+
+Package footmisc Info: Declaring symbol style lamport* on input line 747.
+Package footmisc Info: Declaring symbol style lamport*-robust on input line 768
+.
+))
+Package biblatex Info: Trying to load language 'english'...
+Package biblatex Info: ... file 'english.lbx' found.
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/lbx\english.
+lbx
+File: english.lbx 2023/03/05 v3.19 biblatex localization (PK/MW)
+)
+Package biblatex Info: Input encoding 'utf8' detected.
+Package biblatex Info: Automatic encoding selection.
+(biblatex)             Assuming data encoding 'utf8'.
+\openout5 = `supervised_book.bcf'.
+
+Package biblatex Info: Trying to load bibliographic data...
+Package biblatex Info: ... file 'supervised_book.bbl' not found.
+
+No file supervised_book.bbl.
+Package biblatex Info: Reference section=0 on input line 13.
+Package biblatex Info: Reference segment=0 on input line 13.
+\c@lstlisting=\count539
+Package hyperref Info: Option `pageanchor' set `false' on input line 15.
+*geometry* verbose mode - [ newgeometry ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(0.0pt, 597.50787pt, 0.0pt)
+* v-part:(T,H,B)=(0.0pt, 845.04684pt, 0.0pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=597.50787pt
+* \textheight=845.04684pt
+* \oddsidemargin=-72.26999pt
+* \evensidemargin=-72.26999pt
+* \topmargin=-145.3935pt
+* \headheight=61.74242pt
+* \headsep=11.38109pt
+* \topskip=11.0pt
+* \footskip=34.1433pt
+* \marginparwidth=53.0pt
+* \marginparsep=7.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+<example-image.pdf, id=486, 321.2pt x 240.9pt>
+File: example-image.pdf Graphic file (type pdf)
+<use example-image.pdf>
+Package pdftex.def Info: example-image.pdf  used on input line 15.
+(pdftex.def)             Requested size: 597.50787pt x 448.14655pt.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
+(Font)              scaled to size 10.95pt on input line 15.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
+(Font)              scaled to size 24.88pt on input line 15.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 15
+.
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\ursfs.fd
+File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
+)
+LaTeX Font Info:    Trying to load font information for U+msa on input line 15.
+
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 15.
+
+
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
+(Font)              scaled to size 14.4pt on input line 15.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/it' will be
+(Font)              scaled to size 10.95pt on input line 15.
+
+[1
+
+
+
+{C:/Users/Nishant/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/Ni
+shant/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc} <C:/
+Users/Nishant/AppData/Local/Programs/MiKTeX/tex/latex/mwe/example-image.pdf>]
+LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
+(Font)              scaled to size 17.28pt on input line 16.
+(supervised_book.toc
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
+(Font)              scaled to size 12.0pt on input line 1.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
+(Font)              scaled to size 12.0pt on input line 1.
+ [1
+
+
+]
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.52 ...ork, type X <return> to quit.}}{chapter.6}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.53 ...k, type X <return> to quit.}}{section.6.1}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.54 ...k, type X <return> to quit.}}{section.6.2}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.55 ...k, type X <return> to quit.}}{section.6.3}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.56 ...k, type X <return> to quit.}}{section.6.4}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.57 ...k, type X <return> to quit.}}{section.6.5}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.58 ...ork, type X <return> to quit.}}{chapter.7}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.59 ...k, type X <return> to quit.}}{section.7.1}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.60 ...k, type X <return> to quit.}}{section.7.2}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.61 ...k, type X <return> to quit.}}{section.7.3}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.64 ...k, type X <return> to quit.}}{section.7.4}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.65 ...k, type X <return> to quit.}}{section.7.5}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.66 ...k, type X <return> to quit.}}{section.7.6}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.67 ...k, type X <return> to quit.}}{section.7.7}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.68 ...ork, type X <return> to quit.}}{chapter.8}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.69 ...k, type X <return> to quit.}}{section.8.1}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.72 ...k, type X <return> to quit.}}{section.8.2}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.73 ...k, type X <return> to quit.}}{section.8.3}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.74 ...k, type X <return> to quit.}}{section.8.4}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.75 ...k, type X <return> to quit.}}{section.8.5}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.76 ...t work, type X <return> to quit.}}{part.3}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.77 ...ork, type X <return> to quit.}}{chapter.9}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.78 ...k, type X <return> to quit.}}{section.9.1}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.79 ...k, type X <return> to quit.}}{section.9.2}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.80 ...k, type X <return> to quit.}}{section.9.3}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.81 ...k, type X <return> to quit.}}{section.9.4}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.82 ...k, type X <return> to quit.}}{section.9.5}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.83 ...k, type X <return> to quit.}}{section.9.6}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.84 ...rk, type X <return> to quit.}}{chapter.10}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.85 ..., type X <return> to quit.}}{section.10.1}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.88 ..., type X <return> to quit.}}{section.10.2}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.89 ..., type X <return> to quit.}}{section.10.3}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.92 ..., type X <return> to quit.}}{section.10.4}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.93 ...rk, type X <return> to quit.}}{chapter.11}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
+(Font)              scaled to size 10.0pt on input line 94.
+[2]
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.94 ..., type X <return> to quit.}}{section.11.1}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.95 ..., type X <return> to quit.}}{section.11.2}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.96 ..., type X <return> to quit.}}{section.11.3}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.97 ..., type X <return> to quit.}}{section.11.4}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.98 ..., type X <return> to quit.}}{section.11.5}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.99 ...t work, type X <return> to quit.}}{part.4}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.100 ...k, type X <return> to quit.}}{chapter.12}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.101 ... type X <return> to quit.}}{section.12.1}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.102 ... type X <return> to quit.}}{section.12.2}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.103 ... type X <return> to quit.}}{section.12.3}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.107 ... type X <return> to quit.}}{section.12.4}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.108 ... type X <return> to quit.}}{section.12.5}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.109 ...k, type X <return> to quit.}}{chapter.13}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.110 ... type X <return> to quit.}}{section.13.1}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.113 ... type X <return> to quit.}}{section.13.2}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.116 ... type X <return> to quit.}}{section.13.3}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.117 ... type X <return> to quit.}}{section.13.4}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.119 ... type X <return> to quit.}}{section.13.5}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.120 ... work, type X <return> to quit.}}{part.5}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.121 ...k, type X <return> to quit.}}{chapter.14}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.122 ... type X <return> to quit.}}{section.14.1}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.123 ... type X <return> to quit.}}{section.14.2}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.125 ... type X <return> to quit.}}{section.14.3}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.128 ... type X <return> to quit.}}{section.14.4}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.129 ... type X <return> to quit.}}{section.14.5}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.130 ...k, type X <return> to quit.}}{chapter.15}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.131 ... type X <return> to quit.}}{section.15.1}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.132 ... type X <return> to quit.}}{section.15.2}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.133 ... type X <return> to quit.}}{section.15.3}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.134 ... type X <return> to quit.}}{section.15.4}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.135 ... type X <return> to quit.}}{section.15.5}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.136 ... type X <return> to quit.}}{section.15.6}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.137 ... work, type X <return> to quit.}}{part.6}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.138 ...k, type X <return> to quit.}}{chapter.16}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.139 ... type X <return> to quit.}}{section.16.1}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+[3]
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.140 ... type X <return> to quit.}}{section.16.2}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.142 ... type X <return> to quit.}}{section.16.3}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.143 ...k, type X <return> to quit.}}{chapter.17}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.144 ... type X <return> to quit.}}{section.17.1}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.145 ... type X <return> to quit.}}{section.17.2}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.146 ... type X <return> to quit.}}{section.17.3}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.150 ... type X <return> to quit.}}{section.17.4}
+                                                  %
+You've lost some text. Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+)
+\tf@toc=\write8
+\openout8 = `supervised_book.toc'.
+
+ [4]
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
+(Font)              scaled to size 20.74pt on input line 18.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
+(Font)              scaled to size 20.74pt on input line 18.
+ [5
+
+]
+\openout2 = `chapters/01_linear_regression/01_simple_linear_regression.aux'.
+
+ (chapters/01_linear_regression/01_simple_linear_regression.tex
+Chapter 1.
+<assets/linear_regression_hierarchy.png, id=746, 246.6816pt x 246.6816pt>
+File: assets/linear_regression_hierarchy.png Graphic file (type png)
+<use assets/linear_regression_hierarchy.png>
+Package pdftex.def Info: assets/linear_regression_hierarchy.png  used on input 
+line 22.
+(pdftex.def)             Requested size: 386.95897pt x 386.99734pt.
+[6
+
+
+ <./assets/linear_regression_hierarchy.png>]
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
+(Font)              scaled to size 8.0pt on input line 35.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
+(Font)              scaled to size 6.0pt on input line 35.
+<assets/linear_regression_fit_plot.png, id=756, 246.6816pt x 246.6816pt>
+File: assets/linear_regression_fit_plot.png Graphic file (type png)
+<use assets/linear_regression_fit_plot.png>
+Package pdftex.def Info: assets/linear_regression_fit_plot.png  used on input l
+ine 46.
+(pdftex.def)             Requested size: 338.58632pt x 338.61798pt.
+ [7 <./assets/linear_regression_fit_plot.png>]
+<assets/loss_function_minima.png, id=764, 246.6816pt x 246.6816pt>
+File: assets/loss_function_minima.png Graphic file (type png)
+<use assets/loss_function_minima.png>
+Package pdftex.def Info: assets/loss_function_minima.png  used on input line 68
+.
+(pdftex.def)             Requested size: 290.22107pt x 290.2499pt.
+ [8 <./assets/loss_function_minima.png>]
+(C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
+)
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 121.
+LaTeX Font Info:    Trying to load font information for OT1+lmtt on input line 
+121.
+ (C:\Users\Nishant\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmtt.fd
+File: ot1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+[9{C:/Users/Nishant/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rmtt.en
+c}]) [10]
+\openout2 = `chapters/01_linear_regression/02_gradient_descent.aux'.
+
+ (chapters/01_linear_regression/02_gradient_descent.tex
+Chapter 2.
+<assets/gradient_descent_bowl.png, id=812, 246.6816pt x 246.6816pt>
+File: assets/gradient_descent_bowl.png Graphic file (type png)
+<use assets/gradient_descent_bowl.png>
+Package pdftex.def Info: assets/gradient_descent_bowl.png  used on input line 2
+4.
+(pdftex.def)             Requested size: 290.22107pt x 290.2499pt.
+[11
+
+
+
+
+ <./assets/gradient_descent_bowl.png>]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 47.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\alpha' on input line 47.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 47.
+
+<assets/batch_vs_sgd_contour.png, id=820, 246.6816pt x 246.6816pt>
+File: assets/batch_vs_sgd_contour.png Graphic file (type png)
+<use assets/batch_vs_sgd_contour.png>
+Package pdftex.def Info: assets/batch_vs_sgd_contour.png  used on input line 75
+.
+(pdftex.def)             Requested size: 338.58632pt x 338.61798pt.
+[12] [13 <./assets/batch_vs_sgd_contour.png>] [14]) [15]
+\openout2 = `chapters/01_linear_regression/03_multiple_regression.aux'.
+
+
+(chapters/01_linear_regression/03_multiple_regression.tex
+Chapter 3.
+<assets/multiple_lr_plane.png, id=869, 246.6816pt x 246.6816pt>
+File: assets/multiple_lr_plane.png Graphic file (type png)
+<use assets/multiple_lr_plane.png>
+Package pdftex.def Info: assets/multiple_lr_plane.png  used on input line 23.
+(pdftex.def)             Requested size: 338.58632pt x 338.61798pt.
+[16
+
+
+
+
+ <./assets/multiple_lr_plane.png>]
+<assets/polynomial_degrees_comparison.png, id=875, 246.6816pt x 246.6816pt>
+File: assets/polynomial_degrees_comparison.png Graphic file (type png)
+<use assets/polynomial_degrees_comparison.png>
+Package pdftex.def Info: assets/polynomial_degrees_comparison.png  used on inpu
+t line 73.
+(pdftex.def)             Requested size: 386.95897pt x 386.99734pt.
+ [17] [18 <./assets/polynomial_degrees_comparison.png>]) [19]
+\openout2 = `chapters/01_linear_regression/04_regularization.aux'.
+
+ (chapters/01_linear_regression/04_regularization.tex
+Chapter 4.
+<assets/bias_variance_tradeoff.png, id=910, 246.6816pt x 246.6816pt>
+File: assets/bias_variance_tradeoff.png Graphic file (type png)
+<use assets/bias_variance_tradeoff.png>
+Package pdftex.def Info: assets/bias_variance_tradeoff.png  used on input line 
+12.
+(pdftex.def)             Requested size: 435.32422pt x 435.36543pt.
+[20
+
+
+
+
+ <./assets/bias_variance_tradeoff.png>]
+<assets/ridge_lambda_error_curve.png, id=915, 246.6816pt x 246.6816pt>
+File: assets/ridge_lambda_error_curve.png Graphic file (type png)
+<use assets/ridge_lambda_error_curve.png>
+Package pdftex.def Info: assets/ridge_lambda_error_curve.png  used on input lin
+e 35.
+(pdftex.def)             Requested size: 290.22107pt x 290.2499pt.
+<assets/lasso_vs_ridge_coef_behavior.png, id=916, 246.6816pt x 246.6816pt>
+File: assets/lasso_vs_ridge_coef_behavior.png Graphic file (type png)
+<use assets/lasso_vs_ridge_coef_behavior.png>
+Package pdftex.def Info: assets/lasso_vs_ridge_coef_behavior.png  used on input
+ line 53.
+(pdftex.def)             Requested size: 338.58632pt x 338.61798pt.
+ [21 <./assets/ridge_lambda_error_curve.png>] [22 <./assets/lasso_vs_ridge_coef
+_behavior.png>] [23]) [24] [25
+
+
+
+]
+\openout2 = `chapters/02_logistic_regression/05_intuition.aux'.
+
+
+(chapters/02_logistic_regression/05_intuition.tex
+Chapter 5.
+<assets/log_reg_linear_boundary.png, id=960, 246.6816pt x 246.6816pt>
+File: assets/log_reg_linear_boundary.png Graphic file (type png)
+<use assets/log_reg_linear_boundary.png>
+Package pdftex.def Info: assets/log_reg_linear_boundary.png  used on input line
+ 26.
+(pdftex.def)             Requested size: 290.22107pt x 290.2499pt.
+[26
+
+
+ <./assets/log_reg_linear_boundary.png>]
+<assets/perceptron_push_pull_vectors.png, id=966, 246.6816pt x 246.6816pt>
+File: assets/perceptron_push_pull_vectors.png Graphic file (type png)
+<use assets/perceptron_push_pull_vectors.png>
+Package pdftex.def Info: assets/perceptron_push_pull_vectors.png  used on input
+ line 51.
+(pdftex.def)             Requested size: 338.58632pt x 338.61798pt.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.59     \item \textbf
+                      {Result}: The boundary might end up too close to the d...
+
+You've lost some text.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[27 <./assets/perceptron_push_pull_vectors.png>]
+<assets/sigmoid_curve_annotated.png, id=978, 246.6816pt x 246.6816pt>
+File: assets/sigmoid_curve_annotated.png Graphic file (type png)
+<use assets/sigmoid_curve_annotated.png>
+Package pdftex.def Info: assets/sigmoid_curve_annotated.png  used on input line
+ 73.
+(pdftex.def)             Requested size: 290.22107pt x 290.2499pt.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.93 
+     
+You've lost some text.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[28 <./assets/sigmoid_curve_annotated.png>])
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.25 ...pters/02_logistic_regression/05_intuition}
+                                                  
+You've lost some text.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[29]
+\openout2 = `chapters/02_logistic_regression/06_math.aux'.
+
+ (chapters/02_logistic_regression/06_math.tex
+Chapter 6.
+[30
+
+
+
+
+])
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.26 ...e{chapters/02_logistic_regression/06_math}
+                                                  
+You've lost some text.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[31]
+\openout2 = `chapters/02_logistic_regression/07_metrics.aux'.
+
+ (chapters/02_logistic_regression/07_metrics.tex
+Chapter 7.
+[32
+
+
+
+
+]
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.97     \item \textbf
+                      {What does AUC = 0.8 mean?}
+You've lost some text.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[33])
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.27 ...hapters/02_logistic_regression/07_metrics}
+                                                  
+You've lost some text.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[34]
+\openout2 = `chapters/02_logistic_regression/08_multiclass.aux'.
+
+ (chapters/02_logistic_regression/08_multiclass.tex
+Chapter 8.
+<assets/softmax_flow_diagram.png, id=1061, 246.6816pt x 246.6816pt>
+File: assets/softmax_flow_diagram.png Graphic file (type png)
+<use assets/softmax_flow_diagram.png>
+Package pdftex.def Info: assets/softmax_flow_diagram.png  used on input line 45
+.
+(pdftex.def)             Requested size: 386.95897pt x 386.99734pt.
+[35
+
+
+
+
+]
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.64 ...n, caption=Multiclass Logistic Regression]
+                                                  
+You've lost some text.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[36 <./assets/softmax_flow_diagram.png>])
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.28 ...ters/02_logistic_regression/08_multiclass}
+                                                  
+You've lost some text.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[37] [38
+
+
+
+]
+\openout2 = `chapters/03_decision_trees/09_intuition.aux'.
+
+ (chapters/03_decision_trees/09_intuition.tex
+Chapter 9.
+<assets/dt_tree_geometry_mapping.png, id=1096, 246.6816pt x 246.6816pt>
+File: assets/dt_tree_geometry_mapping.png Graphic file (type png)
+<use assets/dt_tree_geometry_mapping.png>
+Package pdftex.def Info: assets/dt_tree_geometry_mapping.png  used on input lin
+e 32.
+(pdftex.def)             Requested size: 338.58632pt x 338.61798pt.
+<assets/dt_classification_vs_regression.png, id=1097, 246.6816pt x 246.6816pt>
+File: assets/dt_classification_vs_regression.png Graphic file (type png)
+<use assets/dt_classification_vs_regression.png>
+Package pdftex.def Info: assets/dt_classification_vs_regression.png  used on in
+put line 57.
+(pdftex.def)             Requested size: 290.22107pt x 290.2499pt.
+[39
+
+
+]
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.67         \item \textbf
+                          {No Scaling}: Works well without feature scaling/n...
+
+You've lost some text.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[40 <./assets/dt_tree_geometry_mapping.png> <./assets/dt_classification_vs_regr
+ession.png>])
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.31 ...e{chapters/03_decision_trees/09_intuition}
+                                                  
+You've lost some text.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[41]
+\openout2 = `chapters/03_decision_trees/10_cart_algorithms.aux'.
+
+ (chapters/03_decision_trees/10_cart_algorithms.tex
+Chapter 10.
+<assets/entropy_vs_gini_curve.png, id=1113, 246.6816pt x 246.6816pt>
+File: assets/entropy_vs_gini_curve.png Graphic file (type png)
+<use assets/entropy_vs_gini_curve.png>
+Package pdftex.def Info: assets/entropy_vs_gini_curve.png  used on input line 3
+1.
+(pdftex.def)             Requested size: 290.22107pt x 290.2499pt.
+[42
+
+
+
+
+])
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.32 ...ters/03_decision_trees/10_cart_algorithms}
+                                                  
+You've lost some text.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[43 <./assets/entropy_vs_gini_curve.png>]
+\openout2 = `chapters/03_decision_trees/11_pruning_practical.aux'.
+
+
+(chapters/03_decision_trees/11_pruning_practical.tex
+Chapter 11.
+[44
+
+
+
+
+])
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.33 ...rs/03_decision_trees/11_pruning_practical}
+                                                  
+You've lost some text.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[45] [46
+
+
+
+]
+\openout2 = `chapters/04_svm/12_intuition.aux'.
+
+ (chapters/04_svm/12_intuition.tex
+Chapter 12.
+<assets/svm_margin_comparison.png, id=1176, 246.6816pt x 246.6816pt>
+File: assets/svm_margin_comparison.png Graphic file (type png)
+<use assets/svm_margin_comparison.png>
+Package pdftex.def Info: assets/svm_margin_comparison.png  used on input line 1
+7.
+(pdftex.def)             Requested size: 338.58632pt x 338.61798pt.
+[47
+
+
+ <./assets/svm_margin_comparison.png>]
+<assets/svm_geometry_annotated.png, id=1181, 246.6816pt x 246.6816pt>
+File: assets/svm_geometry_annotated.png Graphic file (type png)
+<use assets/svm_geometry_annotated.png>
+Package pdftex.def Info: assets/svm_geometry_annotated.png  used on input line 
+43.
+(pdftex.def)             Requested size: 338.58632pt x 338.61798pt.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.62 \end{table}
+                
+You've lost some text.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[48 <./assets/svm_geometry_annotated.png>])
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.36 \include{chapters/04_svm/12_intuition}
+                                           
+You've lost some text.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[49]
+\openout2 = `chapters/04_svm/13_mathematics.aux'.
+
+ (chapters/04_svm/13_mathematics.tex
+Chapter 13.
+<assets/svm_c_parameter_comparison.png, id=1196, 246.6816pt x 246.6816pt>
+File: assets/svm_c_parameter_comparison.png Graphic file (type png)
+<use assets/svm_c_parameter_comparison.png>
+Package pdftex.def Info: assets/svm_c_parameter_comparison.png  used on input l
+ine 47.
+(pdftex.def)             Requested size: 338.58632pt x 338.61798pt.
+[50
+
+
+
+
+]
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.58 \section{The Kernel Trick}
+                               
+You've lost some text.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[51 <./assets/svm_c_parameter_comparison.png>]
+<assets/svm_kernel_gaussian_lift.png, id=1212, 246.6816pt x 246.6816pt>
+File: assets/svm_kernel_gaussian_lift.png Graphic file (type png)
+<use assets/svm_kernel_gaussian_lift.png>
+Package pdftex.def Info: assets/svm_kernel_gaussian_lift.png  used on input lin
+e 75.
+(pdftex.def)             Requested size: 338.58632pt x 338.61798pt.
+
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.85     \item \textbf
+                      {Does the C parameter affect Bias or Variance?}
+You've lost some text.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[52 <./assets/svm_kernel_gaussian_lift.png>])
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.37 \include{chapters/04_svm/13_mathematics}
+                                             
+You've lost some text.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[53] [54
+
+
+
+]
+\openout2 = `chapters/05_knn/14_intuition.aux'.
+
+ (chapters/05_knn/14_intuition.tex
+Chapter 14.
+<assets/knn_elbow_method_k_selection.png, id=1228, 246.6816pt x 246.6816pt>
+File: assets/knn_elbow_method_k_selection.png Graphic file (type png)
+<use assets/knn_elbow_method_k_selection.png>
+Package pdftex.def Info: assets/knn_elbow_method_k_selection.png  used on input
+ line 49.
+(pdftex.def)             Requested size: 290.22107pt x 290.2499pt.
+[55
+
+
+])
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.40 \include{chapters/05_knn/14_intuition}
+                                           
+You've lost some text.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[56 <./assets/knn_elbow_method_k_selection.png>]
+\openout2 = `chapters/05_knn/15_curse_of_dimensionality.aux'.
+
+
+(chapters/05_knn/15_curse_of_dimensionality.tex
+Chapter 15.
+[57
+
+
+
+
+])
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.41 ...hapters/05_knn/15_curse_of_dimensionality}
+                                                  
+You've lost some text.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[58] [59
+
+
+
+]
+\openout2 = `chapters/06_naive_bayes/16_probability.aux'.
+
+ (chapters/06_naive_bayes/16_probability.tex
+Chapter 16.
+) [60
+
+
+]
+\openout2 = `chapters/06_naive_bayes/17_algorithms.aux'.
+
+ (chapters/06_naive_bayes/17_algorithms.tex
+Chapter 17.
+[61
+
+
+
+
+])
+
+! LaTeX Error: Counter too large.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.45 ...ude{chapters/06_naive_bayes/17_algorithms}
+                                                  
+You've lost some text.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[62] (supervised_book.aux
+(chapters/01_linear_regression/01_simple_linear_regression.aux)
+(chapters/01_linear_regression/02_gradient_descent.aux)
+(chapters/01_linear_regression/03_multiple_regression.aux)
+(chapters/01_linear_regression/04_regularization.aux)
+(chapters/02_logistic_regression/05_intuition.aux)
+(chapters/02_logistic_regression/06_math.aux)
+(chapters/02_logistic_regression/07_metrics.aux)
+(chapters/02_logistic_regression/08_multiclass.aux)
+(chapters/03_decision_trees/09_intuition.aux)
+(chapters/03_decision_trees/10_cart_algorithms.aux)
+(chapters/03_decision_trees/11_pruning_practical.aux)
+(chapters/04_svm/12_intuition.aux) (chapters/04_svm/13_mathematics.aux)
+(chapters/05_knn/14_intuition.aux)
+(chapters/05_knn/15_curse_of_dimensionality.aux)
+(chapters/06_naive_bayes/16_probability.aux)
+(chapters/06_naive_bayes/17_algorithms.aux))
+ ***********
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2020/03/25>
+ ***********
+Package rerunfilecheck Info: File `supervised_book.out' has not changed.
+(rerunfilecheck)             Checksum: 221CC16DA68A9DC0E71A4C29614E827D;21829.
+Package logreq Info: Writing requests to 'supervised_book.run.xml'.
+\openout1 = `supervised_book.run.xml'.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 43984 strings out of 474486
+ 884332 string characters out of 5742811
+ 2132542 words of memory out of 5000000
+ 64983 multiletter control sequences out of 15000+600000
+ 589187 words of font info for 114 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 99i,12n,136p,690b,2358s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/Nishant/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
+m/cmex10.pfb><C:/Users/Nishant/AppData/Local/Programs/MiKTeX/fonts/type1/public
+/amsfonts/cmextra/cmex8.pfb><C:/Users/Nishant/AppData/Local/Programs/MiKTeX/fon
+ts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Nishant/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Nishant/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/Nishant/A
+ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users
+/Nishant/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb
+><C:/Users/Nishant/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
+/cmr8.pfb><C:/Users/Nishant/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
+sfonts/cm/cmsy10.pfb><C:/Users/Nishant/AppData/Local/Programs/MiKTeX/fonts/type
+1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Nishant/AppData/Local/Programs/MiKTeX/
+fonts/type1/public/lm/lmss17.pfb><C:/Users/Nishant/AppData/Local/Programs/MiKTe
+X/fonts/type1/public/lm/lmtt10.pfb><C:/Users/Nishant/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/newtx/ztmb.pfb><C:/Users/Nishant/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/newtx/ztmr.pfb><C:/Users/Nishant/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/public/newtx/ztmri.pfb>
+Output written on supervised_book.pdf (63 pages, 11243266 bytes).
+PDF statistics:
+ 1427 PDF objects out of 1440 (max. 8388607)
+ 428 named destinations out of 1000 (max. 500000)
+ 1148 words of extra memory for PDF output out of 10000 (max. 10000000)
+

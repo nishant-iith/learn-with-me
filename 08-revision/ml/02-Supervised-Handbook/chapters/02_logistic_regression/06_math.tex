@@ -1,0 +1,84 @@
+\chapter{The Math of Classification}
+
+\section{Why not Mean Squared Error (MSE)?}
+In Linear Regression, we used MSE as the Loss Function. Can we use it here?
+\[ J = \frac{1}{n} \sum (y - \sigma(z))^2 \]
+
+\textbf{No.} Because the Sigmoid function is non-linear, squaring it creates a \textbf{Non-Convex} error surface with many local minima. Gradient Descent is not guaranteed to find the global minimum.
+
+\section{Maximum Likelihood Estimation (MLE)}
+Instead of minimizing error, we want to \textbf{Maximize Likelihood}.
+We want to find weights $w$ such that the probability of predicting the correct class is maximized for all data points.
+
+\[ L = \prod_{i=1}^{n} P(y_i | x_i; w) \]
+
+Since multiplying many probabilities (decimals $<1$) leads to arithmetic underflow (numbers becoming $0.000\dots$), we take the \textbf{Logarithm} of the Likelihood. And since we want a \textit{Loss} function to \textit{minimize}, we take the negative.
+
+\section{Log Loss (Binary Cross Entropy)}
+The cost function for a single example is:
+\begin{equation}
+    Cost(\hat{y}, y) = - [ y \log(\hat{y}) + (1-y) \log(1-\hat{y}) ]
+\end{equation}
+
+\begin{itemize}
+    \item \textbf{If $y=1$}: Loss $= - \log(\hat{y})$. We want $\hat{y} \approx 1$ (Loss $\approx 0$).
+    \item \textbf{If $y=0$}: Loss $= - \log(1 - \hat{y})$. We want $\hat{y} \approx 0$ (Loss $\approx 0$).
+\end{itemize}
+
+\section{Gradient Descent Derivation}
+Since there is no "Closed Form" solution (like OLS) due to the non-linearity, we \textbf{must} use Gradient Descent.
+
+We need $\frac{\partial J}{\partial w}$. Using the Chain Rule:
+\[ \frac{\partial J}{\partial w} = \frac{\partial J}{\partial \hat{y}} \cdot \frac{\partial \hat{y}}{\partial z} \cdot \frac{\partial z}{\partial w} \]
+
+\begin{enumerate}
+    \item \textbf{Derivative of Loss}: $\frac{\partial J}{\partial \hat{y}} = \frac{\hat{y} - y}{\hat{y}(1-\hat{y})}$
+    \item \textbf{Derivative of Sigmoid}: $\frac{\partial \hat{y}}{\partial z} = \hat{y}(1-\hat{y})$
+    \item \textbf{Derivative of Linear func}: $\frac{\partial z}{\partial w} = x$
+\end{enumerate}
+
+\textbf{The Magic Cancellation}:
+\[ \frac{\partial J}{\partial w} = \left( \frac{\hat{y} - y}{\hat{y}(1-\hat{y})} \right) \cdot (\hat{y}(1-\hat{y})) \cdot x \]
+\[ \frac{\partial J}{\partial w} = (\hat{y} - y)x \]
+
+\begin{remark}
+    \textbf{Surprise!} The gradient update rule for Logistic Regression is \textbf{identical} to Linear Regression:
+    \[ w_{new} = w_{old} - \alpha (\hat{y} - y)x \]
+    The only difference is that $\hat{y}$ here is the Sigmoid probability, whereas in Linear Regression, it was just $mx+c$.
+\end{remark}
+
+\section{Python Implementation (From Scratch)}
+
+\begin{lstlisting}[language=Python, caption=Logistic Regression from Scratch]
+class LogisticRegression:
+    def __init__(self, lr=0.01, epochs=1000):
+        self.lr = lr
+        self.epochs = epochs
+        self.weights = None
+        self.bias = 0
+        
+    def sigmoid(self, z):
+        return 1 / (1 + np.exp(-z))
+        
+    def fit(self, X, y):
+        n_samples, n_features = X.shape
+        self.weights = np.zeros(n_features)
+        
+        for _ in range(self.epochs):
+            # Forward
+            linear_model = np.dot(X, self.weights) + self.bias
+            y_pred = self.sigmoid(linear_model)
+            
+            # Gradient
+            dw = (1 / n_samples) * np.dot(X.T, (y_pred - y))
+            db = (1 / n_samples) * np.sum(y_pred - y)
+            
+            # Update
+            self.weights -= self.lr * dw
+            self.bias -= self.lr * db
+            
+    def predict(self, X):
+        linear_model = np.dot(X, self.weights) + self.bias
+        y_pred = self.sigmoid(linear_model)
+        return [1 if i > 0.5 else 0 for i in y_pred]
+\end{lstlisting}

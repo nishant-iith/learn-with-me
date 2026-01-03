@@ -1,0 +1,82 @@
+\chapter{Beyond Binary Classification}
+
+What if we have more than two classes? (e.g., Cat vs Dog vs Rabbit).
+We have two main approaches:
+\begin{enumerate}
+    \item \textbf{Heuristic Approaches}: Using multiple binary classifiers (OvR, OvO).
+    \item \textbf{Direct Approach}: Changing the loss function (Softmax).
+\end{enumerate}
+
+\section{Strategies}
+
+\subsection{One-vs-Rest (OvR)}
+We train $K$ binary classifiers.
+\begin{itemize}
+    \item Model 1: Cat vs [Dog, Rabbit] ($\rightarrow$ Probability of Cat)
+    \item Model 2: Dog vs [Cat, Rabbit] ($\rightarrow$ Probability of Dog)
+    \item Model 3: Rabbit vs [Cat, Dog] ($\rightarrow$ Probability of Rabbit)
+\end{itemize}
+\textbf{Prediction}: Run all 3 models, pick the one with the highest confidence.
+
+\subsection{One-vs-One (OvO)}
+We train a model for every pair of classes. (Cat vs Dog, Cat vs Rabbit, Dog vs Rabbit).
+\begin{itemize}
+    \item Total Models: $K(K-1)/2$.
+    \item \textbf{Prediction}: Voting scheme. The class with the most "wins" is selected.
+    \item \textbf{Note}: Computationally expensive for large $K$.
+\end{itemize}
+
+\section{Softmax Regression (Multinomial)}
+Instead of hacking binary classifiers, we generalized Logistic Regression.
+For Binary, we used \textbf{Sigmoid}. For Multiclass, we use \textbf{Softmax}.
+
+\begin{equation}
+    P(y=i|x) = \frac{e^{z_i}}{\sum_{j=1}^{K} e^{z_j}}
+\end{equation}
+
+\begin{itemize}
+    \item \textbf{Input}: A vector of raw scores (logits) $z$.
+    \item \textbf{Exponentiation ($e^z$)}: Ensures all values are positive.
+    \item \textbf{Normalization ($\sum$)}: Ensures all probabilities sum to 1.
+\end{itemize}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{softmax_flow_diagram.png}
+    \caption{Softmax converts logits into a probability distribution.}
+\end{figure}
+
+\section{Multiclass Metrics}
+The Confusion Matrix becomes an $N \times N$ matrix.
+\begin{itemize}
+    \item \textbf{Diagonal}: Correct Predictions.
+    \item \textbf{Off-Diagonal}: Errors.
+\end{itemize}
+
+To get a single number for Precision/Recall, we average the per-class scores:
+\begin{itemize}
+    \item \textbf{Macro Average}: Average of all class scores equally. (Treats rare classes same as common ones).
+    \item \textbf{Weighted Average}: Weighted by the number of samples in each class.
+\end{itemize}
+
+\section{Python Implementation}
+
+\begin{lstlisting}[language=Python, caption=Multiclass Logistic Regression]
+# One-vs-Rest (OvR)
+# Fits K binary classifiers. Good for interpretability.
+model_ovr = LogisticRegression(multi_class='ovr')
+
+# Multinomial (Softmax)
+# Fits 1 model minimizing Cross-Entropy. Standard for Deep Learning.
+model_softmax = LogisticRegression(multi_class='multinomial', solver='lbfgs')
+\end{lstlisting}
+
+\section{Interview Questions}
+
+\begin{enumerate}
+    \item \textbf{What is the difference between OvR and Softmax?}
+    \newline \textit{Answer:} OvR trains $K$ independent models. Softmax trains a single model that considers all classes simultaneously (using Cross-Entropy loss). Softmax is generally preferred for mutually exclusive classes (e.g., Digit Classification), while OvR is flexible for multi-label problems.
+    
+    \item \textbf{Why do we use Softmax instead of standard normalization?}
+    \newline \textit{Answer:} Standard normalization ($\frac{x}{\sum x}$) works, but Softmax ($e^x$) has a "Winner Takes All" effect. It exaggerates differences between scores, pushing the highest score closer to 1 and suppressing others. This makes the model more confident.
+\end{enumerate}

@@ -1,0 +1,124 @@
+\chapter{Gradient Descent}
+
+\section{Introduction}
+In Chapter 1, we found the best fit line using the \textbf{OLS (Ordinary Least Squares)} formula. It gave us the exact answer instantly. So why do we need another method?
+
+\begin{itemize}
+    \item \textbf{Computational Cost}: OLS involves matrix inversion, which becomes extremely slow ($O(n^3)$) for very large datasets with many features.
+    \item \textbf{Memory}: OLS requires loading the entire dataset into memory to perform matrix operations.
+\end{itemize}
+
+\textbf{Gradient Descent} is an iterative optimization algorithm that finds the minimum of a function step-by-step. It is the backbone of modern Machine Learning and Deep Learning.
+
+\section{Intuition: The Hiker in the Valley}
+Imagine you are blindfolded at the top of a mountain (High Loss). Your goal is to reach the lowest point in the valley (Minimum Loss).
+
+\begin{enumerate}
+    \item \textbf{Feel the slope}: You test the ground with your feet to see which way is "down".
+    \item \textbf{Take a step}: You take a small step in the steepest downward direction.
+    \item \textbf{Repeat}: You keep doing this until the ground becomes flat (Slope = 0). You have reached the bottom.
+\end{enumerate}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{gradient_descent_bowl.png}
+    \caption{Gradient Descent descending towards the global minimum.}
+\end{figure}
+
+\section{Mathematical Formulation}
+
+We want to find values for $m$ (slope) and $c$ (intercept) that minimize the Cost Function $J(m,c) = \sum (y_i - (mx_i+c))^2$.
+
+\subsection{The Update Rule}
+At each step, we update our weights ($m, c$) by moving against the gradient.
+\begin{equation}
+    \theta_{new} = \theta_{old} - \alpha \times \frac{\partial J}{\partial \theta}
+\end{equation}
+Where:
+\begin{itemize}
+    \item $\theta$: The parameter we are updating ($m$ or $c$).
+    \item $\alpha$ (Alpha): \textbf{Learning Rate}. The size of the step we take.
+    \item $\frac{\partial J}{\partial \theta}$: The Gradient (Slope).
+\end{itemize}
+
+For Linear Regression, the gradients are:
+\[ \frac{\partial J}{\partial m} = -2 \sum x_i(y_i - \hat{y}_i) \quad ; \quad \frac{\partial J}{\partial c} = -2 \sum (y_i - \hat{y}_i) \]
+
+\section{The Role of Learning Rate ($\alpha$)}
+\begin{enumerate}
+    \item \textbf{Too Small}: The algorithm takes tiny steps. It will eventually reach the minimum, but it will take forever (slow convergence).
+    \item \textbf{Too Large}: The algorithm takes giant leaps. It might step \textit{over} the valley and reach the other side, potentially diverging and never finding the minimum.
+    \item \textbf{Just Right}: A balanced rate ensures smooth and efficient convergence.
+\end{enumerate}
+
+\section{Types of Gradient Descent}
+Depending on how much data we use to calculate the gradient for one step, there are three variants.
+
+\subsection{Batch Gradient Descent}
+\begin{itemize}
+    \item \textbf{Method}: Uses \textbf{ALL} training examples to calculate the gradient for a single update.
+    \item \textbf{Pros}: Stable convergence; theoretically guaranteed to find the global minimum for convex functions.
+    \item \textbf{Cons}: Very slow per iteration for large datasets; high memory usage.
+    \item \textbf{Analogy}: Asking \textit{every single voter} before making a policy change.
+\end{itemize}
+
+\subsection{Stochastic Gradient Descent (SGD)}
+\begin{itemize}
+    \item \textbf{Method}: Uses \textbf{ONE} random training example to calculate the gradient and update weights.
+    \item \textbf{Pros}: Extremely fast iterations; good for massive data; helps escape local minima in non-convex problems (due to noise).
+    \item \textbf{Cons}: Noisy convergence (zig-zag path); never settles exactly at the minimum.
+    \item \textbf{Analogy}: Asking \textit{one random person} on the street and changing policy immediately.
+\end{itemize}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{batch_vs_sgd_contour.png}
+    \caption{Batch GD (smooth) vs SGD (noisy) convergence paths.}
+\end{figure}
+
+\subsection{Mini-Batch Gradient Descent}
+\begin{itemize}
+    \item \textbf{Method}: Uses a small \textbf{Batch} (e.g., 32, 64) of examples for one update.
+    \item \textbf{Verdict}: The sweet spot. Faster than Batch, more stable than SGD. The industry standard for Deep Learning.
+\end{itemize}
+
+\section{Implementation from Scratch (Batch GD)}
+
+\begin{lstlisting}[language=Python, caption=Batch Gradient Descent]
+class BatchGD:
+    def __init__(self, learning_rate=0.01, epochs=100):
+        self.m = 1 # Random initialization
+        self.c = 0
+        self.lr = learning_rate
+        self.epochs = epochs
+        
+    def fit(self, X, y):
+        n = len(X)
+        for i in range(self.epochs):
+            # Calculate predictions for ALL data
+            y_pred = self.m * X + self.c
+            
+            # Calculate Gradients (Vectorized)
+            grad_m = -2 * np.sum((y - y_pred) * X) / n
+            grad_c = -2 * np.sum(y - y_pred) / n
+            
+            # Update Weights
+            self.m = self.m - (self.lr * grad_m)
+            self.c = self.c - (self.lr * grad_c)
+\end{lstlisting}
+
+\section{Interview Questions}
+
+\begin{enumerate}
+    \item \textbf{What is the difference between Batch and Stochastic Gradient Descent?}
+    \newline \textit{Answer:} Batch GD uses the entire dataset for one update (stable but slow). SGD uses a single random point for one update (fast but noisy).
+    
+    \item \textbf{What happens if the Learning Rate is too large?}
+    \newline \textit{Answer:} The algorithm might overshoot the minimum, bouncing back and forth with increasing error, eventually causing the parameters to diverge (go to infinity).
+    
+    \item \textbf{Why do we refer to Linear Regression's Loss Function as "Convex"?}
+    \newline \textit{Answer:} A convex function is shaped like a bowl (U-shape) and has only one Global Minimum. This guarantees that Gradient Descent will always converge to the best possible solution (unlike Neural Networks which have Local Minima).
+    
+    \item \textbf{How does Vectorization speed up Gradient Descent?}
+    \newline \textit{Answer:} Vectorization allows us to perform mathematical operations on entire arrays at once using SIMD (Single Instruction, Multiple Data) processing, which is much faster than looping through data points one by one in Python.
+\end{enumerate}

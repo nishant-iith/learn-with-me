@@ -1,0 +1,70 @@
+\chapter{Building the Tree (CART)}
+
+How does the tree decide to split on "Is $X > 5$?" instead of "Is $Y < 20$?"?
+It uses a metric to measure \textbf{Impurity}.
+
+\section{Impurity Metrics}
+The goal of every split is to increase the "Purity" of the nodes (i.e., make them contain only one class).
+
+\subsection{Entropy (Information Gain)}
+Entropy measures the amount of uncertainty or randomness in the data.
+\begin{equation}
+    H(S) = - \sum_{i=1}^{c} p_i \log_2(p_i)
+\end{equation}
+\begin{itemize}
+    \item \textbf{High Entropy ($\approx 1$)}: 50\% Yes, 50\% No. (Maximum Confusion).
+    \item \textbf{Low Entropy ($\approx 0$)}: 100\% Yes, 0\% No. (Pure Node).
+\end{itemize}
+
+\subsection{Gini Impurity}
+The CART algorithm (Scikit-Learn) uses Gini Impurity by default because it is computationally faster (no log function).
+\begin{equation}
+    \text{Gini} = 1 - \sum_{i=1}^{c} p_i^2
+\end{equation}
+\begin{itemize}
+    \item \textbf{Range}: $[0, 0.5]$ for binary classification.
+    \item \textbf{Behavior}: Similar to Entropy but favors larger partitions.
+\end{itemize}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{entropy_vs_gini_curve.png}
+    \caption{Entropy and Gini curves are very similar.}
+\end{figure}
+
+\section{The Splitting Algorithm (Greedy)}
+
+\begin{enumerate}
+    \item \textbf{Iterate through every feature}.
+    \item \textbf{Iterate through every possible threshold}. (For continuous variable $X$, sort values and check midpoints).
+    \item \textbf{Calculate Gain}: Compute the decrease in Impurity (Information Gain) for each split.
+    \item \textbf{Pick the Best}: Choose the (Feature, Threshold) pair that provides the maximum gain.
+    \item \textbf{Split and Repeat}: Create child nodes and repeat recursively until stopping criteria are met.
+\end{enumerate}
+
+\section{Handling Types of Data}
+
+\subsection{Continuous Data}
+Since CART creates binary trees, it converts continuous variables into thresholds.
+\begin{itemize}
+    \item Feature with values: $[10, 20, 30]$.
+    \item Potential splits: $15, 25$.
+    \item The algorithm checks both and picks the winner.
+\end{itemize}
+
+\subsection{Categorical Data}
+Scikit-Learn requires numerical input, so categorical data must be encoded (One-Hot or Label).
+The tree will then split like "Is Color\_Red $\le 0.5$?" (which means "Is it NOT Red?").
+
+\section{Interview Questions}
+
+\begin{enumerate}
+    \item \textbf{Entropy vs Gini: Which one to use?}
+    \newline \textit{Answer:} Gini is the default because it's faster to compute (no Logarithms). Entropy tends to produce slightly more balanced trees, while Gini tends to isolate the most frequent class. In 95\% of cases, they result in the same tree.
+    
+    \item \textbf{How does the tree handle Regression tasks?}
+    \newline \textit{Answer:} Instead of Impurity (Entropy/Gini), it minimizes \textbf{Mean Squared Error (MSE)} or \textbf{Mean Absolute Error (MAE)}. The prediction of a leaf is the \textbf{Mean} (for MSE) or \textbf{Median} (for MAE) of the values in that leaf.
+    
+    \item \textbf{What is Information Gain?}
+    \newline \textit{Answer:} It is the reduction in Entropy achieved by a split. $IG(S, A) = H(S) - H(S|A)$. We choose the split with the highest Information Gain.
+\end{enumerate}

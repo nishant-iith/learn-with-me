@@ -1,0 +1,96 @@
+\chapter{Logistic Regression: Intuition}
+
+\section{Introduction}
+
+Despite its name containing "Regression", \textbf{Logistic Regression} is a \textbf{Classification} algorithm. It is used to predict discrete categories (e.g., Spam or Not Spam, Tumor Malignant or Benign).
+
+\begin{definition}{Logistic Regression}
+    A supervised learning algorithm that predicts the probability of a target variable belonging to a particular class. It uses the logistic (sigmoid) function to map predictions to values between 0 and 1.
+\end{definition}
+
+\section{Geometric Intuition}
+
+Imagine we have two classes of points on a 2D plane: Blue (Class 0) and Green (Class 1).
+Our goal is to find a \textbf{Line} (in 2D) or \textbf{Hyperplane} (in 3D+) that best separates these two classes.
+
+The equation of the boundary is:
+\[ z = w_1 x_1 + w_2 x_2 + b \]
+
+\begin{itemize}
+    \item If $z > 0$: We predict \textbf{Positive Class}.
+    \item If $z < 0$: We predict \textbf{Negative Class}.
+\end{itemize}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{log_reg_linear_boundary.png}
+    \caption{A linear decision boundary separating two classes.}
+\end{figure}
+
+\section{The Perceptron Trick (Push and Pull)}
+Before modern Logistic Regression, there was the Perceptron. Its learning logic gives us great intuition.
+
+\subsection{The Algorithm}
+\begin{enumerate}
+    \item Start with a random line.
+    \item Pick a random point.
+    \item If it is \textbf{Misclassified}, move the line to fix it.
+    \item Repeat.
+\end{enumerate}
+
+\subsection{Push and Pull Logic}
+\begin{itemize}
+    \item \textbf{Case 1: Positive point in Negative Region}.
+    \newline The point says: "I should be positive!". It \textbf{pulls} the line towards itself so it crosses over into the positive side.
+    \item \textbf{Case 2: Negative point in Positive Region}.
+    \newline The point says: "I should be negative!". It \textbf{pushes} the line away.
+\end{itemize}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{perceptron_push_pull_vectors.png}
+    \caption{Visualizing how misclassified points update the line weights.}
+\end{figure}
+
+\subsection{The Flaw: Lack of Conviction}
+The Perceptron stops the moment all points are classified correctly.
+\begin{itemize}
+    \item It doesn't care if a point is \textit{barely} correct (distance = $0.0001$) or \textit{very} confident (distance = $100$).
+    \item \textbf{Result}: The boundary might end up too close to the data points (Low Margin), leading to poor generalization.
+\end{itemize}
+
+\section{The Solution: Sigmoid Function}
+To fix this, we need a method that considers \textbf{Distance} (how far a point is from the line) and converts it into a \textbf{Probability} (0 to 1).
+
+We typically use the \textbf{Sigmoid Function} $\sigma(z)$:
+
+\begin{equation}
+    \sigma(z) = \frac{1}{1 + e^{-z}}
+\end{equation}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{sigmoid_curve_annotated.png}
+    \caption{The Sigmoid function squashes values between 0 and 1.}
+\end{figure}
+
+\begin{itemize}
+    \item If $z = 0$ (on the line) $\rightarrow \sigma(z) = 0.5$ (Unsure).
+    \item If $z \to +\infty$ (far positive) $\rightarrow \sigma(z) \to 1$ (Confident Positive).
+    \item If $z \to -\infty$ (far negative) $\rightarrow \sigma(z) \to 0$ (Confident Negative).
+\end{itemize}
+
+By using Sigmoid, we transform our "Line" into a continuous "Probability Landscape". Now, even correctly classified points can push the line further away to increase confidence (probability).
+
+\section{Interview Questions}
+
+\begin{enumerate}
+    \item \textbf{Is Logistic Regression a Linear model?}
+    \newline \textit{Answer:} \textbf{Yes.} Even though the Sigmoid function is non-linear, the decision boundary it finds ($w^Tx + b = 0$) is linear (a straight line or hyperplane).
+    
+    \item \textbf{Why do we use Sigmoid instead of a Step Function?}
+    \newline \textit{Answer:} The Step Function gives a hard 0 or 1 output, which has a derivative of 0 everywhere (except at the jump where it's undefined). This makes Gradient Descent impossible. The Sigmoid function provides a smooth, differentiable gradient, allowing us to optimize the weights.
+    
+    \item \textbf{Can Logistic Regression solve non-linear problems?}
+    \newline \textit{Answer:} Not by itself. Standard Logistic Regression can only find a linear boundary. However, like Polynomial Regression, we can use \textbf{Feature Engineering} (adding $x^2, x^3$ terms) to create non-linear boundaries.
+\end{enumerate}

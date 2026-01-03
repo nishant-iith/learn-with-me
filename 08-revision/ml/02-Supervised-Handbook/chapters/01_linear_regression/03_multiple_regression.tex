@@ -1,0 +1,110 @@
+\chapter{Multiple Linear Regression \& Polynomials}
+
+\section{Introduction}
+In the real world, an outcome is rarely dependent on just one factor.
+\begin{itemize}
+    \item \textbf{Simple LR}: CGPA $\rightarrow$ Package.
+    \item \textbf{Multiple LR}: CGPA + Projects + Communication Skills $\rightarrow$ Package.
+\end{itemize}
+
+\begin{definition}{Multiple Linear Regression}
+    A statistical technique that uses several explanatory variables ($x_1, x_2, \dots, x_n$) to predict the outcome of a response variable ($y$).
+\end{definition}
+
+\section{Geometric Intuition}
+\begin{itemize}
+    \item \textbf{1 Feature}: A Line in 2D space.
+    \item \textbf{2 Features}: A \textbf{Plane} in 3D space.
+    \item \textbf{n Features}: A \textbf{Hyperplane} in ($n+1$)-dimensional space.
+\end{itemize}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{multiple_lr_plane.png}
+    \caption{The Hyperplane fitting the data points in 3D space.}
+\end{figure}
+
+\section{Mathematical Formulation}
+The equation becomes:
+\[ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_n x_n + \epsilon \]
+
+\subsection{Matrix Notation}
+To solve this efficiently, we use Linear Algebra.
+\begin{itemize}
+    \item $Y$: Vector of targets $(n \times 1)$.
+    \item $X$: Matrix of features $(n \times (m+1))$. We add a column of 1s for the intercept $\beta_0$.
+    \item $\beta$: Vector of coefficients.
+\end{itemize}
+
+\[ Y = X\beta \]
+
+The solution for $\beta$ that minimizes the squared error is given by the \textbf{Normal Equation}:
+
+\begin{equation}
+    \hat{\beta} = (X^T X)^{-1} X^T Y
+\end{equation}
+
+\section{Adjusted R2 Score}
+When we add more features to a model, the standard $R^2$ score \textbf{never decreases}, even if the new feature is completely useless (random noise). This gives a false sense of improvement.
+
+\textbf{Adjusted $R^2$} fixes this by penalizing the model for adding unnecessary features.
+
+\begin{equation}
+    R^2_{adj} = 1 - \frac{(1-R^2)(n-1)}{n-1-k}
+\end{equation}
+Where $n$ is the number of samples and $k$ is the number of features.
+\begin{itemize}
+    \item If a useful feature is added: $R^2 \uparrow$ significantly, so $R^2_{adj} \uparrow$.
+    \item If a useless feature is added: $R^2$ stays same, but penalty ($k$) increases, so $R^2_{adj} \downarrow$.
+\end{itemize}
+
+\section{Polynomial Regression}
+What if the data is not linear? (e.g., a parabolic curve). A straight line will \textbf{Underfit} (High Bias).
+
+The trick is to \textbf{generate new features} by raising existing ones to powers.
+\[ y = \beta_0 + \beta_1 x + \beta_2 x^2 \]
+
+\begin{remark}
+    This is still considered \textbf{Linear Regression} because it is linear in terms of the coefficients $\beta$. Let $x^2 = z$, then $y = \beta_0 + \beta_1 x + \beta_2 z$, which is standard Multiple Regression.
+\end{remark}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{polynomial_degrees_comparison.png}
+    \caption{Degree 1 (Underfit), Degree 2 (Good Fit), Degree 20 (Overfit).}
+\end{figure}
+
+\section{Python Implementation (Polynomial)}
+
+\begin{lstlisting}[language=Python, caption=Polynomial Regression Pipeline]
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LinearRegression
+from sklearn.pipeline import Pipeline
+
+# 1. Create a Pipeline
+# It first transforms data (x -> x, x^2), then fits Linear Regression
+pipe = Pipeline([
+    ('poly', PolynomialFeatures(degree=2)),
+    ('model', LinearRegression())
+])
+
+# 2. Fit and Predict
+pipe.fit(X_train, y_train)
+y_pred = pipe.predict(X_test)
+\end{lstlisting}
+
+\section{Interview Questions}
+
+\begin{enumerate}
+    \item \textbf{Why is Polynomial Regression considered a Linear Model?}
+    \newline \textit{Answer:} Because the relationship between the coefficients ($\beta$) and the target ($y$) remains linear. We are only transforming the input features, not the parameters.
+    
+    \item \textbf{What is the "Curse of Dimensionality"?}
+    \newline \textit{Answer:} As the number of features increases, the amount of data required to generalize accurately grows exponentially. In high dimensions, data becomes sparse, and distance metrics (like Euclidean) become meaningless.
+    
+    \item \textbf{When should you use Lasso over Ridge?}
+    \newline \textit{Answer:} Use Lasso (L1) when you suspect that many features are irrelevant. Lasso tends to drive coefficients of useless features to exactly zero, effectively performing feature selection. Ridge (L2) shrinks them but keeps them non-zero.
+    
+    \item \textbf{What happens if $(X^T X)$ is not invertible in the Normal Equation?}
+    \newline \textit{Answer:} This occurs if there is perfect multicollinearity (features are linearly dependent) or if $n < k$ (more features than samples). To fix it, we can remove correlated features or use Regularization.
+\end{enumerate}
