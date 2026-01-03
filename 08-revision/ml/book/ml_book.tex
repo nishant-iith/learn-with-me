@@ -35,10 +35,16 @@
 
 \mainmatter
 
+\part{Foundations}
+\include{chapters/00_foundations/01_ml_taxonomy}
+\include{chapters/01_regression/02_data_splitting} % Keeping file location, logically moving here
+\include{chapters/00_foundations/03_feature_scaling}
+\include{chapters/00_foundations/04_ml_workflow}
+
 \part{Regression Analysis}
 \include{chapters/01_regression/01_simple_linear_regression}
 \include{chapters/01_regression/02_evaluation_metrics}
-\include{chapters/01_regression/02_data_splitting}
+%\include{chapters/01_regression/02_data_splitting} % Moved to Foundations
 \include{chapters/01_regression/03_multiple_linear_regression}
 \include{chapters/01_regression/04_gradient_descent}
 \include{chapters/01_regression/05_regularization}

@@ -123,3 +123,48 @@ score = model.score(X_test, y_test)
     \item Not always. For \textbf{Time Series} data (Stock prices), you cannot split randomly. You must split by time (Train: Jan-Oct, Test: Nov-Dec).
     \item For \textbf{Imbalanced Data}, you should use \textbf{Stratified Split} to ensure the class ratio is preserved in both sets.
 \end{itemize}
+
+% ========================================
+% SECTION 7: QUICK REFERENCE
+% ========================================
+\section{Quick Reference Card}
+
+\begin{center}
+\fbox{\parbox{0.9\textwidth}{
+\textbf{DATA SPLITTING - CHEAT SHEET}
+\vspace{0.3cm}
+
+\textbf{Golden Rule}: Never fit/train on Test Data. Test Data is for Final Exam only.
+
+\textbf{Standard Splits}:
+\begin{itemize}
+    \item \textbf{Simple}: 80\% Train, 20\% Test (for large data).
+    \item \textbf{3-Way}: 60\% Train $\rightarrow$ 20\% Val (Tune) $\rightarrow$ 20\% Test (Evaluate).
+\end{itemize}
+
+\textbf{Techniques}:
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Scenario} & \textbf{Method} \\ \hline
+Standard & Random Split \\ \hline
+Small Dataset & K-Fold Cross Validation \\ \hline
+Imbalanced & Stratified Split (keeps ratios) \\ \hline
+Time Series & Time-based Split (No shuffle!) \\ \hline
+\end{tabular}
+\end{center}
+
+\textbf{Sklearn}:
+\begin{itemize}
+    \item \texttt{train\_test\_split(X, y, test\_size=0.2, stratify=y)}
+    \item \texttt{cross\_val\_score(model, X, y, cv=5)}
+\end{itemize}
+
+\textbf{Interview Gold}:
+\begin{itemize}
+    \item Validation Set is for Tuning (Hyperparameters).
+    \item Test Set is for Reporting (Generalization Error).
+    \item Data Leakage = optimizing on Test Set = Cheating.
+\end{itemize}
+}}
+\end{center}
