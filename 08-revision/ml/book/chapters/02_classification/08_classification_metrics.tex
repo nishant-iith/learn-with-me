@@ -229,3 +229,42 @@ Weighted F1 & Account for imbalance & Production systems \\ \hline
     \item ROC uses FPR which can be low even when FP is high (if TN is very large).
     \item For imbalanced data, use PR-AUC (Precision-Recall AUC) instead.
 \end{itemize}
+
+% ========================================
+% SECTION 11: QUICK REFERENCE
+% ========================================
+\section{Quick Reference Card}
+
+\begin{center}
+\fbox{\parbox{0.9\textwidth}{
+\textbf{CLASSIFICATION METRICS - CHEAT SHEET}
+\vspace{0.3cm}
+
+\textbf{Core Formulas}:
+\begin{itemize}
+    \item Precision = $\frac{TP}{TP+FP}$ (How many positive claims were right?)
+    \item Recall = $\frac{TP}{TP+FN}$ (How many positives did we find?)
+    \item F1 = $\frac{2 \cdot P \cdot R}{P + R}$ (Harmonic mean)
+    \item Accuracy = $\frac{TP+TN}{All}$ (Misleading for imbalanced data!)
+\end{itemize}
+
+\textbf{When to Use What}:
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Scenario} & \textbf{Metric} \\ \hline
+Spam filter (avoid false alarms) & Precision \\ \hline
+Cancer detection (don't miss cases) & Recall \\ \hline
+Balanced tradeoff & F1-Score \\ \hline
+Model comparison & ROC-AUC \\ \hline
+Imbalanced data & PR-AUC \\ \hline
+\end{tabular}
+\end{center}
+
+\textbf{Interview Gold}:
+\begin{itemize}
+    \item Accuracy trap: 99\% accuracy can be useless
+    \item F1 uses harmonic mean: penalizes extremes
+    \item ROC plots TPR vs FPR across all thresholds
+\end{itemize}
+}}

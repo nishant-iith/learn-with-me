@@ -251,3 +251,38 @@ print(f"Accuracy: {model.score(X, y):.2f}")  # ~98%
     \item The weights can grow infinitely large, trying to push the sigmoid output to exactly 0 or 1.
     \item Solution: Use \textbf{Regularization} (L2 penalty) to constrain the weights.
 \end{itemize}
+
+% ========================================
+% SECTION 8: QUICK REFERENCE
+% ========================================
+\section{Quick Reference Card}
+
+\begin{center}
+\fbox{\parbox{0.9\textwidth}{
+\textbf{LOGISTIC REGRESSION - CHEAT SHEET}
+\vspace{0.3cm}
+
+\textbf{Model}: $P(y=1|x) = \sigma(w^Tx + b) = \frac{1}{1+e^{-(w^Tx+b)}}$
+
+\textbf{Decision Rule}: Predict Class 1 if $P > 0.5$, else Class 0
+
+\textbf{Sigmoid Properties}:
+\begin{itemize}
+    \item $\sigma(0) = 0.5$ (Max uncertainty)
+    \item $\sigma(\pm\infty) \rightarrow 0 \text{ or } 1$ (Confident)
+    \item Derivative: $\sigma'(z) = \sigma(z)(1-\sigma(z))$
+\end{itemize}
+
+\textbf{Decision Boundary}: $w^Tx + b = 0$ (Linear hyperplane)
+
+\textbf{Non-Linear Data}: Use \texttt{PolynomialFeatures} to curve the boundary
+
+\textbf{Scikit-Learn}: \texttt{LogisticRegression(C=1.0, max\_iter=100)}
+
+\textbf{Interview Gold}:
+\begin{itemize}
+    \item Name confusion: "Regression" is historical (regresses log-odds)
+    \item Separable data $\rightarrow$ weights explode $\rightarrow$ use regularization
+    \item Default boundary draws a straight line/hyperplane
+\end{itemize}
+}}

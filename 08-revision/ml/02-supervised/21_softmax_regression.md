@@ -22,6 +22,8 @@ Description:
 Style: Neural Network style.
 -->
 
+![Softmax Flow](assets/softmax_flow_diagram.png)
+
 ---
 
 ### 2. Intuition: One-vs-Rest (OVR)
@@ -49,6 +51,8 @@ Description:
 Style: Educational breakdown.
 -->
 
+![One-vs-Rest Strategy](assets/ovr_tree_diagram.png)
+
 ---
 
 ### 3. Actual Implementation: Multinomial (Softmax)
@@ -73,6 +77,8 @@ Description:
 - Label: "Linear Decision Boundaries".
 Style: Geometric plot.
 -->
+
+![Linear Decision Boundaries](assets/multiclass_linear_boundaries.png)
 
 ---
 

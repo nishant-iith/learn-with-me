@@ -194,3 +194,40 @@ print(classification_report(y_test, y_pred, target_names=data.target_names))
 \begin{itemize}
     \item Softmax assumes classes are \textbf{mutually exclusive}. If an image can be both ``Dog'' and ``Brown'', Softmax is inappropriate. Use multiple Sigmoid outputs instead (Multi-Label Classification).
 \end{itemize}
+
+% ========================================
+% SECTION 8: QUICK REFERENCE
+% ========================================
+\section{Quick Reference Card}
+
+\begin{center}
+\fbox{\parbox{0.9\textwidth}{
+\textbf{MULTICLASS CLASSIFICATION - CHEAT SHEET}
+\vspace{0.3cm}
+
+\textbf{Softmax Formula} (K classes):
+$$P(y=k|x) = \frac{e^{z_k}}{\sum_{j=1}^{K}e^{z_j}}$$
+
+\textbf{Categorical Cross Entropy}:
+$$J = -\sum_{i}\sum_{k} y_{ik} \log(\hat{y}_{ik})$$
+
+\textbf{Strategies}:
+\begin{itemize}
+    \item \textbf{OvR}: K binary models (Class vs Rest)
+    \item \textbf{OvO}: K(K-1)/2 models (Pairwise)
+    \item \textbf{Softmax}: Single model, K outputs
+\end{itemize}
+
+\textbf{Sklearn}:
+\begin{itemize}
+    \item OvR: \texttt{LogisticRegression(multi\_class='ovr')}
+    \item Softmax: \texttt{LogisticRegression(multi\_class='multinomial')}
+\end{itemize}
+
+\textbf{Interview Gold}:
+\begin{itemize}
+    \item Softmax = mutually exclusive classes only
+    \item Multi-label = use K independent Sigmoids
+    \item Outputs sum to 1 (probability distribution)
+\end{itemize}
+}}

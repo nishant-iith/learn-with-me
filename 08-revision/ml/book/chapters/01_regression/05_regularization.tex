@@ -201,3 +201,48 @@ Elastic Net & $\sum |\beta| + \sum \beta^2$ & Sparse + Grouped & Correlated Feat
     \item If features have different scales (e.g., Age: 0-100, Salary: 0-100000), the coefficient for Salary will be much smaller than Age, even if Salary is more important.
     \item The penalty would unfairly penalize Age. Scaling ensures fair comparison.
 \end{itemize}
+
+% ========================================
+% SECTION 9: QUICK REFERENCE
+% ========================================
+\section{Quick Reference Card}
+
+\begin{center}
+\fbox{\parbox{0.9\textwidth}{
+\textbf{REGULARIZATION - CHEAT SHEET}
+\vspace{0.3cm}
+
+\textbf{Loss Functions}:
+\begin{itemize}
+    \item \textbf{Ridge} (L2): $J = MSE + \lambda \sum \beta_j^2$ (Circle constraint)
+    \item \textbf{Lasso} (L1): $J = MSE + \lambda \sum |\beta_j|$ (Diamond constraint)
+    \item \textbf{Elastic Net}: $J = MSE + \lambda_1 \sum|\beta| + \lambda_2 \sum\beta^2$
+\end{itemize}
+
+\textbf{When to Use What}:
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Scenario} & \textbf{Use} \\ \hline
+Many features, all important & Ridge \\ \hline
+Feature selection needed & Lasso \\ \hline
+Correlated features + selection & Elastic Net \\ \hline
+\end{tabular}
+\end{center}
+
+\textbf{CRITICAL}: Always scale features before regularization!
+
+\textbf{Sklearn}:
+\begin{itemize}
+    \item \texttt{Ridge(alpha=1.0)}
+    \item \texttt{Lasso(alpha=1.0)}
+    \item \texttt{ElasticNet(alpha=1.0, l1\_ratio=0.5)}
+\end{itemize}
+
+\textbf{Interview Gold}:
+\begin{itemize}
+    \item Lasso = feature selection (zeros coefficients)
+    \item Ridge = shrinks all, removes none
+    \item High $\lambda$ = more bias, less variance
+\end{itemize}
+}}

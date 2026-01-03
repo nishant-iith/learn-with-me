@@ -61,6 +61,8 @@ Description:
 Style: Mathematical Plot.
 -->
 
+![Entropy vs Gini Impurity Curves](assets/entropy_vs_gini_curve.png)
+
 ---
 
 ### 4. Handling Different Data Types

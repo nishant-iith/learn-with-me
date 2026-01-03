@@ -195,3 +195,34 @@ class LogisticRegressionGD:
     \item KL Divergence = Cross Entropy - Entropy of the true distribution.
     \item Minimizing Cross Entropy is equivalent to minimizing KL Divergence when the true distribution is fixed.
 \end{itemize}
+
+% ========================================
+% SECTION 8: QUICK REFERENCE
+% ========================================
+\section{Quick Reference Card}
+
+\begin{center}
+\fbox{\parbox{0.9\textwidth}{
+\textbf{LOG LOSS / CROSS ENTROPY - CHEAT SHEET}
+\vspace{0.3cm}
+
+\textbf{Binary Cross Entropy (Log Loss)}:
+$$J = -\frac{1}{n}\sum_{i=1}^{n}\left[y_i \log(\hat{y}_i) + (1-y_i)\log(1-\hat{y}_i)\right]$$
+
+\textbf{Why Not MSE?}: $(σ(z)-y)^2$ is non-convex with Sigmoid. Log Loss is convex.
+
+\textbf{Gradient Update}:
+$$\frac{\partial J}{\partial w} = \frac{1}{n}\sum(σ(z) - y) \cdot x$$
+
+\textbf{Sigmoid Derivative Trick}:
+$$σ'(z) = σ(z)(1-σ(z))$$
+
+\textbf{Scikit-Learn}: \texttt{log\_loss(y\_true, y\_pred\_proba)}
+
+\textbf{Interview Gold}:
+\begin{itemize}
+    \item Log Loss derived from MLE $\rightarrow$ guaranteed convex
+    \item Cross Entropy = measure of distribution mismatch
+    \item Gradient is beautifully simple: $(\hat{y} - y) \cdot x$
+\end{itemize}
+}}

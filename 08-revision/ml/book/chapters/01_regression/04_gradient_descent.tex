@@ -372,3 +372,45 @@ print(f"Score: {model.score(X_test, y_test):.3f}")
     \item The surface curves upward in one direction and downward in another.
     \item GD can get stuck here in non-convex problems (like Neural Networks).
 \end{itemize}
+
+% ========================================
+% SECTION 9: QUICK REFERENCE
+% ========================================
+\section{Quick Reference Card}
+
+\begin{center}
+\fbox{\parbox{0.9\textwidth}{
+\textbf{GRADIENT DESCENT - CHEAT SHEET}
+\vspace{0.3cm}
+
+\textbf{Core Update Rule}: $\theta := \theta - \alpha \cdot \nabla J(\theta)$
+
+\textbf{Variants Comparison}:
+\begin{center}
+\begin{tabular}{|l|c|c|c|}
+\hline
+& \textbf{Batch} & \textbf{SGD} & \textbf{Mini-Batch} \\ \hline
+Data/Update & All $n$ & 1 & $k$ (32/64) \\ \hline
+Speed & Slow & Fast & Balanced \\ \hline
+Noise & None & High & Low \\ \hline
+\end{tabular}
+\end{center}
+
+\textbf{Learning Rate ($\alpha$)}:
+\begin{itemize}
+    \item Too high $\rightarrow$ Overshoots, diverges
+    \item Too low $\rightarrow$ Converges slowly
+    \item Start: 0.01 or 0.001
+\end{itemize}
+
+\textbf{CRITICAL}: Always scale features before GD! (Elongated Bowl Problem)
+
+\textbf{Scikit-Learn}: \texttt{SGDRegressor(eta0=0.01, max\_iter=1000)}
+
+\textbf{Interview Gold}:
+\begin{itemize}
+    \item Batch GD = 1 update/epoch; SGD = $n$ updates/epoch
+    \item Convex = guaranteed global min; Non-convex = may get stuck
+    \item Saddle point: gradient = 0, but not a minimum
+\end{itemize}
+}}

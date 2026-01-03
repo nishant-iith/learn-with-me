@@ -111,3 +111,42 @@ Most modern libraries (like Scikit-Learn's CART) use \textbf{Gini Impurity} by d
     \item This leads to high Information Gain but severe overfitting.
     \item Solution: Use Gain Ratio (C4.5) or Gini (CART).
 \end{itemize}
+
+% ========================================
+% SECTION: QUICK REFERENCE
+% ========================================
+\section{Quick Reference Card}
+
+\begin{center}
+\fbox{\parbox{0.9\textwidth}{
+\textbf{SPLITTING METRICS - CHEAT SHEET}
+\vspace{0.3cm}
+
+\textbf{Entropy} (Information Theory):
+$$H = -\sum_{i=1}^{K} p_i \log_2(p_i)$$
+Range: 0 (pure) to $\log_2(K)$ (max uncertainty)
+
+\textbf{Gini Impurity} (Probability-based):
+$$Gini = 1 - \sum_{i=1}^{K} p_i^2$$
+Range: 0 (pure) to $1 - 1/K$ (For binary: max 0.5)
+
+\textbf{Information Gain}:
+$$IG = H_{parent} - \sum \frac{n_{child}}{n_{parent}} H_{child}$$
+
+\textbf{Comparison}:
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Entropy} & Uses log, slightly slower \\ \hline
+\textbf{Gini} & Faster, default in sklearn \\ \hline
+\textbf{Trees?} & Usually identical \\ \hline
+\end{tabular}
+\end{center}
+
+\textbf{Interview Gold}:
+\begin{itemize}
+    \item Pure node = Entropy/Gini = 0
+    \item 50/50 split = maximum impurity
+    \item IG bias: use Gain Ratio for many-valued features
+\end{itemize}
+}}

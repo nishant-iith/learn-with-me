@@ -67,6 +67,8 @@ Description:
 Style: Mathematical Graph.
 -->
 
+![SVR Epsilon-Insensitive Tube](assets/svr_epsilon_tube.png)
+
 ---
 
 ### 3. Visualizing Hyperparameters

@@ -246,3 +246,57 @@ Adj $R^2$ & Feature selection in Multiple LR & Slightly harder to interpret \\ \
     \item Because the penalty term $(n-1)/(n-k-1)$ is always $\geq 1$ when $k \geq 0$.
     \item Adding more features increases $k$, which increases the penalty.
 \end{itemize}
+
+% ========================================
+% SECTION 7: PITFALLS
+% ========================================
+\section{Pitfalls and Practical Considerations}
+
+\subsection{Common Mistakes}
+\begin{enumerate}
+    \item \textbf{Using only $R^2$ for model selection}: $R^2$ always increases with more features. Use Adjusted $R^2$ or cross-validation.
+    \item \textbf{Ignoring MAE when outliers matter}: If your business problem penalizes all errors equally, MAE is better than MSE.
+    \item \textbf{Comparing RMSE across different scales}: RMSE of 10 for salary (in lakhs) is not comparable to RMSE of 10 for house price (in crores).
+\end{enumerate}
+
+\subsection{Which Metric to Report?}
+\begin{itemize}
+    \item \textbf{For academic papers}: $R^2$ and RMSE are standard.
+    \item \textbf{For business stakeholders}: MAE is easier to explain (``On average, we are off by X units'').
+    \item \textbf{For model training}: Use MSE (it's differentiable).
+\end{itemize}
+
+% ========================================
+% SECTION 8: QUICK REFERENCE
+% ========================================
+\section{Quick Reference Card}
+
+\begin{center}
+\fbox{\parbox{0.9\textwidth}{
+\textbf{REGRESSION METRICS - CHEAT SHEET}
+\vspace{0.3cm}
+
+\textbf{Core Formulas}:
+\begin{itemize}
+    \item $MAE = \frac{1}{n}\sum|y - \hat{y}|$ (Robust to outliers)
+    \item $MSE = \frac{1}{n}\sum(y - \hat{y})^2$ (Differentiable)
+    \item $RMSE = \sqrt{MSE}$ (Same units as $y$)
+    \item $R^2 = 1 - \frac{SS_{res}}{SS_{tot}}$ (0 to 1, can be negative)
+    \item $R^2_{adj} = 1 - \frac{(1-R^2)(n-1)}{n-k-1}$ (Penalizes features)
+\end{itemize}
+
+\textbf{Quick Decision Guide}:
+\begin{itemize}
+    \item Outliers? $\rightarrow$ Use MAE
+    \item Training loss? $\rightarrow$ Use MSE
+    \item Reporting? $\rightarrow$ Use RMSE or MAE
+    \item Comparing models? $\rightarrow$ Use Adj $R^2$
+\end{itemize}
+
+\textbf{Interview Key Points}:
+\begin{itemize}
+    \item $R^2$ can be negative (model worse than mean)
+    \item MAE is robust; MSE penalizes outliers harshly
+    \item Adj $R^2$ prevents feature bloat
+\end{itemize}
+}}

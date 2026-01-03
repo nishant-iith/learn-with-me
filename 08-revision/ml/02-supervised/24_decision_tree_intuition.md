@@ -39,6 +39,8 @@ Description:
 Style: Educational, showing the mapping between Tree and Geometry.
 -->
 
+![Tree to Geometry Mapping](assets/dt_tree_geometry_mapping.png)
+
 ---
 
 ### 3. CART: Classification And Regression Trees
@@ -59,6 +61,8 @@ Description:
 - Label: "Step Function for Regression".
 Style: Mathematical Plot.
 -->
+
+![Classification vs Regression Trees](assets/dt_classification_vs_regression.png)
 
 ---
 
@@ -103,6 +107,8 @@ Description:
 - Annotate one subtree as "Sub-Tree".
 Style: Clean infographic.
 -->
+
+![Decision Tree Terminology](assets/dt_terminology_diagram.png)
 
 ---
 
@@ -168,6 +174,8 @@ Description:
 Style: Mathematical Graph.
 -->
 
+![Entropy vs Probability Curve](assets/entropy_probability_curve.png)
+
 ---
 
 ### 11. Entropy for Continuous Variables
@@ -189,6 +197,8 @@ Description:
 - Text: "Uncertainty = Spread of the data".
 Style: Statistical Plot.
 -->
+
+![Entropy and Data Spread](assets/entropy_distribution_comparison.png)
 
 ---
 

@@ -247,3 +247,63 @@ plt.show()
     \item Not always. OLS involves matrix inversion ($(X^TX)^{-1}$), which has a time complexity of $O(n^3)$.
     \item For massive datasets, \textbf{Gradient Descent} is preferred as it iteratively approximates the solution with lower memory usage.
 \end{itemize}
+
+% ========================================
+% SECTION 9: PITFALLS & PRACTICAL TIPS
+% ========================================
+\section{Pitfalls and Practical Considerations}
+
+\subsection{When Linear Regression Fails}
+\begin{enumerate}
+    \item \textbf{Non-Linear Data}: If the relationship is curved, a straight line will underfit.
+    \item \textbf{Outliers}: Squared error heavily penalizes outliers, pulling the line away from the majority.
+    \item \textbf{Heteroscedasticity}: If error variance changes with $X$ (e.g., prediction errors grow for higher incomes), assumptions break.
+\end{enumerate}
+
+\subsection{Practical Tips}
+\begin{itemize}
+    \item \textbf{Always visualize first}: Plot your data before fitting any model.
+    \item \textbf{Check residuals}: Plot residuals vs predicted values. They should look random (no pattern).
+    \item \textbf{Feature Scaling}: While OLS doesn't strictly require scaling, it helps with interpretation and is mandatory for Gradient Descent.
+\end{itemize}
+
+% ========================================
+% SECTION 10: QUICK REFERENCE (1-PAGE SUMMARY)
+% ========================================
+\section{Quick Reference Card}
+
+\begin{center}
+\fbox{\parbox{0.9\textwidth}{
+\textbf{SIMPLE LINEAR REGRESSION - CHEAT SHEET}
+\vspace{0.3cm}
+
+\textbf{Model}: $y = mx + c$ (or $y = \beta_0 + \beta_1 x$)
+
+\textbf{Goal}: Minimize $J = \sum (y_i - \hat{y}_i)^2$
+
+\textbf{OLS Formulas}:
+$$m = \frac{\sum (x_i - \bar{x})(y_i - \bar{y})}{\sum (x_i - \bar{x})^2} \qquad c = \bar{y} - m\bar{x}$$
+
+\textbf{Assumptions} (LINNH):
+\begin{itemize}
+    \item \textbf{L}inearity | \textbf{I}ndependence | \textbf{N}ormality of residuals
+    \item \textbf{N}o multicollinearity | \textbf{H}omoscedasticity
+\end{itemize}
+
+\textbf{When to Use}:
+\begin{itemize}
+    \item Target is continuous (not categorical)
+    \item Relationship appears linear in scatter plot
+    \item Dataset is not extremely large (else use GD)
+\end{itemize}
+
+\textbf{Scikit-Learn}: \texttt{from sklearn.linear\_model import LinearRegression}
+
+\textbf{Key Interview Points}:
+\begin{itemize}
+    \item OLS is $O(n^3)$ – use GD for big data
+    \item Squared error: differentiable, penalizes outliers
+    \item Check residual plots for assumption violations
+\end{itemize}
+}}
+\end{center}

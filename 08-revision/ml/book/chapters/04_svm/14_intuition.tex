@@ -106,3 +106,45 @@ print(f"Accuracy: {svm.score(X_scaled, y):.2f}")
     \item SVM maximizes margin and is affected only by support vectors.
     \item SVM uses Hinge Loss, Logistic Regression uses Log Loss.
 \end{itemize}
+
+% ========================================
+% SECTION: QUICK REFERENCE
+% ========================================
+\section{Quick Reference Card}
+
+\begin{center}
+\fbox{\parbox{0.9\textwidth}{
+\textbf{SVM INTUITION - CHEAT SHEET}
+\vspace{0.3cm}
+
+\textbf{Core Idea}: Find the ``widest street'' (maximum margin) separating classes
+
+\textbf{Key Components}:
+\begin{itemize}
+    \item \textbf{Hyperplane}: Decision boundary $w^Tx + b = 0$
+    \item \textbf{Margin}: Distance between boundary and nearest points
+    \item \textbf{Support Vectors}: Points on the margin edge (the VIPs)
+\end{itemize}
+
+\textbf{Margin Width}: $\frac{2}{||w||}$ (maximize by minimizing $||w||$)
+
+\textbf{SVM vs Logistic Regression}:
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+& \textbf{SVM} & \textbf{LogReg} \\ \hline
+Loss & Hinge & Log \\ \hline
+Points Used & Support Vectors only & All \\ \hline
+Goal & Max Margin & Min Log-Loss \\ \hline
+\end{tabular}
+\end{center}
+
+\textbf{Sklearn}: \texttt{SVC(kernel='linear', C=1.0)}
+
+\textbf{Interview Gold}:
+\begin{itemize}
+    \item Only support vectors affect the decision
+    \item MUST scale features (distance-based)
+    \item C controls margin width vs errors tradeoff
+\end{itemize}
+}}

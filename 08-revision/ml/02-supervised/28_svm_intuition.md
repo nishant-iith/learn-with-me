@@ -25,6 +25,8 @@ Description:
 Style: Educational / Hand-drawn feel.
 -->
 
+![SVM Margin vs Logistic Regression](assets/svm_margin_comparison.png)
+
 ---
 
 ### 2. Terminology (From your Notes)
@@ -65,6 +67,8 @@ Description:
 - Vector arrow 'w' pointing perpendicular to the central line.
 Style: Mathematical Diagram (matching the user's handwritten note).
 -->
+
+![SVM Geometry: Hyperplanes and Support Vectors](assets/svm_geometry_annotated.png)
 
 ---
 

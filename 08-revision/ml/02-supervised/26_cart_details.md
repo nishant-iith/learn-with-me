@@ -73,6 +73,8 @@ Description:
 Style: Clean Mathematical visualization.
 -->
 
+![CART: Classification vs Regression](assets/cart_comparison_visual.png)
+
 ---
 
 ### 5. Computational Complexity

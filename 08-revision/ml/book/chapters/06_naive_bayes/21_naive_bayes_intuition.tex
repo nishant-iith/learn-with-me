@@ -103,3 +103,41 @@ Depending on the distribution of the features $P(x_i|y)$, we have different vari
 \begin{itemize}
     \item Yes, gracefully. If a feature is missing for a sample, we simply omit that specific $P(x_i|y)$ term from the product. We don't need to impute it.
 \end{itemize}
+
+% ========================================
+% SECTION: QUICK REFERENCE
+% ========================================
+\section{Quick Reference Card}
+
+\begin{center}
+\fbox{\parbox{0.9\textwidth}{
+\textbf{NAIVE BAYES - CHEAT SHEET}
+\vspace{0.3cm}
+
+\textbf{Core Formula}:
+$$P(y|X) \propto P(y) \cdot \prod_{i=1}^{n} P(x_i|y)$$
+
+\textbf{Key Assumption}: Features are conditionally independent given class
+
+\textbf{Types}:
+\begin{itemize}
+    \item \textbf{Bernoulli}: Binary features (word present/absent)
+    \item \textbf{Multinomial}: Count features (word frequency)
+    \item \textbf{Gaussian}: Continuous features (normal distribution)
+\end{itemize}
+
+\textbf{Sklearn}:
+\begin{itemize}
+    \item \texttt{GaussianNB()}
+    \item \texttt{MultinomialNB()}
+    \item \texttt{BernoulliNB()}
+\end{itemize}
+
+\textbf{Interview Gold}:
+\begin{itemize}
+    \item ``Naive'' = conditional independence assumption
+    \item Works well despite wrong assumption (especially for text)
+    \item Handles missing values naturally (just omit term)
+    \item Use Laplace smoothing to avoid zero probabilities
+\end{itemize}
+}}

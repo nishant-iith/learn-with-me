@@ -120,3 +120,38 @@ print(f"Accuracy: {svm_rbf.score(X_scaled, y):.2f}")
     \item Polynomial is useful when you know the data has a polynomial relationship.
     \item Use cross-validation to compare performance.
 \end{itemize}
+
+% ========================================
+% SECTION: QUICK REFERENCE
+% ========================================
+\section{Quick Reference Card}
+
+\begin{center}
+\fbox{\parbox{0.9\textwidth}{
+\textbf{SVM KERNELS - CHEAT SHEET}
+\vspace{0.3cm}
+
+\textbf{Kernel Trick}: Compute dot products in high-D without explicit transformation
+
+\textbf{Common Kernels}:
+\begin{itemize}
+    \item \textbf{Linear}: $K(x,y) = x^Ty$ (No transformation)
+    \item \textbf{Polynomial}: $K(x,y) = (γx^Ty + r)^d$
+    \item \textbf{RBF/Gaussian}: $K(x,y) = e^{-γ||x-y||^2}$ (Infinite D!)
+\end{itemize}
+
+\textbf{Hyperparameters}:
+\begin{itemize}
+    \item $C$: Penalty for misclassification (High C = Hard margin)
+    \item $γ$ (gamma): RBF radius (High γ = Tight fit, overfitting risk)
+\end{itemize}
+
+\textbf{Sklearn}: \texttt{SVC(kernel='rbf', C=1.0, gamma='scale')}
+
+\textbf{Interview Gold}:
+\begin{itemize}
+    \item Kernel Trick = magic for non-linear separation
+    \item RBF maps to infinite dimensions (via Taylor expansion)
+    \item High gamma = complex boundary = overfit
+\end{itemize}
+}}

@@ -132,3 +132,40 @@ print(f"Accuracy: {tree.score(X_test, y_test):.2f}")
 \begin{itemize}
     \item At each node, the tree picks the \textit{locally} best split (maximum Information Gain). It does not look ahead to see if a different split would be globally better. This makes it fast but potentially suboptimal.
 \end{itemize}
+
+% ========================================
+% SECTION: QUICK REFERENCE
+% ========================================
+\section{Quick Reference Card}
+
+\begin{center}
+\fbox{\parbox{0.9\textwidth}{
+\textbf{DECISION TREES - CHEAT SHEET}
+\vspace{0.3cm}
+
+\textbf{Core Idea}: Game of ``20 Questions'' - split data with yes/no questions
+
+\textbf{Geometry}: Orthogonal cuts create axis-parallel hyper-cuboid regions
+
+\textbf{Key Terminology}:
+\begin{itemize}
+    \item \textbf{Root}: First decision node
+    \item \textbf{Leaf}: Terminal node with prediction
+    \item \textbf{Depth}: Longest path from root to leaf
+\end{itemize}
+
+\textbf{Splitting Criteria}:
+\begin{itemize}
+    \item Classification: Entropy, Gini Impurity
+    \item Regression: Variance Reduction (MSE)
+\end{itemize}
+
+\textbf{Sklearn}: \texttt{DecisionTreeClassifier(max\_depth=5)}
+
+\textbf{Interview Gold}:
+\begin{itemize}
+    \item Greedy: picks locally best split (not globally optimal)
+    \item Cannot draw diagonal boundaries (only orthogonal)
+    \item No scaling needed! (based on thresholds, not distances)
+\end{itemize}
+}}

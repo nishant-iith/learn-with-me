@@ -85,3 +85,41 @@ print(f"Best Alpha: {ccp_alphas[best_id]:.4f} with Accuracy: {test_scores[best_i
 
 \textbf{Q2: Which pruning method is better?}
 \\ \textit{Answer}: Post-Pruning is generally robust because it sees the "full picture" before cutting. Pre-pruning might stop too early (The "Horizon Effect")—it might not split a node because the immediate gain is low, missing a massive gain one step deeper.
+
+% ========================================
+% SECTION: QUICK REFERENCE
+% ========================================
+\section{Quick Reference Card}
+
+\begin{center}
+\fbox{\parbox{0.9\textwidth}{
+\textbf{PRUNING & OVERFITTING - CHEAT SHEET}
+\vspace{0.3cm}
+
+\textbf{Problem}: Deep trees memorize noise $\rightarrow$ High Variance
+
+\textbf{Pre-Pruning} (Stop Early):
+\begin{itemize}
+    \item \texttt{max\_depth}: Limit tree depth
+    \item \texttt{min\_samples\_split}: Min samples to split
+    \item \texttt{min\_samples\_leaf}: Min samples in leaf
+\end{itemize}
+
+\textbf{Post-Pruning} (Grow then Cut):
+\begin{itemize}
+    \item Cost-Complexity Pruning (CCP)
+    \item Uses \texttt{ccp\_alpha} parameter
+    \item Higher alpha = more aggressive pruning
+\end{itemize}
+
+\textbf{CCP Formula}:
+$$R_\alpha(T) = R(T) + \alpha \cdot |T|$$
+Where $R(T)$ = error, $|T|$ = number of leaves
+
+\textbf{Interview Gold}:
+\begin{itemize}
+    \item Trees = ``Weak Learner'' due to high variance
+    \item Ensemble (Random Forest) stabilizes predictions
+    \item Post-pruning avoids ``Horizon Effect''
+\end{itemize}
+}}

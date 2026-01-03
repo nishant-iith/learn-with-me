@@ -48,6 +48,8 @@ Description:
 Style: Mathematical Geometry.
 -->
 
+![SVM Margin Derivation Geometry](assets/svm_margin_projection_math.png)
+
 ---
 
 ### 3. The Optimization Goal

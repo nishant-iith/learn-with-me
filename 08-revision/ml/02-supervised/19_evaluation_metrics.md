@@ -126,6 +126,8 @@ Description:
 Style: Infographic.
 -->
 
+![F1 Score Use Cases](assets/f1_score_infographic.png)
+
 ### Python Implementation
 
 Here are the two ways to calculate metrics in Scikit-Learn.

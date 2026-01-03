@@ -19,6 +19,8 @@ Description:
 Style: Data Science Visualization.
 -->
 
+![Polynomial Feature Transformation](assets/poly_features_comparison.png)
+
 ---
 
 ### 2. The "Trick" (Feature Transformation)

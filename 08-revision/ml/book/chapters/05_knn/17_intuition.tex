@@ -82,3 +82,42 @@ print(f"Accuracy: {knn.score(X_test_s, y_test):.2f}")
     \item Suffers from the Curse of Dimensionality.
     \item Sensitive to noisy data and outliers.
 \end{itemize}
+
+% ========================================
+% SECTION: QUICK REFERENCE
+% ========================================
+\section{Quick Reference Card}
+
+\begin{center}
+\fbox{\parbox{0.9\textwidth}{
+\textbf{K-NEAREST NEIGHBORS - CHEAT SHEET}
+\vspace{0.3cm}
+
+\textbf{Algorithm}:
+\begin{enumerate}
+    \item Store training data (no work!)
+    \item For new point: compute distance to all stored points
+    \item Pick K nearest neighbors, majority vote
+\end{enumerate}
+
+\textbf{Distance Metrics}:
+\begin{itemize}
+    \item Euclidean: $\sqrt{\sum(x_i - y_i)^2}$ (default)
+    \item Manhattan: $\sum|x_i - y_i|$
+\end{itemize}
+
+\textbf{Choosing K}:
+\begin{itemize}
+    \item Use odd K for binary classification (avoid ties)
+    \item Use Elbow Method or Cross-Validation
+\end{itemize}
+
+\textbf{Sklearn}: \texttt{KNeighborsClassifier(n\_neighbors=5)}
+
+\textbf{Interview Gold}:
+\begin{itemize}
+    \item Lazy Learner: no training, all work at prediction
+    \item MUST scale features (distance-based)
+    \item Curse of Dimensionality: fails in high-D
+\end{itemize}
+}}
